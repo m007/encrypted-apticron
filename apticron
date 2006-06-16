@@ -87,7 +87,7 @@ EOF
 		VER=`LC_ALL=en /usr/bin/apt-cache policy $PKG |\
 		     /bin/grep Candidate: | /usr/bin/cut -f 4 -d \ `
 		VERFILE=`echo "$VER" | /bin/sed -e "s/:/%3a/g"`
-		if [ `ls ${PKGPATH}${PKG}_${VERFILE}_*.deb >& /dev/null` ] ; then 
+		if [ ! `ls ${PKGPATH}${PKG}_${VERFILE}_*.deb >& /dev/null` ] ; then 
 			DEBS="$DEBS ${PKGPATH}${PKG}_${VERFILE}_*.deb"
 		fi
 		echo -e "\t"$PKG $VER
