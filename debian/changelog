@@ -1,10 +1,11 @@
-apticron (1.1.16) UNRELEASED; urgency=low
+apticron (1.1.16) unstable; urgency=low
 
   * Added apt (>= 0.6.8) as dependency because apticron uses the
     --allow-unauthenticated feature wich was started in that apt version.
   * Fixed problem generating changelog output in the email body. Thanks to
     Michael Kaaden. (Closes: #370674)
   * Fixed minor lintian warnings.
+  * Fixed simple fuzzy messages in all languages.
 
  -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Fri, 16 Jun 2006 07:14:07 -0400
 

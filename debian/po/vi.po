@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apticron 1.1.12\n"
 "Report-Msgid-Bugs-To: tiago@debian-ba.org\n"
-"POT-Creation-Date: 2006-05-18 16:34-0400\n"
+"POT-Creation-Date: 2006-06-16 09:00-0400\n"
 "PO-Revision-Date: 2005-05-13 20:18+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
@@ -24,8 +24,8 @@ msgstr "người chủ"
 #. Type: string
 #. Description
 #: ../templates:4
-msgid "E-Mail address(es) to notify"
-msgstr "Địa chỉ thư cần thông báo"
+msgid "E-Mail address(es) to notify:"
+msgstr "Địa chỉ thư cần thông báo:"
 
 #. Type: string
 #. Description
