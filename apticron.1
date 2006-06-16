@@ -1,0 +1,31 @@
+.TH apticron 1 
+.SH NAME
+apticron \- Generate a mail listing packages which are pending an upgrade
+.SH SYNOPSIS
+.B apticron
+.br
+.SH DESCRIPTION
+.B apticron 
+is a shell script which generates a mail with a list of all packages
+currently pending an upgrade, as well as summary of changes
+- using apt-listchanges - to a configurable Email address.
+
+.B apticron
+is mainly intended for automatic notification of pending security 
+updates but can also be used in many other situations where timely
+updates are neccessary.
+.SH FILES
+.TP
+\fI/etc/apticron/apticron\&.conf\fR
+Configuration file, Email address to mail and profile for use with apt-listchanges are configurable.
+.TP
+\fI/etc/cron\&.daily/apticron\fR
+Cron script for executing apticron daily
+.SH SEE ALSO
+.BR apt-get (8),
+.BR apt-listchanges (1).
+.BR cron (8)
+.br
+.SH AUTHOR
+Apticron is by Colm MacCarthaigh <colm.maccarthaigh@heanet.ie> with
+contributions from Marc Sherman <msherman@projectile.ca>

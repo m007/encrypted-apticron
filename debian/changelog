@@ -1,0 +1,159 @@
+apticron (1.1.15) unstable; urgency=low
+
+  * Fixed Tassia's name in control file.
+  * Added Colm MacCarthaigh as uploader. 
+
+ -- Tassia Camoes Araujo <tassia@debian-ba.org>  Fri, 19 May 2006 21:54:00 -0500
+
+apticron (1.1.14) unstable; urgency=low
+
+  [ Tiago Bortoletto Vaz ]
+  * Added Vietnamese po translation. Thanks to Clytie Siddall.
+    (Closes: #308928)
+  * Added German po translation. Thanks to Johannes Starosta.
+    (Closes: #349539)
+  * Added Japanese po translation. Thanks to Kenshi Muto. (Closes: #306945)
+  * Added Czech po translation. Thanks to Miroslav Kure. (Closes: #315818)
+  * Added Swedish po translation. Thanks to Daniel Nylander. (Closes: #331301)
+  * Added Italian po translation. Thanks to Luca Monducci. (Closes: #345531)
+  * Added Spanhish po translation. Thanks to . César Gómez Martín.
+    (Closes: #333873)
+
+  [ Tassia Camoes Araujo ]
+  * Rewrote the code that handles the debconf e-mail configuration.
+   (Closes: #316074)
+  * Cleaned-up the rules file.
+  * Changed debonf compatibility level to 5.
+  * Updated standard version to 3.7.2 (no changes)
+  * Fixed error in manpage removing a character with accent.
+
+  [ Tiago Bortoletto Vaz ]
+  * Removed .svn dirs by using svn-buildpackage. Thanks to Marc Haber.
+    (Closes: #341245)
+  * Fixed locales problem. Thanks to Ondra Kudlik. (Closes: #330685).
+  * Fixed typo problem in pot file. Thanks to Clytie Siddall.
+    (Closes: #308929).
+  * Added 3600 range random to cron running. Thanks to Anders Henke.
+    (Closes: #316101)
+
+  [ Tassia Camoes Araujo ]
+  * Fixed problems to deal with file repositories. (Closes: #340272)
+
+  [ Tiago Bortoletto Vaz ]
+  * Close NMU bug that fixes LANG problem. Thanks to Alessandro Iurlano.
+    (Closes: #301395)
+
+  [ Tassia Camoes Araujo ]
+  * Switch to aptitude instead of apt-get in apticron's notifications.
+    Thanks to Filippo Giunchedi (Closes: #325394)
+
+ -- Tassia Camoes Araujo <tassia@debian-ba.org>  Thu, 18 May 2006 16:30:41 -0500
+
+apticron (1.1.13) unstable; urgency=low
+
+  * Add PT translation courtesty of <freedebian@netcabo.pt>. (Closes: #330052)
+  * No longer exit on apt-get update failure. (Closes: #328989)
+  * Sort the list of packages. (Closes: #323723)
+  * No longer depend on coreutils. (Closes: #316416)
+
+ -- Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>  Wed, 28 Sep 2005 14:04:34 +0100
+
+apticron (1.1.12) unstable; urgency=low
+
+  * Added a dependency for iproute
+
+ -- Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>  Tue, 19 Apr 2005 16:00:47 +0100
+
+apticron (1.1.11) unstable; urgency=low
+
+  * Modified to use apt-config to detect archive cache directory. Also made
+    this configurable. (Closes: #305026)
+  * Added a test -x to the cron-script. (Closes: #304892)
+  * Corrected the apt-listchanges dependency. (Closes: #304884)
+  * Added some logic to include IP addresses of system in the output.
+  * Made the system name, IP addresses and number of IP addresses to show
+    configurable.
+    
+ -- Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>  Tue, 19 Apr 2005 11:03:13 +0100
+
+apticron (1.1.10) unstable; urgency=low
+
+  * Added FR translation courtesy of <guilhelm.panaget@free.fr> and
+    <debian-l10n-french@lists.debian.org> (Closes: #302418)
+  * Corrected the signature seperator, courtesy of <ben@benfinney.id.au> 
+    (Closes: #304725)
+  * Corrected a typo in the long descrip;tion, courtesy of
+    <ben@benfinney.id.au> (Closes: #304724)
+
+ -- Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>  Fri, 15 Apr 2005 09:41:56 +0100
+
+apticron (1.1.9) unstable; urgency=low
+
+  * section/priority from utils/optional to admin/extra
+  * Use LANG=en for apt-cache policy <a.iurlano@inera.it> (Closes: #301395)
+
+ -- Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>  Fri, 25 Mar 2005 16:57:58 +0000
+
+apticron (1.1.8) unstable; urgency=low
+
+  * Removed the autoclean command, (Closes: #301027)
+  * Retain apt-listchanges stderr output. (Closes: #300920)
+  * Changed default invokation of apt-listchanges to include both news and 
+    changes, aswell as output headers. Also added LISTCHANGES_PROFILE 
+    configuration directive. (Closes: #300919)
+  * Made some cosmetic changes to mail format. All levels of indentation
+    should now be consistent.
+  * Migrated to using /etc/bash instead of /etc/sh, due to presence of bash-isms.
+  
+ -- Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>  Wed, 23 Mar 2005 14:45:46 +0000
+
+apticron (1.1.7) unstable; urgency=low
+
+  * Mostly costly cosmetic changes to the language used
+  * Added logic to avoid unneccessary repeated downloads of packages, courtesy
+    of Marc Sherman <msherman@projectile.ca>
+
+ -- Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>  Wed, 19 Jan 2005 20:02:10 +0000
+
+apticron (1.1.6) unstable; urgency=low
+
+  * Added pt_BR translation courtesy of Otavio Salvador
+
+ -- Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>  Thu,  6 Jan 2005 20:17:39 +0000
+
+apticron (1.1.5) unstable; urgency=low
+
+  * Updated to use po-debconf 
+
+ -- Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>  Thu,  6 Jan 2005 16:17:28 +0000
+
+apticron (1.1.4) unstable; urgency=low
+
+  * Migrated to a binary in /usr/sbin
+  * Added manpage
+
+ -- Colm MacCarthaigh <colm.maccarthaigh@l.heanet.ie>  Thu,  6 Jan 2005 15:01:10 +0000
+
+apticron (1.1.3) unstable; urgency=low
+
+  * Corrected some of the english in the script
+
+ -- Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>  Thu,  6 Jan 2005 12:20:18 +0000
+
+apticron (1.1.2) unstable; urgency=low
+
+  * Added date to start of report and other cosmetic fixes. 
+
+ -- Cillian Sharkey <csharkey@heanet.ie>  Wed,  6 Aug 2003 11:14:13 +0100
+
+apticron (1.1.1) unstable; urgency=low
+
+  * Fixes to debconf
+
+ -- Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>  Fri,  9 Aug 2002 11:53:26 +0100
+
+apticron (1.0.1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>  Fri,  9 Aug 2002 11:53:26 +0100

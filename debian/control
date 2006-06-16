@@ -1,0 +1,14 @@
+Source: apticron
+Section: admin
+Priority: extra
+Maintainer: Tiago Bortoletto Vaz <tiago@debian-ba.org>
+Uploaders: Tassia Camoes Araujo <tassia@debian-ba.org>, Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>
+Build-Depends-Indep: debhelper (>> 5.0.0), po-debconf
+Standards-Version: 3.7.2
+
+Package: apticron
+Architecture: all 
+Depends: apt-listchanges (>= 2.59), mailx, debconf | debconf-2.0, iproute
+Description: cron-script to mail impending apt updates
+ apticron is a simple script to mail about impending apt updates
+ such as security updates.

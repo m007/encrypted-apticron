@@ -1,0 +1,137 @@
+#!/bin/bash -e 
+
+if [ -n "$1" ]; then
+	echo "Usage: apticron"
+	echo "Mails a list of packaged that are pending-upgrade to the"
+	echo "email address specified in /etc/apticron/apticron.conf"
+	exit 1
+fi	
+
+# a sane default for email
+EMAIL=root
+
+# By default we have no profile
+LISTCHANGES_PROFILE=""
+
+# Set $DIRCACHE
+eval `/usr/bin/apt-config shell DIRCACHE Dir::Cache`
+
+# Set the SYSTEM 
+SYSTEM=`/bin/hostname -f`
+
+# Set the IPADDRESSNUM
+IPADDRESSNUM="1"
+
+# Source the config file
+[ -e /etc/apticron/apticron.conf ] && . /etc/apticron/apticron.conf
+
+
+if [ -z "$IPADDRESSES" ]; then
+	# Set the IPv4 addresses
+	IPADDRESSES=`(echo $( /bin/hostname -i ) ; 
+		     /sbin/ip -f inet addr show scope global | \
+		     /bin/grep "scope global" |\
+		     /usr/bin/head -$IPADDRESSNUM |\
+		     /usr/bin/awk '{ print $2 }' |\
+		     /usr/bin/cut -d/ -f1) |\
+		     /usr/bin/uniq`
+
+	# Set the IPv6 addresses
+	IPADDRESSES="$IPADDRESSES `/sbin/ip -f inet6 addr show scope global |\
+	                           /bin/grep "scope global" | \
+				   /usr/bin/head -$IPADDRESSNUM |\
+				   /usr/bin/awk '{ print $2 }' |\
+				   /usr/bin/cut -d/ -f1`"
+fi
+
+# Turn our list of addresses into nicely formatted output
+ADDRESSES=""
+if [ -n "$IPADDRESSES" ] ; then
+	for address in $IPADDRESSES; do
+		# Add the Address
+		ADDRESSES="${ADDRESSES} ${address}"
+	done
+	
+	ADDRESSES=`echo $ADDRESSES | /usr/bin/fmt -w68 |\
+		   /bin/sed 's/^/\t[ /;s/\$/ ]/'`
+	ADDRESSES=`echo -e "\n$ADDRESSES"`
+fi
+
+# update the package lists
+/usr/bin/apt-get -qq update || true
+
+# get the list of packages which are pending an upgrade
+PKGNAMES=`/usr/bin/apt-get -q -y --allow-unauthenticated -s dist-upgrade | \
+          /bin/grep ^Inst | /usr/bin/cut -d\  -f2 | /usr/bin/sort`
+
+if [ -n "$PKGNAMES" ] ; then
+	
+	# do the upgrade downloads
+	/usr/bin/apt-get -qq -d --allow-unauthenticated dist-upgrade >& /dev/null
+
+  (
+	/bin/cat <<EOF
+apticron report [`/bin/date -R`]
+========================================================================
+
+apticron has detected that some packages need upgrading on: 
+
+	$SYSTEM $ADDRESSES
+
+The following packages are currently pending an upgrade:
+
+EOF
+
+	PKGPATH="/${DIRCACHE}archives/"
+	for PKG in $PKGNAMES ; do
+		VER=`LC_ALL=en /usr/bin/apt-cache policy $PKG |\
+		     /bin/grep Candidate: | /usr/bin/cut -f 4 -d \ `
+		VERFILE=`echo "$VER" | /bin/sed -e "s/:/%3a/g"`
+		if [ `ls ${PKGPATH}${PKG}_${VERFILE}_*.deb >& /dev/null` ] ; then 
+			DEBS="$DEBS ${PKGPATH}${PKG}_${VERFILE}_*.deb"
+		fi
+		echo -e "\t"$PKG $VER
+	done
+
+	MISSING_DEBS=`apt-get -y --allow-unauthenticated --print-uris dist-upgrade \
+                          | grep "file:" \
+                          | sed "s/'file:\(.*\)' .*/\1/g"`
+
+	DEBS=`echo $MISSING_DEBS $DEBS | /usr/bin/sort`
+
+	/bin/cat <<EOF
+
+========================================================================
+
+Package Details:
+
+EOF
+
+	if [ -z "$LISTCHANGES_PROFILE" ] ; then
+		/usr/bin/apt-listchanges --which=both --headers -f text $DEBS 
+	else
+		/usr/bin/apt-listchanges -f text --profile=$LISTCHANGES_PROFILE $DEBS
+	fi
+
+	/bin/cat <<EOF
+========================================================================
+
+You can perform the upgrade by issuing the command:
+
+	aptitude dist-upgrade
+
+as root on $SYSTEM
+
+It is recommended that you simulate the upgrade first to confirm that
+the actions that would be taken are reasonable. The upgrade may be 
+simulated by issuing the command:
+
+	aptitude -s -y dist-upgrade
+
+-- 
+apticron
+EOF
+
+   ) 2>&1 | /usr/bin/mailx -s "Debian Package Updates on `/bin/hostname`" $EMAIL
+
+fi

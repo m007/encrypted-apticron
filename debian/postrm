@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+case "$1" in
+    purge)
+	rm -f /etc/apticron/apticron.conf*
+	if [ -d /etc/apticron ] ; then 
+		rmdir /etc/apticron || true
+	fi
+    ;;
+esac
+
+#DEBHELPER#

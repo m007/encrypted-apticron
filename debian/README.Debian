@@ -1,0 +1,7 @@
+apticron for Debian
+-------------------
+
+You can configure the e-mail address apticron will use for mailing changes
+to from /etc/apticron/apticron.conf
+
+ -- Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>, Fri,  9 Aug 2002 11:53:26 +0100

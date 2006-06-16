@@ -1,0 +1,62 @@
+# apticron po-debconf translation to Spanish
+# Copyright (C) 2005 Software in the Public Interest
+# This file is distributed under the same license as the apticron package.
+#
+# Changes:
+#  - Initial translation
+#         César Gómez Martín <cesar.gomez@gmail.com>
+#
+#
+#   Traductores, si no conoce el formato PO, merece la pena leer la
+#   documentación de gettext, especialmente las secciones dedicadas a este
+#   formato, por ejemplo ejecutando:
+#          info -n '(gettext)PO Files'
+#          info -n '(gettext)Header Entry'
+# Equipo de traducción al español, por favor, lean antes de traducir
+# los siguientes documentos:
+#
+#  - El proyecto de traducción de Debian al español
+#    http://www.debian.org/intl/spanish/
+#    especialmente las notas de traducción en
+#    http://www.debian.org/intl/spanish/notas
+#
+#  - La guía de traducción de po's de debconf:
+#    /usr/share/doc/po-debconf/README-trans
+#    o http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: apticron\n"
+"Report-Msgid-Bugs-To: tiago@debian-ba.org\n"
+"POT-Creation-Date: 2006-05-18 16:34-0400\n"
+"PO-Revision-Date: 2005-10-04 17:43+0100\n"
+"Last-Translator: César Gómez Martín <cesar.gomez@gmail.com>\n"
+"Language-Team: Debian l10n spanish <debian-l10n-spanish@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: SPAIN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. Type: string
+#. Default
+#: ../templates:3
+msgid "root"
+msgstr "root"
+
+#. Type: string
+#. Description
+#: ../templates:4
+msgid "E-Mail address(es) to notify"
+msgstr "Dirección/es de correo electrónico a las que mandar notificaciones."
+
+#. Type: string
+#. Description
+#: ../templates:4
+msgid ""
+"Specify e-mail addresses, space seperated, that should be notified of "
+"pending updates."
+msgstr ""
+"Introduzca las direcciones de correo electrónico a las que desea mandar las "
+"notificaciones de actualizaciones pendientes separándolas con espacios."

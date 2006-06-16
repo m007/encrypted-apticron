@@ -1,0 +1,14 @@
+#!/bin/sh -e
+
+. /usr/share/debconf/confmodule
+
+if [ -e /etc/apticron/apticron.conf ]; then
+	. /etc/apticron/apticron.conf || true
+
+	if [ "$EMAIL" ]; then
+		db_set apticron/notification $EMAIL
+	fi
+fi
+
+db_input medium apticron/notification || true
+db_go
