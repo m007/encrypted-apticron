@@ -1,3 +1,10 @@
+apticron (1.1.17) unstable; urgency=low
+
+  * put "Default: root" as non-translatable in templates file. Thanks to
+    Thomas Huriaux. (Closes: #378098). 
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Thu, 13 Jul 2006 12:13:40 -0400
+
 apticron (1.1.16) unstable; urgency=low
 
   * Added apt (>= 0.6.8) as dependency because apticron uses the

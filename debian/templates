@@ -1,6 +1,6 @@
 Template: apticron/notification
 Type: string
-_Default: root
+Default: root
 _Description: E-Mail address(es) to notify:
  Specify e-mail addresses, space seperated, that should be notified of
  pending updates.
