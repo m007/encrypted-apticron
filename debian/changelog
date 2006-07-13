@@ -1,9 +1,11 @@
 apticron (1.1.17) unstable; urgency=low
 
   * put "Default: root" as non-translatable in templates file. Thanks to
-    Thomas Huriaux. (Closes: #378098). 
+    Thomas Huriaux. (Closes: #378098).
+  * add a little sentence in package description about cron-apt, recommending
+    it for more complex APT tasks. Thanks to Marc Haber. (Closes: #341246)
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Thu, 13 Jul 2006 12:13:40 -0400
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Thu, 13 Jul 2006 12:31:04 -0400
 
 apticron (1.1.16) unstable; urgency=low
 
