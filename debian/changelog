@@ -1,4 +1,4 @@
-apticron (1.1.17) unstable; urgency=low
+apticron (1.1.17) UNRELEASED; urgency=low
 
   * put "Default: root" as non-translatable in templates file. Thanks to
     Thomas Huriaux. (Closes: #378098).
