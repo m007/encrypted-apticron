@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apticron 1.1.12\n"
 "Report-Msgid-Bugs-To: tiago@debian-ba.org\n"
-"POT-Creation-Date: 2006-06-16 09:00-0400\n"
+"POT-Creation-Date: 2006-07-23 20:42-0400\n"
 "PO-Revision-Date: 2005-10-03 23:23+0200\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -23,23 +23,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: string
-#. Default
-#: ../templates:3
-msgid "root"
-msgstr "root"
-
-#. Type: string
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid "E-Mail address(es) to notify:"
 msgstr "E-postaddressen (kan vara flera) för notifieringar:"
 
 #. Type: string
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid ""
 "Specify e-mail addresses, space seperated, that should be notified of "
 "pending updates."
 msgstr ""
 "Specificera e-postaddresser som ska bli notfierade om möjliga uppdateringar "
 "(separera multipla addresser med mellanslag)."
+
+#~ msgid "root"
+#~ msgstr "root"

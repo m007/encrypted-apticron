@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apticron\n"
 "Report-Msgid-Bugs-To: tiago@debian-ba.org\n"
-"POT-Creation-Date: 2006-06-16 09:00-0400\n"
+"POT-Creation-Date: 2006-07-23 20:42-0400\n"
 "PO-Revision-Date: 2005-04-29 23:54+0900\n"
 "Last-Translator: Kenshi Muto <kmuto@debian.org>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
@@ -24,23 +24,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: string
-#. Default
-#: ../templates:3
-msgid "root"
-msgstr "root"
-
-#. Type: string
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid "E-Mail address(es) to notify:"
 msgstr "通知するメールアドレス:"
 
 #. Type: string
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid ""
 "Specify e-mail addresses, space seperated, that should be notified of "
 "pending updates."
 msgstr ""
 "保留している更新を通知するための電子メールアドレスをスペースで区切って指定し"
 "てください。"
+
+#~ msgid "root"
+#~ msgstr "root"

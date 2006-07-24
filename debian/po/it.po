@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apticron 1.1.12 debconf templates\n"
 "Report-Msgid-Bugs-To: tiago@debian-ba.org\n"
-"POT-Creation-Date: 2006-06-16 09:00-0400\n"
+"POT-Creation-Date: 2006-07-23 20:42-0400\n"
 "PO-Revision-Date: 2006-01-01 17:14+0100\n"
 "Last-Translator: Luca Monducci <luca.mo@tiscali.it>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -16,23 +16,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: string
-#. Default
-#: ../templates:3
-msgid "root"
-msgstr "root"
-
-#. Type: string
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid "E-Mail address(es) to notify:"
 msgstr "Indirizzo/i e-mail a cui inviare le notifiche:"
 
 #. Type: string
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid ""
 "Specify e-mail addresses, space seperated, that should be notified of "
 "pending updates."
 msgstr ""
 "Specificare gli indirizzi e-mail, separandoli con uno spazio, a cui verrà "
 "notificata la presenza di aggiornamenti pendenti."
+
+#~ msgid "root"
+#~ msgstr "root"

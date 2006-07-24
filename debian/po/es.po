@@ -28,7 +28,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apticron\n"
 "Report-Msgid-Bugs-To: tiago@debian-ba.org\n"
-"POT-Creation-Date: 2006-06-16 09:00-0400\n"
+"POT-Creation-Date: 2006-07-23 20:42-0400\n"
 "PO-Revision-Date: 2005-10-04 17:43+0100\n"
 "Last-Translator: César Gómez Martín <cesar.gomez@gmail.com>\n"
 "Language-Team: Debian l10n spanish <debian-l10n-spanish@lists.debian.org>\n"
@@ -40,23 +40,20 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. Type: string
-#. Default
-#: ../templates:3
-msgid "root"
-msgstr "root"
-
-#. Type: string
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid "E-Mail address(es) to notify:"
 msgstr "Dirección/es de correo electrónico a las que mandar notificaciones:"
 
 #. Type: string
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid ""
 "Specify e-mail addresses, space seperated, that should be notified of "
 "pending updates."
 msgstr ""
 "Introduzca las direcciones de correo electrónico a las que desea mandar las "
 "notificaciones de actualizaciones pendientes separándolas con espacios."
+
+#~ msgid "root"
+#~ msgstr "root"

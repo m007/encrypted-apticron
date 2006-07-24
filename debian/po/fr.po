@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apticron\n"
 "Report-Msgid-Bugs-To: tiago@debian-ba.org\n"
-"POT-Creation-Date: 2006-06-16 09:00-0400\n"
+"POT-Creation-Date: 2006-07-23 20:42-0400\n"
 "PO-Revision-Date: 2005-03-25 20:03+0100\n"
 "Last-Translator: Guilhelm Panaget <guilhelm.panaget@free.fr>\n"
 "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
@@ -26,23 +26,20 @@ msgstr ""
 "X-Generator: KBabel 1.9.1\n"
 
 #. Type: string
-#. Default
-#: ../templates:3
-msgid "root"
-msgstr "root"
-
-#. Type: string
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid "E-Mail address(es) to notify:"
 msgstr "Adresse(s) électronique(s) des personnes à prévenir:"
 
 #. Type: string
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid ""
 "Specify e-mail addresses, space seperated, that should be notified of "
 "pending updates."
 msgstr ""
 "Veuillez indiquer les adresses électroniques, séparées par des espaces, des "
 "personnes qui doivent être prévenues des mises à jour en attente."
+
+#~ msgid "root"
+#~ msgstr "root"

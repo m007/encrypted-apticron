@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.1.5\n"
 "Report-Msgid-Bugs-To: tiago@debian-ba.org\n"
-"POT-Creation-Date: 2006-06-16 09:00-0400\n"
+"POT-Creation-Date: 2006-07-23 20:42-0400\n"
 "PO-Revision-Date: 2005-01-06 15:58-0200\n"
 "Last-Translator: Otavio Salvador <otavio@debian.org>\n"
 "Language-Team: Brazilian Portuguese <debian-l10n-portuguese@lists.debian."
@@ -26,23 +26,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: string
-#. Default
-#: ../templates:3
-msgid "root"
-msgstr "root"
-
-#. Type: string
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid "E-Mail address(es) to notify:"
 msgstr "Endereço(s) de e-mail para notificação:"
 
 #. Type: string
 #. Description
-#: ../templates:4
+#: ../templates:1001
 msgid ""
 "Specify e-mail addresses, space seperated, that should be notified of "
 "pending updates."
 msgstr ""
 "Especifique os endereços de e-mail, separados por espaço, que devem ser "
 "notificados sobre atualizações pendentes."
+
+#~ msgid "root"
+#~ msgstr "root"
