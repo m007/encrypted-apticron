@@ -1,3 +1,10 @@
+apticron (1.1.18) UNRELEASED; urgency=low
+
+  * Removed bashism in cron.daily. Thanks to Klaus Ethgen and Rodrigo Campos.
+    (Closes: #381122)
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun,  6 Aug 2006 18:23:05 -0400
+
 apticron (1.1.17) unstable; urgency=low
 
   * put "Default: root" as non-translatable in templates file. Thanks to

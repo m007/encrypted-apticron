@@ -1,9 +1,9 @@
 #!/bin/sh 
 
 RANGE=3600
-number=$RANDOM
+number=`od -vAn -N2 -tu4 < /dev/urandom`
 
-let "number %= $RANGE"
+number=`expr $number "%" $RANGE`
 sleep $number
 test -x /usr/sbin/apticron || exit 0
 /usr/sbin/apticron
