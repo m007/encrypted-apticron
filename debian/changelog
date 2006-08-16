@@ -2,10 +2,12 @@ apticron (1.1.19) UNRELEASED; urgency=low
 
   * Removed capitalized subject in apticron file. Thanks to martin f krafft.
     (Closes: #383154)
-  * Added new portuguese translation for debconf. Thanks to Rui Branco. 
+  * Added new portuguese translation for debconf. Thanks to Rui Branco.
     (Closes: #330052)
+  * Added new german translation for debconf. Thanks to Johannes Starosta.
+    (Closes: #349539)
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Wed, 16 Aug 2006 11:31:43 -0400
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Wed, 16 Aug 2006 11:42:15 -0400
 
 apticron (1.1.18) unstable; urgency=low
 
