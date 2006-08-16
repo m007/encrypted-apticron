@@ -1,9 +1,18 @@
-apticron (1.1.18) UNRELEASED; urgency=low
+apticron (1.1.19) UNRELEASED; urgency=low
+
+  * Removed capitalized subject in apticron file. Thanks to martin f krafft.
+    (Closes: #383154)
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Wed, 16 Aug 2006 11:20:13 -0400
+
+apticron (1.1.18) unstable; urgency=low
 
   * Removed bashism in cron.daily. Thanks to Klaus Ethgen and Rodrigo Campos.
     (Closes: #381122)
+  * Added new dutch po-debconf translation. Thanks to Kurt De Bree.
+    (Closes: #381852)
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun,  6 Aug 2006 18:23:05 -0400
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Mon,  7 Aug 2006 18:55:28 -0400
 
 apticron (1.1.17) unstable; urgency=low
 
