@@ -3,8 +3,7 @@ Section: admin
 Priority: extra
 Maintainer: Tiago Bortoletto Vaz <tiago@debian-ba.org>
 Uploaders: Tassia Camoes Araujo <tassia@debian-ba.org>, Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>
-Build-Depends-Indep: po-debconf
-Build-Depends: debhelper (>= 5)
+Build-Depends: debhelper (>= 5), po-debconf
 Standards-Version: 3.7.2
 
 Package: apticron
