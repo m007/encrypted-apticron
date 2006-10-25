@@ -1,9 +1,3 @@
-apticron (1.1.20) UNRELEASED; urgency=low
-
-  * NOT RELEASED YET
-
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Wed, 25 Oct 2006 19:37:31 -0300
-
 apticron (1.1.19) unstable; urgency=low
 
   * Removed capitalized subject in apticron file. Thanks to martin f krafft.
@@ -13,8 +7,10 @@ apticron (1.1.19) unstable; urgency=low
   * Added new german translation for debconf. Thanks to Johannes Starosta.
     (Closes: #349539)
   * Fix broken conditional. Thanks to Nis Martensen. (Closes: #370674)
+  * Put po-debconf in Build-depends (policy 7.6)
+  * Fix no encode declaration in pt.po 
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Wed, 25 Oct 2006 19:34:35 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Wed, 25 Oct 2006 19:44:15 -0300
 
 apticron (1.1.18) unstable; urgency=low
 
