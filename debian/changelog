@@ -1,4 +1,4 @@
-apticron (1.1.19) UNRELEASED; urgency=low
+apticron (1.1.19) unstable; urgency=low
 
   * Removed capitalized subject in apticron file. Thanks to martin f krafft.
     (Closes: #383154)
@@ -6,8 +6,9 @@ apticron (1.1.19) UNRELEASED; urgency=low
     (Closes: #330052)
   * Added new german translation for debconf. Thanks to Johannes Starosta.
     (Closes: #349539)
+  * Fix broken conditional. Thanks to Nis Martensen. (Closes: #370674)
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Wed, 16 Aug 2006 11:42:15 -0400
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Wed, 25 Oct 2006 19:34:35 -0300
 
 apticron (1.1.18) unstable; urgency=low
 
