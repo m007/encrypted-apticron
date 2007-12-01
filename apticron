@@ -67,7 +67,7 @@ PKGNAMES=`/usr/bin/apt-get -q -y --allow-unauthenticated -s dist-upgrade | \
 if [ -n "$PKGNAMES" ] ; then
 	
 	# do the upgrade downloads
-	/usr/bin/apt-get -qq -d --allow-unauthenticated dist-upgrade >& /dev/null
+	/usr/bin/apt-get -qq -d --allow-unauthenticated --force-yes dist-upgrade >& /dev/null
 
   (
 	/bin/cat <<EOF

@@ -2,8 +2,11 @@ apticron (1.1.21) unstable; urgency=low
 
   * Downgrade iputils and apt-listchanges from depends to recommends; only use
     these tools when available. Thanks to Thijs Kinkhorst. (Closes: #410404)
+  * Add --force-yes to apt-get in order to avoid errors when apt-get has to do
+    some tasks like downgrading a package. Thanks to Jö Fahlke.  
+    (Closes: #439349)
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sat, 01 Dec 2007 18:30:45 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sat, 01 Dec 2007 18:57:12 -0300
 
 apticron (1.1.20) unstable; urgency=low
 
