@@ -26,7 +26,7 @@ IPADDRESSNUM="1"
 [ -e /etc/apticron/apticron.conf ] && . /etc/apticron/apticron.conf
 
 
-if [ -z "$IPADDRESSES" ]; then
+if [ -z "$IPADDRESSES" ] && [ -x /sbin/ip ]; then
 	# Set the IPv4 addresses
 	IPADDRESSES=`(echo $( /bin/hostname -i ) ; 
 		     /sbin/ip -f inet addr show scope global | \
@@ -107,10 +107,15 @@ Package Details:
 
 EOF
 
-	if [ -z "$LISTCHANGES_PROFILE" ] ; then
-		/usr/bin/apt-listchanges --which=both --headers -f text $DEBS 
+	if [ -x /usr/bin/apt-listchanges ] ; then
+		if [ -z "$LISTCHANGES_PROFILE" ] ; then
+			/usr/bin/apt-listchanges --which=both --headers -f text $DEBS 
+		else
+			/usr/bin/apt-listchanges -f text --profile=$LISTCHANGES_PROFILE $DEBS
+		fi
 	else
-		/usr/bin/apt-listchanges -f text --profile=$LISTCHANGES_PROFILE $DEBS
+		echo "Install 'apt-listchanges' to see what's new in these packages."
+		echo
 	fi
 
 	/bin/cat <<EOF

@@ -1,3 +1,10 @@
+apticron (1.1.21) unstable; urgency=low
+
+  * Downgrade iputils and apt-listchanges from depends to recommends; only use
+    these tools when available. Thanks to Thijs Kinkhorst. (Closes: #410404)
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sat, 01 Dec 2007 18:30:45 -0300
+
 apticron (1.1.20) unstable; urgency=low
 
   * Fix problem with debconf pt translation. Thanks to Christian Perrier.
