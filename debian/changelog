@@ -5,10 +5,12 @@ apticron (1.1.21) unstable; urgency=low
   * Add --force-yes to apt-get in order to avoid errors when apt-get has to do
     some tasks like downgrading a package. Thanks to Jö Fahlke.
     (Closes: #439349)
-  * Add russian po-debconf translation. Thanks to Yuri Kozlov. 
+  * Add russian po-debconf translation. Thanks to Yuri Kozlov.
     (Closes: #451408)
+  * Add UTF-8 enconding to email header. Thanks to Damyan Ivanov.
+    (Closes: #426682)
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Tue, 04 Dec 2007 17:26:10 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Tue, 04 Dec 2007 21:05:05 -0300
 
 apticron (1.1.20) unstable; urgency=low
 
