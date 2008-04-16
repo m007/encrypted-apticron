@@ -29,7 +29,7 @@ IPADDRESSNUM="1"
 if [ -z "$IPADDRESSES" ] && [ -x /sbin/ip ]; then
 	# Set the IPv4 addresses
 	IPADDRESSES=`(echo $( /bin/hostname -i ) ; 
-		     /sbin/ip -f inet addr show scope global 2> /dev/null | \
+		     /sbin/ip -f inet addr show scope global 2> /dev/null || true | \
 		     /bin/grep "scope global" |\
 		     /usr/bin/head -$IPADDRESSNUM |\
 		     /usr/bin/awk '{ print $2 }' |\
