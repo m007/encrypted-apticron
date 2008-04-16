@@ -1,6 +1,15 @@
 #! /bin/sh
 set -e
 
+isDigit() {
+	test -n "$1" || return 1
+	string="$1"
+	while [ "${string#[[:digit:]]}" != "$string" ]; do
+		string="${string#[[:digit:]]}"
+	done
+	[ -z "$string" ] || return 1
+}
+
 case "$1" in
     configure)
 
@@ -13,8 +22,9 @@ case "$1" in
 		mkdir /etc/apticron
 	fi
 	
-	if [ ! -e /etc/apticron/apticron.conf ] ; then
-		cat <<EOF > /etc/apticron/apticron.conf
+	tmpfile="$( mktemp -t apticron.conf.XXXXXXXXXX )"
+
+	cat <<EOF > "$tmpfile"
 # apticron.conf 
 #
 # set EMAIL to a list of addresses which will be notified of impending updates
@@ -48,11 +58,43 @@ EMAIL="$EMAIL"
 #
 # IPADDRESSES="192.0.2.1 2001:db8:1:2:3::1"
 EOF
-		chmod 644 /etc/apticron/apticron.conf
 
-	else
-		sed -i "s/EMAIL=.*/EMAIL=\"$EMAIL\"/" /etc/apticron/apticron.conf
+	ucf --debconf-ok --three-way "$tmpfile" /etc/apticron/apticron.conf
+	rm -f "$tmpfile"
+
+	# read time from cron.d job, if any
+	if [ -f /etc/cron.d/apticron ] ; then
+
+		time=$( grep -v '^[[:space:]]*\(\#\|$\)' /etc/cron.d/apticron \
+			2>/dev/null | {
+			read min hour null
+			if isDigit "$hour" && isDigit "$min" ; then
+				echo "$hour:$min"
+			fi
+			} )
+
+		if [ "$time" ] ; then
+			hour="${time%%:*}"
+			min="${time##*:}"
+		fi
 	fi
+
+	# get random time if cron.d snippet doesn't exist or is malformed
+	if ! [ "$hour" -a "$min" ] ; then
+		hour=$(( $( od -vAn -N2 -tu4 < /dev/urandom ) % 24 ))
+		min=$(( $( od -vAn -N2 -tu4 < /dev/urandom ) % 60 ))
+	fi
+
+	tmpfile="$( mktemp -t apticron.crond.XXXXXXXXXX )"
+
+	cat <<EOF >"$tmpfile"
+# cron entry for apticron
+
+$min $hour * * * root test -x /usr/sbin/apticron && /usr/sbin/apticron --cron
+EOF
+	ucf --debconf-ok --three-way "$tmpfile" /etc/cron.d/apticron
+	rm -f "$tmpfile"
+
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

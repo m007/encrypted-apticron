@@ -11,11 +11,17 @@ apticron (1.1.21) UNRELEASED; urgency=low
   * Add UTF-8 enconding to email header. Thanks to Damyan Ivanov.
     (Closes: #426682)
 
-  [ Tassia Camoes ]
-  * Disconsider RTNETLINK error when Address family is not supported. Thanks to 
-    Bernard Boudet (Closes: #463585) 
+  [ Gian Piero Carrubba ]
+  * Randomized cron job execution via cron.d file.
+  * New --cron option to ensure to run only once a day through cron/anacron.
+  * Removed random sleep from cron.daily script. (Closes: #440626, #456341)
+  * Manage conffiles via ucf.
 
- -- Tassia Camoes <debian@tassia.org>  Wed, 16 Apr 2008 11:44:55 -0300
+  [ Tassia Camoes Araujo ]
+  * Disconsider RTNETLINK error when Address family is not supported. Thanks to 
+    Bernard Boudet. (Closes: #463585) 
+
+ -- Tassia Camoes Araujo <debian@tassia.org>  Wed, 16 Apr 2008 11:44:55 -0300
 
 apticron (1.1.20) unstable; urgency=low
 

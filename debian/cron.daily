@@ -1,9 +1,3 @@
-#!/bin/sh 
+#!/bin/sh
 
-RANGE=3600
-number=`od -vAn -N2 -tu4 < /dev/urandom`
-
-number=`expr $number "%" $RANGE`
-sleep $number
-test -x /usr/sbin/apticron || exit 0
-/usr/sbin/apticron
+test -x /usr/sbin/apticron && /usr/sbin/apticron --cron

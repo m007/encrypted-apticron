@@ -1,9 +1,55 @@
 #!/bin/bash -e 
 
+isDigit() {
+
+	test -n "$1" || return 1
+	string="$1"
+
+	while [ "${string#[[:digit:]]}" != "$string" ]; do
+		string="${string#[[:digit:]]}"
+	done
+
+	[ -z "$string" ] || return 1
+
+}
+
+if [ "x$1" = "x--cron" ] ; then
+
+	shift
+	tsfile='/var/lib/misc/apticron.cron'
+
+	# Run only once a day ( grant 1min allowance )
+	test "x$( find $tsfile -mmin -1339 2>/dev/null )" = "x$tsfile" && exit 0
+
+	# Try to ensure that next run will be launched by cron.d snippet
+	if [ -f /etc/cron.d/apticron ] ; then
+
+		time=$( grep -v '^[[:space:]]*\(\#\|$\)' /etc/cron.d/apticron \
+			2>/dev/null | {
+			read min hour null
+			if isDigit "$hour" && isDigit "$min" ; then
+				echo "$hour:$min"
+			fi
+			} )
+
+		if [ "$time" ] ; then
+			datecron=$( date -d "$time" +%s )
+		else
+			# Use current time in case of
+			# malformed/incomplete cron.d snippet
+			datecron=$( date -d "$( date +%H:%M )" +%s )
+		fi
+
+		touch -t "$( date -d @$datecron +%m%d%H%M )" $tsfile
+	fi
+fi
+
 if [ -n "$1" ]; then
-	echo "Usage: apticron"
-	echo "Mails a list of packaged that are pending-upgrade to the"
+	echo "Usage: apticron [--cron]"
+	echo "Mails a list of packages that are pending-upgrade to the"
 	echo "email address specified in /etc/apticron/apticron.conf"
+	echo "--cron:  used by cron scripts in order not to run the job"
+	echo "         more than once in a day."
 	exit 1
 fi	
 

@@ -8,7 +8,7 @@ Standards-Version: 3.7.2
 
 Package: apticron
 Architecture: all 
-Depends: mailx, debconf | debconf-2.0, apt (>= 0.6.8)
+Depends: mailx, debconf | debconf-2.0, apt (>= 0.6.8), ucf (>= 0.28)
 Recommends: apt-listchanges, iproute
 Description: cron-script to mail impending apt updates
  apticron is a simple script to mail about impending apt updates such as

@@ -2,7 +2,7 @@
 .SH NAME
 apticron \- Generate a mail listing packages which are pending an upgrade
 .SH SYNOPSIS
-.B apticron
+.B apticron [--cron]
 .br
 .SH DESCRIPTION
 .B apticron 
@@ -14,13 +14,23 @@ currently pending an upgrade, as well as summary of changes
 is mainly intended for automatic notification of pending security 
 updates but can also be used in many other situations where timely
 updates are neccessary.
+
+The \fB--cron\fR option is only meant to be used when invoked by
+cron/anacron in order to run no more than once a day.
 .SH FILES
 .TP
 \fI/etc/apticron/apticron\&.conf\fR
 Configuration file, Email address to mail and profile for use with apt-listchanges are configurable.
 .TP
+\fI/etc/cron\&.d/apticron\fR
+Cron job for executing apticron daily.
+.TP
 \fI/etc/cron\&.daily/apticron\fR
-Cron script for executing apticron daily
+Fallback cron script for executing apticron (if no crond running or system
+down at designated time).
+.TP
+\fI/var/lib/misc/apticron\&.cron\fR
+Time stamp file used by apticron when invoked with --cron option.
 .SH SEE ALSO
 .BR apt-get (8),
 .BR apt-listchanges (1).
