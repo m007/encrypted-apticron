@@ -1,4 +1,4 @@
-apticron (1.1.21) UNRELEASED; urgency=low
+apticron (1.1.21) unstable; urgency=low
 
   [ Tiago Bortoletto Vaz ]
   * Downgrade iputils and apt-listchanges from depends to recommends; only use

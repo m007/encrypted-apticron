@@ -1,0 +1,15 @@
+apticron (1.1.21) unstable; urgency=low
+
+  This release introduces a new option (--cron) and a cron.d snippet to run
+  apticron once a day at a time randomly generated during postinst.
+  The cron.daily script still remains mainly for those systems that aren't up
+  24h a day. Note however that the random sleep has been removed, so not to
+  delay execution of following jobs.
+  If you wish, you can modify the time in the cron.d file, but be advised that
+  the first execution could be triggered by the cron.daily script (as also the
+  first execution after the installation of this release). Subsequent runs
+  should go fine. Note however that execution time has been randomized in
+  order not to DOS Debian servers, so please don't modify it unless strongly
+  needed.
+
+ -- Gian Piero Carrubba <gpiero@rm-rf.it>  Sun, 18 Nov 2007 16:07:32 +0100
