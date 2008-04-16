@@ -1,5 +1,6 @@
-apticron (1.1.21) unstable; urgency=low
+apticron (1.1.21) UNRELEASED; urgency=low
 
+  [ Tiago Bortoletto Vaz ]
   * Downgrade iputils and apt-listchanges from depends to recommends; only use
     these tools when available. Thanks to Thijs Kinkhorst. (Closes: #410404)
   * Add --force-yes to apt-get in order to avoid errors when apt-get has to do
@@ -10,7 +11,11 @@ apticron (1.1.21) unstable; urgency=low
   * Add UTF-8 enconding to email header. Thanks to Damyan Ivanov.
     (Closes: #426682)
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Tue, 04 Dec 2007 21:05:05 -0300
+  [ Tassia Camoes ]
+  * Disconsider RTNETLINK error when Address family is not supported. Thanks to 
+    Bernard Boudet (Closes: #463585) 
+
+ -- Tassia Camoes <debian@tassia.org>  Wed, 16 Apr 2008 11:44:55 -0300
 
 apticron (1.1.20) unstable; urgency=low
 
