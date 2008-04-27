@@ -21,7 +21,7 @@ apticron (1.1.21) unstable; urgency=low
   * Disconsider RTNETLINK error when Address family is not supported. Thanks to 
     Bernard Boudet. (Closes: #463585) 
 
- -- Tassia Camoes Araujo <debian@tassia.org>  Wed, 16 Apr 2008 11:44:55 -0300
+ -- Tassia Camoes Araujo <tassia@debian-ba.org>  Wed, 16 Apr 2008 11:44:55 -0300
 
 apticron (1.1.20) unstable; urgency=low
 
