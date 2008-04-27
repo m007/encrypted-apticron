@@ -75,12 +75,12 @@ IPADDRESSNUM="1"
 if [ -z "$IPADDRESSES" ] && [ -x /sbin/ip ]; then
 	# Set the IPv4 addresses
 	IPADDRESSES=`(echo $( /bin/hostname -i ) ; 
-		     /sbin/ip -f inet addr show scope global 2> /dev/null || true | \
+		     /sbin/ip -f inet addr show scope global 2> /dev/null | \
 		     /bin/grep "scope global" |\
 		     /usr/bin/head -$IPADDRESSNUM |\
 		     /usr/bin/awk '{ print $2 }' |\
 		     /usr/bin/cut -d/ -f1) |\
-		     /usr/bin/uniq`
+		     /usr/bin/uniq || true`
 
 	# Set the IPv6 addresses
 	IPADDRESSES="$IPADDRESSES `/sbin/ip -f inet6 addr show scope global |\
