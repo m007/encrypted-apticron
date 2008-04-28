@@ -1,9 +1,14 @@
 This package was debianized by Colm MacCarthaigh <colm.maccarthaigh@heanet.ie> on
-Fri,  9 Aug 2002 11:53:26 +0100.
+Fri, 9 Aug 2002 11:53:26 +0100.
+
+The current maintainers are Tiago Bortoletto Vaz <tiago@debian-ba.org> and
+Tassia Camoes Araujo <tassia@debian-ba.org>
 
 Copyright:
 
-Copyright (c) HEAnet Ltd.
+Copyright (C) 2002-2005 HEAnet Ltd.
+Copyright (C) 2006-2008 Tiago Bortoletto Vaz and Tassia Camoes Araujo
+
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
