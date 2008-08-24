@@ -4,8 +4,11 @@ apticron (1.1.22) UNRELEASED; urgency=low
     derivatives. Thanks to Daniel Hahler <debian-bugs@thequod.de>.
     (Closes: #493296)
   * Removing annoying tabs and spaces from apticron file.
+  * Add workaround in order to no longer sending upgrade notices about
+    packages that are on hold by aptitude - these that are unfortunately
+    ignored by apt-get. (Closes: #431869)
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 24 Aug 2008 09:46:39 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 24 Aug 2008 15:34:32 -0300
 
 apticron (1.1.21+nmu1) unstable; urgency=low
 

@@ -110,9 +110,17 @@ fi
 # update the package lists
 /usr/bin/apt-get -qq update || true
 
+# workaround to handle apt-get installing packages hold by aptitude. See #137771.
+APTITUDE_HOLDS=`grep "^State: 2" -B 2 /var/lib/aptitude/pkgstates |grep "^Package: .*$" |cut -d" " -f 2`
+
 # get the list of packages which are pending an upgrade
 PKGNAMES=`/usr/bin/apt-get -q -y --allow-unauthenticated -s dist-upgrade | \
           /bin/grep ^Inst | /usr/bin/cut -d\  -f2 | /usr/bin/sort`
+
+# packages hold by aptitude don't go to the upgrading candidates list
+for p in $APTITUDE_HOLDS; do
+	PKGNAMES=`echo $PKGNAMES |sed -r "s/(^| )$p( |$)/ /g" |sed -e 's/^ //g'`
+done
 
 if [ -n "$PKGNAMES" ] ; then
 
@@ -178,11 +186,29 @@ You can perform the upgrade by issuing the command:
 as root on $SYSTEM
 
 It is recommended that you simulate the upgrade first to confirm that
-the actions that would be taken are reasonable. The upgrade may be 
+the actions that would be taken are reasonable. The upgrade may be
 simulated by issuing the command:
 
 	aptitude -s -y dist-upgrade
 
+EOF
+
+	if [ -n "$APTITUDE_HOLDS" ] ; then
+        	/bin/cat <<EOF
+
+WARNING: The following packages were put on hold by aptitude but will be
+upgraded anyway in case of using apt-get:
+
+	$APTITUDE_HOLDS
+
+If you don't want them to be upgraded please use aptitude. This happens because
+aptitude's holds are ignored by both dselect and apt-get. For more info please
+see #137771.
+
+EOF
+	fi
+
+        /bin/cat <<EOF
 --
 apticron
 EOF
