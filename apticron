@@ -1,4 +1,4 @@
-#!/bin/bash -e 
+#!/bin/bash -e
 
 isDigit() {
 
@@ -51,7 +51,7 @@ if [ -n "$1" ]; then
 	echo "--cron:  used by cron scripts in order not to run the job"
 	echo "         more than once in a day."
 	exit 1
-fi	
+fi
 
 # a sane default for email
 EMAIL=root
@@ -62,11 +62,15 @@ LISTCHANGES_PROFILE=""
 # Set $DIRCACHE
 eval `/usr/bin/apt-config shell DIRCACHE Dir::Cache`
 
-# Set the SYSTEM 
+# Set the SYSTEM
 SYSTEM=`/bin/hostname -f`
 
 # Set the IPADDRESSNUM
 IPADDRESSNUM="1"
+
+# Source lsb-release so we know what distribution we are
+DISTRIB_ID="Debian"    # Default to Debian
+[ -e /etc/lsb-release ] && . /etc/lsb-release
 
 # Source the config file
 [ -e /etc/apticron/apticron.conf ] && . /etc/apticron/apticron.conf
@@ -97,7 +101,7 @@ if [ -n "$IPADDRESSES" ] ; then
 		# Add the Address
 		ADDRESSES="${ADDRESSES} ${address}"
 	done
-	
+
 	ADDRESSES=`echo $ADDRESSES | /usr/bin/fmt -w68 |\
 		   /bin/sed 's/^/\t[ /;s/\$/ ]/'`
 	ADDRESSES=`echo -e "\n$ADDRESSES"`
@@ -111,7 +115,7 @@ PKGNAMES=`/usr/bin/apt-get -q -y --allow-unauthenticated -s dist-upgrade | \
           /bin/grep ^Inst | /usr/bin/cut -d\  -f2 | /usr/bin/sort`
 
 if [ -n "$PKGNAMES" ] ; then
-	
+
 	# do the upgrade downloads
 	/usr/bin/apt-get -qq -d --allow-unauthenticated --force-yes dist-upgrade >& /dev/null
 
@@ -120,7 +124,7 @@ if [ -n "$PKGNAMES" ] ; then
 apticron report [`/bin/date -R`]
 ========================================================================
 
-apticron has detected that some packages need upgrading on: 
+apticron has detected that some packages need upgrading on:
 
 	$SYSTEM $ADDRESSES
 
@@ -179,10 +183,10 @@ simulated by issuing the command:
 
 	aptitude -s -y dist-upgrade
 
--- 
+--
 apticron
 EOF
 
-   ) 2>&1 | /usr/bin/mailx -a "Content-type: text/plain; charset=UTF-8" -s "Debian package updates on `/bin/hostname`" $EMAIL
+   ) 2>&1 | /usr/bin/mailx -a "Content-type: text/plain; charset=UTF-8" -s "$DISTRIB_ID package updates on `/bin/hostname`" $EMAIL
 
 fi
