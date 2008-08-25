@@ -11,6 +11,7 @@ apticron (1.1.22) UNRELEASED; urgency=low
     database. Also lists those on hold by aptitude, giving the user a warning
     message recommending them not to use apt-get in that case.
     (Closes: #314646)
+  * Update Standards-Version to 3.8.0.
 
  -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 24 Aug 2008 20:33:45 -0300
 

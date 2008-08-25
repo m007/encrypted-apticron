@@ -4,10 +4,10 @@ Priority: extra
 Maintainer: Tiago Bortoletto Vaz <tiago@debian-ba.org>
 Uploaders: Tassia Camoes Araujo <tassia@debian-ba.org>, Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>
 Build-Depends: debhelper (>= 5), po-debconf
-Standards-Version: 3.7.3
+Standards-Version: 3.8.0
 
 Package: apticron
-Architecture: all 
+Architecture: all
 Depends: mailx, debconf | debconf-2.0, apt (>= 0.6.8), ucf (>= 0.28)
 Recommends: apt-listchanges, iproute
 Description: cron-script to mail impending apt updates
