@@ -112,6 +112,7 @@ fi
 
 # workaround to handle apt-get installing packages hold by aptitude. See #137771.
 APTITUDE_HOLDS=`grep "^State: 2" -B 2 /var/lib/aptitude/pkgstates |grep "^Package: .*$" |cut -d" " -f 2`
+DSELECT_HOLDS=`dpkg --get-selections |grep hold |cut -f1`
 
 # get the list of packages which are pending an upgrade
 PKGNAMES=`/usr/bin/apt-get -q -y --allow-unauthenticated -s dist-upgrade | \
@@ -184,14 +185,18 @@ You can perform the upgrade by issuing the command:
 	aptitude dist-upgrade
 
 as root on $SYSTEM
-
-It is recommended that you simulate the upgrade first to confirm that
-the actions that would be taken are reasonable. The upgrade may be
-simulated by issuing the command:
-
-	aptitude -s -y dist-upgrade
-
 EOF
+
+	if [ -n "$DSELECT_HOLDS" ] ; then
+        	/bin/cat <<EOF
+
+========================================================================
+
+The following packages are on hold, then will not be upgraded:
+
+`echo -e "\t" $DSELECT_HOLDS`
+EOF
+	fi
 
 	if [ -n "$APTITUDE_HOLDS" ] ; then
         	/bin/cat <<EOF
@@ -199,16 +204,16 @@ EOF
 WARNING: The following packages were put on hold by aptitude but will be
 upgraded anyway in case of using apt-get:
 
-	$APTITUDE_HOLDS
+`echo -e "\t" $APTITUDE_HOLDS`
 
-If you don't want them to be upgraded please use aptitude. This happens because
-aptitude's holds are ignored by both dselect and apt-get. For more info please
-see #137771.
-
+If you don't want them to be upgraded please use aptitude to dist-upgrade your
+system. This is necessary because aptitude's holds are ignored by both dselect
+and apt-get. For more info please see #137771.
 EOF
 	fi
 
         /bin/cat <<EOF
+
 --
 apticron
 EOF

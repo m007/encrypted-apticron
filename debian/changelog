@@ -7,8 +7,12 @@ apticron (1.1.22) UNRELEASED; urgency=low
   * Add workaround in order to no longer sending upgrade notices about
     packages that are on hold by aptitude - these that are unfortunately
     ignored by apt-get. (Closes: #431869)
+  * List packages that will not be upgraded for being on hold on dselect
+    database. Also lists those on hold by aptitude, giving the user a warning
+    message recommending them not to use apt-get in that case.
+    (Closes: #314646)
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 24 Aug 2008 15:34:32 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 24 Aug 2008 20:33:45 -0300
 
 apticron (1.1.21+nmu1) unstable; urgency=low
 
