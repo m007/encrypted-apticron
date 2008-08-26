@@ -12,8 +12,10 @@ apticron (1.1.22) UNRELEASED; urgency=low
     message recommending them not to use apt-get in that case.
     (Closes: #314646)
   * Update Standards-Version to 3.8.0.
+  * Giving the user an option to receive only the diff between current and
+    last apticron runs. (Closes: #344115)
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 24 Aug 2008 20:33:45 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Tue, 26 Aug 2008 17:42:05 -0300
 
 apticron (1.1.21+nmu1) unstable; urgency=low
 

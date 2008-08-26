@@ -4,7 +4,7 @@
 #export DH_VERBOSE=1
 
 build: build-stamp
-build-stamp:  
+build-stamp:
 	dh_testdir
 	touch build-stamp
 
@@ -14,14 +14,14 @@ clean:
 	rm -f build-stamp configure-stamp
 	debconf-updatepo
 	dh_clean
-	
+
 install: build
 	mkdir -p $(CURDIR)/debian/apticron/usr/sbin/
 	cp apticron ${CURDIR}/debian/apticron/usr/sbin/
 	chmod 0755 ${CURDIR}/debian/apticron/usr/sbin/apticron
 	dh_testroot
 	dh_installdirs
-	dh_installdebconf	
+	dh_installdebconf
 
 # Build architecture-independent files here.
 binary-indep: build install
@@ -39,7 +39,7 @@ binary-indep: build install
 # We have nothing to do by default.
 
 # Build architecture-dependent files here.
-binary-arch: 
+binary-arch:
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install 
+.PHONY: build clean binary-indep binary-arch binary install

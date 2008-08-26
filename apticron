@@ -118,10 +118,25 @@ DSELECT_HOLDS=`dpkg --get-selections |grep hold |cut -f1`
 PKGNAMES=`/usr/bin/apt-get -q -y --allow-unauthenticated -s dist-upgrade | \
           /bin/grep ^Inst | /usr/bin/cut -d\  -f2 | /usr/bin/sort`
 
+# creating the future last_run file
+TMPFILE="$(mktemp -t apticron.XXXXXXXXXX)"
+for p in $PKGNAMES; do
+	echo $p >> $TMPFILE
+done
+
 # packages hold by aptitude don't go to the upgrading candidates list
 for p in $APTITUDE_HOLDS; do
 	PKGNAMES=`echo $PKGNAMES |sed -r "s/(^| )$p( |$)/ /g" |sed -e 's/^ //g'`
 done
+
+# packages already reported won't be reported again if DIFF_ONLY option is marked
+LAST_RUN_FILE="/var/lib/apticron/last_run"
+if [ $DIFF_ONLY = "1" ] && [ -e $LAST_RUN_FILE ]; then
+	EXTRA_REPORT=" since the last run"
+	for p in `cat $REPORTED`; do
+		PKGNAMES=`echo $PKGNAMES |sed -r "s/(^| )$p( |$)/ /g" |sed -e 's/^ //g'`
+	done
+fi
 
 if [ -n "$PKGNAMES" ] ; then
 
@@ -137,7 +152,7 @@ apticron has detected that some packages need upgrading on:
 
 	$SYSTEM $ADDRESSES
 
-The following packages are currently pending an upgrade:
+The following packages are currently pending an upgrade$EXTRA_REPORT:
 
 EOF
 
@@ -151,6 +166,9 @@ EOF
 		fi
 		echo -e "\t"$PKG $VER
 	done
+
+	if [ $DIFF_ONLY = "1" ] && [ -e $LAST_RUN_FILE ]; then
+		echo "There are `cat $LAST_RUN_FILE |wc -l` more packages pending an upgrade!"
 
 	MISSING_DEBS=`apt-get -y --allow-unauthenticated --print-uris dist-upgrade \
                           | grep "file:" \
@@ -221,3 +239,8 @@ EOF
    ) 2>&1 | /usr/bin/mailx -a "Content-type: text/plain; charset=UTF-8" -s "$DISTRIB_ID package updates on `/bin/hostname`" $EMAIL
 
 fi
+
+# updating the last_run file
+mv $TMPFILE $LAST_RUN_FILE
+
+exit 0
