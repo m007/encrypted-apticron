@@ -9,8 +9,11 @@ case "$1" in
 	rm -f /etc/cron.d/apticron /etc/cron.d/apticron.ucf-*
 	rm -f /var/lib/misc/apticron.cron
 	rm -f /etc/apticron/apticron.conf*
-	if [ -d /etc/apticron ] ; then 
+	if [ -d /etc/apticron ] ; then
 		rmdir /etc/apticron || true
+	fi
+	if [ -d /var/lib/apticron ] ; then
+		rmdir /var/lib/apticron || true
 	fi
     ;;
 esac
