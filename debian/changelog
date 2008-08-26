@@ -1,8 +1,8 @@
-apticron (1.1.22) UNRELEASED; urgency=low
+apticron (1.1.22) unstable; urgency=low
 
-  * Using /etc/lsb-release in order to get the distribuion - useful for Debian
-    derivatives. Thanks to Daniel Hahler <debian-bugs@thequod.de>.
-    (Closes: #493296)
+  * Using /etc/lsb-release in order to get the right distribuion on the
+    message - useful for Debian derivatives. Thanks to Daniel Hahler
+    <debian-bugs@thequod.de>. (Closes: #493296)
   * Removing annoying tabs and spaces from apticron file.
   * Add workaround in order to no longer sending upgrade notices about
     packages that are on hold by aptitude - these that are unfortunately
@@ -12,8 +12,9 @@ apticron (1.1.22) UNRELEASED; urgency=low
     message recommending them not to use apt-get in that case.
     (Closes: #314646)
   * Update Standards-Version to 3.8.0.
-  * Giving the user an option to receive only the diff between current and
-    last apticron runs. (Closes: #344115)
+  * Giving the user an option to receive only the diff pendings between
+    current and last apticron run. (Closes: #344115)
+  * Fix minor lintian warnings.
 
  -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Tue, 26 Aug 2008 17:42:05 -0300
 
