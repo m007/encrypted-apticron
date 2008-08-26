@@ -131,9 +131,9 @@ done
 
 # packages already reported won't be reported again if DIFF_ONLY option is marked
 LAST_RUN_FILE="/var/lib/apticron/last_run"
-if [ $DIFF_ONLY = "1" ] && [ -e $LAST_RUN_FILE ]; then
+if [ "$DIFF_ONLY" = "1" ] && [ -e "$LAST_RUN_FILE" ]; then
 	EXTRA_REPORT=" since the last run"
-	for p in `cat $REPORTED`; do
+	for p in `cat $LAST_RUN_FILE`; do
 		PKGNAMES=`echo $PKGNAMES |sed -r "s/(^| )$p( |$)/ /g" |sed -e 's/^ //g'`
 	done
 fi
@@ -167,8 +167,9 @@ EOF
 		echo -e "\t"$PKG $VER
 	done
 
-	if [ $DIFF_ONLY = "1" ] && [ -e $LAST_RUN_FILE ]; then
-		echo "There are `cat $LAST_RUN_FILE |wc -l` more packages pending an upgrade!"
+	if [ "$DIFF_ONLY" = "1" ] && [ -e "$LAST_RUN_FILE" ]; then
+		echo -e "\n(there are other `cat $LAST_RUN_FILE |wc -l` packages previously reported to you pending an upgrade!)"
+	fi
 
 	MISSING_DEBS=`apt-get -y --allow-unauthenticated --print-uris dist-upgrade \
                           | grep "file:" \
