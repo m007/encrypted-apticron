@@ -12,9 +12,7 @@ case "$1" in
 	if [ -d /etc/apticron ] ; then
 		rmdir /etc/apticron || true
 	fi
-	if [ -d /var/lib/apticron ] ; then
-		rmdir /var/lib/apticron || true
-	fi
+	rm -rf /var/lib/apticron
     ;;
 esac
 
