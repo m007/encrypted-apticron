@@ -1,3 +1,10 @@
+apticron (1.1.24) UNRELEASED; urgency=low
+
+  * Add -f option in hostname command in order to show the user the FQDN.
+    Thanks to Sylvain de Tilly <sylvain.detilly@adelux.fr>. (Closes: #497025)
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 31 Aug 2008 05:22:03 -0300
+
 apticron (1.1.23) unstable; urgency=low
 
   * Redirecting error to /dev/null when the system has no aptitude installed.
