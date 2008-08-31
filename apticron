@@ -111,7 +111,7 @@ fi
 /usr/bin/apt-get -qq update || true
 
 # workaround to handle apt-get installing packages hold by aptitude. See #137771.
-APTITUDE_HOLDS=`grep "^State: 2" -B 2 /var/lib/aptitude/pkgstates |grep "^Package: .*$" |cut -d" " -f 2`
+APTITUDE_HOLDS=`grep "^State: 2" -B 2 /var/lib/aptitude/pkgstates |grep "^Package: .*$" |cut -d" " -f 2` 2>/dev/null
 DSELECT_HOLDS=`dpkg --get-selections |grep hold |cut -f1`
 
 # get the list of packages which are pending an upgrade

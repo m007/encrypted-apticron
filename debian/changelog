@@ -1,8 +1,9 @@
-apticron (1.1.23) UNRELEASED; urgency=low
+apticron (1.1.23) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * Redirecting error to /dev/null when the system has no aptitude installed.
+    Thanks to Carsten Hey <c.hey@web.de>. (Closes: #497175).
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Tue, 26 Aug 2008 20:33:01 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 31 Aug 2008 04:42:04 -0300
 
 apticron (1.1.22) unstable; urgency=low
 
