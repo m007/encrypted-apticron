@@ -2,8 +2,11 @@ apticron (1.1.24) UNRELEASED; urgency=low
 
   * Add -f option in hostname command in order to show the user the FQDN.
     Thanks to Sylvain de Tilly <sylvain.detilly@adelux.fr>. (Closes: #497025)
+  * moving from svn to git in collab-main
+  * debian/control
+    + add Vcs-Browser: and Vcs-Git: fields
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 31 Aug 2008 05:22:03 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 31 Aug 2008 21:26:01 -0300
 
 apticron (1.1.23) unstable; urgency=low
 
