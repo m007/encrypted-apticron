@@ -1,14 +1,16 @@
 apticron (1.1.24) unstable; urgency=low
 
   * Add -f option in hostname command in order to show the user the FQDN.
-    Thanks to Sylvain de Tilly <sylvain.detilly@adelux.fr>. (Closes: #497025)
-  * moving from svn to git in collab-main
-  * debian/control
-    + add Vcs-Browser: and Vcs-Git: fields
+    Thanks to Sylvain de Tilly <sylvain.detilly@adelux.fr>; (Closes: #497025)
+  * moving from svn to git in collab-main;
+  * debian/control:
+    + add Vcs-Browser: and Vcs-Git: fields;
   * Fix sed syntax in order to escape regex symbols when comparing packages
-    names.
+    names;
+  * debian/postrm:
+    + fix lintian warning regarding prepended paths in maintainer scripts.
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Thu, 18 Sep 2008 09:01:50 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Thu, 18 Sep 2008 09:13:11 -0300
 
 apticron (1.1.23) unstable; urgency=low
 
