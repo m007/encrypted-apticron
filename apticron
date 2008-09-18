@@ -78,7 +78,7 @@ DISTRIB_ID="Debian"    # Default to Debian
 
 if [ -z "$IPADDRESSES" ] && [ -x /sbin/ip ]; then
 	# Set the IPv4 addresses
-	IPADDRESSES=`(echo $( /bin/hostname -i ) ; 
+	IPADDRESSES=`(echo $( /bin/hostname -i ) ;
 		     /sbin/ip -f inet addr show scope global 2> /dev/null | \
 		     /bin/grep "scope global" |\
 		     /usr/bin/head -$IPADDRESSNUM |\
@@ -126,7 +126,7 @@ done
 
 # packages hold by aptitude don't go to the upgrading candidates list
 for p in $APTITUDE_HOLDS; do
-	PKGNAMES=`echo $PKGNAMES |sed -r "s/(^| )$p( |$)/ /g" |sed -e 's/^ //g'`
+	PKGNAMES=`echo $PKGNAMES |sed "s/\(^\| \)$p\( \|$\)/ /g;s/^ //g"`
 done
 
 # packages already reported won't be reported again if DIFF_ONLY option is marked
@@ -134,7 +134,7 @@ LAST_RUN_FILE="/var/lib/apticron/last_run"
 if [ "$DIFF_ONLY" = "1" ] && [ -e "$LAST_RUN_FILE" ]; then
 	EXTRA_REPORT=" since the last run"
 	for p in `cat $LAST_RUN_FILE`; do
-		PKGNAMES=`echo $PKGNAMES |sed -r "s/(^| )$p( |$)/ /g" |sed -e 's/^ //g'`
+		PKGNAMES=`echo $PKGNAMES |sed "s/\(^\| \)$p\( \|$\)/ /g;s/^ //g"`
 	done
 fi
 
