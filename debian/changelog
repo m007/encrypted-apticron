@@ -1,3 +1,10 @@
+apticron (1.1.25) unstable; urgency=low
+
+  * Real fix for #497175 which was not acctually fixed in 1.1.23.
+   (Closes: #497175)
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Thu, 25 Sep 2008 11:41:54 -0300
+
 apticron (1.1.24) unstable; urgency=low
 
   * Add -f option in hostname command in order to show the user the FQDN.
