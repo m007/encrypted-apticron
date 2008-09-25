@@ -201,7 +201,7 @@ EOF
 
 You can perform the upgrade by issuing the command:
 
-	aptitude dist-upgrade
+	aptitude full-upgrade
 
 as root on $SYSTEM
 EOF
@@ -225,7 +225,7 @@ upgraded anyway in case of using apt-get:
 
 `echo -e "\t" $APTITUDE_HOLDS`
 
-If you don't want them to be upgraded please use aptitude to dist-upgrade your
+If you don't want them to be upgraded please use aptitude to upgrade your
 system. This is necessary because aptitude's holds are ignored by both dselect
 and apt-get. For more info please see #137771.
 EOF
