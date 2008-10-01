@@ -3,10 +3,12 @@ apticron (1.1.25) unstable; urgency=low
   * Real fix for #497175 which was not actually fixed in 1.1.23;
     (Closes: #497175)
   * Suggest the user a full-upgrade rather than dist-upgrade aptitude's
-    option, once the second one is deprecated. Thanks to Dietmar Winkler.
+    option, once the second one is deprecated. Thanks to Dietmar Winkler;
     (Closes: #500110)
+  * debian/postrm:
+    + add conditional to run ucf.
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Thu, 25 Sep 2008 12:10:07 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Tue, 30 Sep 2008 21:12:34 -0300
 
 apticron (1.1.24) unstable; urgency=low
 

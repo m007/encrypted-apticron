@@ -2,8 +2,10 @@
 
 case "$1" in
     purge)
-	ucf --purge /etc/cron.d/apticron
-	ucf --purge /etc/apticron/apticron.conf
+	if which ucf >/dev/null; then
+		ucf --purge /etc/cron.d/apticron
+		ucf --purge /etc/apticron/apticron.conf
+	fi
 	rm -f /etc/cron.d/apticron /etc/cron.d/apticron.ucf-*
 	rm -f /var/lib/misc/apticron.cron
 	rm -f /etc/apticron/apticron.conf*
