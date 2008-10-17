@@ -1,3 +1,10 @@
+apticron (1.1.26) unstable; urgency=low
+
+  * Fix annoying error message when using ipv6. Thanks to pilotinternet;
+    (Closes: #500955)
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Fri, 17 Oct 2008 10:43:29 -0300
+
 apticron (1.1.25) unstable; urgency=low
 
   * Real fix for #497175 which was not actually fixed in 1.1.23;
