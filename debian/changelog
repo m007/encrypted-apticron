@@ -2,8 +2,12 @@ apticron (1.1.26) unstable; urgency=low
 
   * Fix annoying error message when using ipv6. Thanks to pilotinternet;
     (Closes: #500955)
+  * debian/control:
+    + replace mailx to bsd-mailx | mailutils, since heirloom-mailx provides
+      mailx and is not compatible with our command line used to add UTF-8
+      charset in mail header. Thanks to John Eikenberry; (Closes: #502790)
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Fri, 17 Oct 2008 10:43:29 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Tue, 21 Oct 2008 19:10:40 -0300
 
 apticron (1.1.25) unstable; urgency=low
 
