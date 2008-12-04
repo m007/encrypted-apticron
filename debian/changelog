@@ -8,6 +8,8 @@ apticron (1.1.26) unstable; urgency=low
       charset in mail header. Thanks to John Eikenberry; (Closes: #502790)
     + improve package description. Thanks to Filipus Klutiero;
       (Closes: #507534)
+  * apticron.1:
+    + fix minor typo issue.
 
  -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Thu, 04 Dec 2008 17:30:54 -0300
 
