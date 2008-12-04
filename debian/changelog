@@ -6,8 +6,10 @@ apticron (1.1.26) unstable; urgency=low
     + replace mailx to bsd-mailx | mailutils, since heirloom-mailx provides
       mailx and is not compatible with our command line used to add UTF-8
       charset in mail header. Thanks to John Eikenberry; (Closes: #502790)
+    + improve package description. Thanks to Filipus Klutiero;
+      (Closes: #507534)
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Tue, 21 Oct 2008 19:10:40 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Thu, 04 Dec 2008 17:30:54 -0300
 
 apticron (1.1.25) unstable; urgency=low
 

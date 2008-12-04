@@ -12,7 +12,7 @@ Package: apticron
 Architecture: all
 Depends: bsd-mailx | mailutils, debconf | debconf-2.0, apt (>= 0.6.8), ucf (>= 0.28)
 Recommends: apt-listchanges, iproute
-Description: cron-script to mail impending apt updates
- apticron is a simple script to mail about impending apt updates such as
- security updates. If you need to schedule more complex APT tasks we recommend
- you use the (more complex) cron-apt tool.
+Description: simple tool to mail about pending package updates
+ apticron is a simple script which sends daily emails about pending package
+ updates such as security updates. If you need to schedule more complex APT
+ tasks we recommend you to use the (more complex) cron-apt tool.
