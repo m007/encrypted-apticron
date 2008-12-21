@@ -10,10 +10,11 @@ apticron (1.1.26) unstable; urgency=low
       (Closes: #507534)
     + add Dm-Upload-Allowed field;
     + use ${misc:Depends};
+    + point Vcs-Browser to gitweb;
   * apticron.1:
     + fix minor typo issue.
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 21 Dec 2008 17:34:25 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 21 Dec 2008 19:36:23 -0300
 
 apticron (1.1.25) unstable; urgency=low
 

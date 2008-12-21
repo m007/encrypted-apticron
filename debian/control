@@ -6,7 +6,7 @@ Uploaders: Tassia Camoes Araujo <tassia@debian-ba.org>, Colm MacCarthaigh <colm.
 Build-Depends: debhelper (>= 5), po-debconf
 Standards-Version: 3.8.0
 Dm-Upload-Allowed: yes
-Vcs-Browser: http://git.debian.org/git/collab-maint/apticron.git
+Vcs-Browser: http://git.debian.org/?p=collab-maint/apticron.git
 Vcs-Git: git://git.debian.org/git/collab-maint/apticron.git
 
 Package: apticron
