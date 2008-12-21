@@ -9,6 +9,7 @@ apticron (1.1.26) unstable; urgency=low
     + improve package description. Thanks to Filipus Klutiero;
       (Closes: #507534)
     + add Dm-Upload-Allowed field;
+    + use ${misc:Depends};
   * apticron.1:
     + fix minor typo issue.
 
