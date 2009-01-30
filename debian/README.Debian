@@ -1,7 +1,25 @@
 apticron for Debian
 -------------------
 
-You can configure the e-mail address apticron will use for mailing changes
-to from /etc/apticron/apticron.conf
+apticron gives you an easy way to have upgrade notifications of your system by
+email.
 
- -- Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>, Fri,  9 Aug 2002 11:53:26 +0100
+apticron has the capability to:
+
+ * send daily emails about pending upgrades in your system;
+ * give you the choice of receiving only those upgrades not previously notified;
+ * automatically integrate to apt-listchanges in order to give you by email the
+   new changes of the pending upgrade packages;
+ * handle and warn you about packages put on hold via aptitude/dselect,
+   avoiding unexpected package upgrades (see #137771);
+ * give you all these stuff in a simple default installation;
+
+You can configure the e-mail address apticron will use for mailing changes
+to and other software options from /etc/apticron/apticron.conf.
+
+Actually, apticron performs something you can partially do either on the
+apt-cron package or via apt cron script. For a more complex setup, go to
+cron-apt package. I also suggest you to check the apt cron script located in
+/etc/cron.daily/apt.
+
+ -- Tiago Bortoletto Vaz, Sex Jan 30 14:14:59 BRT 2009
