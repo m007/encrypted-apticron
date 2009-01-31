@@ -17,9 +17,9 @@ apticron has the capability to:
 You can configure the e-mail address apticron will use for mailing changes
 to and other software options from /etc/apticron/apticron.conf.
 
-Actually, apticron performs something you can partially do either on the
-apt-cron package or via apt cron script. For a more complex setup, go to
-cron-apt package. I also suggest you to check the apt cron script located in
-/etc/cron.daily/apt.
+Actually, apticron performs something you can partially do via cron script
+provided either by the apt package itself or by the apt-cron package.  I
+suggest you to check the cron script located in /etc/cron.daily/apt first.  For
+a more complex setup, go to cron-apt package.
 
  -- Tiago Bortoletto Vaz, Sex Jan 30 14:14:59 BRT 2009
