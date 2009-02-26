@@ -1,0 +1,3 @@
+#!/bin/sh
+
+test -x /usr/sbin/apticron && /usr/sbin/apticron --cron

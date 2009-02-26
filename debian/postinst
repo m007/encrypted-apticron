@@ -75,7 +75,7 @@ EOF
 
 		time=$( grep -v '^[[:space:]]*\(\#\|$\)' /etc/cron.d/apticron \
 			2>/dev/null | {
-			read min hour null ||true
+			read min hour null
 			if isDigit "$hour" && isDigit "$min" ; then
 				echo "$hour:$min"
 			fi
