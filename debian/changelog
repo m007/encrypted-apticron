@@ -1,3 +1,11 @@
+apticron (1.1.28) unstable; urgency=low
+
+  * debian/postinst:
+    + avoid read error when it receives a null value from grep on creating the
+      cronjob file. Thanks to Patrick Schoenfeld. (Closes: #514780)
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Thu, 26 Feb 2009 00:31:49 -0500
+
 apticron (1.1.27) unstable; urgency=low
 
   * Improve README.Debian and package description. Thanks to Osamu Aoki.
