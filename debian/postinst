@@ -23,6 +23,7 @@ case "$1" in
 	fi
 
 	tmpfile="$( mktemp -t apticron.conf.XXXXXXXXXX )"
+	chmod 0644 "$tmpfile"
 
 	cat <<EOF > "$tmpfile"
 # apticron.conf
@@ -94,6 +95,7 @@ EOF
 	fi
 
 	tmpfile="$( mktemp -t apticron.crond.XXXXXXXXXX )"
+	chmod 0644 "$tmpfile"
 
 	cat <<EOF >"$tmpfile"
 # cron entry for apticron
