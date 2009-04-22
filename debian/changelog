@@ -1,3 +1,12 @@
+apticron (1.1.30) unstable; urgency=low
+
+  * Call /usr/bin/bsd-mailx instead of /usr/bin/mailx in order to avoid using
+    an incompatible mailx packages such as heirloom-mailx. Note that it will
+    work considering heirloom-mailx will not provide bsd-mailx - which I guess
+    so. Thanks to Frédéric Perrin. (Closes: 524169)
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Tue, 21 Apr 2009 22:40:46 -0400
+
 apticron (1.1.29) unstable; urgency=low
 
   * Fix the unneeded strict permission in cronjob and conf files. Thanks to
