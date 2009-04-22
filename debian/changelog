@@ -4,6 +4,8 @@ apticron (1.1.30) unstable; urgency=low
     an incompatible mailx packages such as heirloom-mailx. Note that it will
     work considering heirloom-mailx will not provide bsd-mailx - which I guess
     so. Thanks to Frédéric Perrin. (Closes: 524169)
+  * debian/control:
+    + Update Policy version to 3.8.1;
 
  -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Tue, 21 Apr 2009 22:40:46 -0400
 

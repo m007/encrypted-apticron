@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Tiago Bortoletto Vaz <tiago@debian-ba.org>
 Uploaders: Tassia Camoes Araujo <tassia@debian-ba.org>, Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>
 Build-Depends: debhelper (>= 5), po-debconf
-Standards-Version: 3.8.0
+Standards-Version: 3.8.1
 Dm-Upload-Allowed: yes
 Vcs-Browser: http://git.debian.org/?p=collab-maint/apticron.git
 Vcs-Git: git://git.debian.org/git/collab-maint/apticron.git
