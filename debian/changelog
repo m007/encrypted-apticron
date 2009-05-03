@@ -1,3 +1,12 @@
+apticron (1.1.31) unstable; urgency=low
+
+  * debian/control:
+    + heirloom-mailx placed into Conflicts section due to its incompatibility
+      handling with bsd-mailx parameters. Thanks to Alexander Galanin.
+      (Closes: #526773)
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 03 May 2009 17:14:49 -0300
+
 apticron (1.1.30) unstable; urgency=low
 
   * Call /usr/bin/bsd-mailx instead of /usr/bin/mailx in order to avoid using
