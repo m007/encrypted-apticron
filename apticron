@@ -33,14 +33,14 @@ if [ "x$1" = "x--cron" ] ; then
 			} )
 
 		if [ "$time" ] ; then
-			datecron=$( date -d "$time" +%s )
+			datecron=$( date -d "$time" +%s ) || true
 		else
 			# Use current time in case of
 			# malformed/incomplete cron.d snippet
-			datecron=$( date -d "$( date +%H:%M )" +%s )
+			datecron=$( date -d "$( date +%H:%M )" +%s ) || true
 		fi
 
-		touch -t "$( date -d @$datecron +%m%d%H%M )" $tsfile
+		touch -t "$( date -d @$datecron +%m%d%H%M )" $tsfile || true
 	fi
 fi
 

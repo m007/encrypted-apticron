@@ -5,6 +5,9 @@ apticron (1.1.31) unstable; urgency=low
       with some standard mailx parameters.
   * Using mailx command back in apticron instead of bsd-mailx in order to
     support mailutils. Thanks to Alexander Galanin. (Closes: #526773)
+  * Return 'true' when calling date command to avoid to break apticron when it
+    touches an invalid date (ex. during transitions to daylight saving). Thanks
+    to Simon Waters. (Closes: #522961)
 
  -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 03 May 2009 17:14:49 -0300
 
