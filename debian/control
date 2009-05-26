@@ -2,7 +2,6 @@ Source: apticron
 Section: admin
 Priority: extra
 Maintainer: Tiago Bortoletto Vaz <tiago@debian-ba.org>
-Uploaders: Tassia Camoes Araujo <tassia@debian-ba.org>, Colm MacCarthaigh <colm.maccarthaigh@heanet.ie>
 Build-Depends: debhelper (>= 5), po-debconf
 Standards-Version: 3.8.1
 Dm-Upload-Allowed: yes
@@ -13,7 +12,6 @@ Package: apticron
 Architecture: all
 Depends: bsd-mailx | mailutils, apt (>= 0.6.8), ucf (>= 0.28), ${misc:Depends}
 Recommends: apt-listchanges, iproute
-Conflicts: heirloom-mailx
 Description: simple tool to mail about pending package updates
  apticron is a simple script which sends daily emails about pending package
  updates such as security updates.

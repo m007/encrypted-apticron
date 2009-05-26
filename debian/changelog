@@ -1,3 +1,13 @@
+apticron (1.1.32) unstable; urgency=low
+
+  * Use specific mailx parameters for heirloom-mailx. Thanks to Nis Martensen
+    for the patch. (Closes: #530347)
+  * debian/control:
+    + remove inactive uploaders.
+    + remove heirloom-mailx from Conflicts due to the fix in #530347.
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Tue, 26 May 2009 16:40:56 -0300
+
 apticron (1.1.31) unstable; urgency=low
 
   * debian/control:

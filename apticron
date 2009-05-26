@@ -13,6 +13,25 @@ isDigit() {
 
 }
 
+# Character set handling differs between the different mailx
+# implementations in Debian. Make sure we send proper headers, and a
+# text/plain content type.
+Mailx() {
+	if [ "x`readlink -e /usr/bin/mailx`" = "x/usr/bin/heirloom-mailx" ]
+	then
+		# heirloom-mailx creates correct headers, but needs help
+		# if the terminal charset (LC_CTYPE) is no UTF-8 locale
+		/usr/bin/mailx -S ttycharset=utf-8 "$@"
+	else
+		# bsd-mailx/mailutils' mailx don't do character set
+		# conversion, but do not support MIME either.
+		/usr/bin/mailx -a "MIME-Version: 1.0" \
+			-a "Content-type: text/plain; charset=UTF-8" \
+			-a "Content-transfer-encoding: 8bit" \
+			"$@"
+	fi
+}
+
 if [ "x$1" = "x--cron" ] ; then
 
 	shift
@@ -237,7 +256,7 @@ EOF
 apticron
 EOF
 
-   ) 2>&1 | /usr/bin/mailx -a "Content-type: text/plain; charset=UTF-8" -s "$DISTRIB_ID package updates on $SYSTEM" $EMAIL
+   ) 2>&1 | Mailx -s "$DISTRIB_ID package updates on $SYSTEM" $EMAIL
 
 fi
 
