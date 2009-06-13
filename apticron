@@ -129,10 +129,6 @@ fi
 # update the package lists
 /usr/bin/apt-get -qq update || true
 
-# workaround to handle apt-get installing packages hold by aptitude. See #137771.
-APTITUDE_HOLDS=`grep "^State: 2" -B 2 /var/lib/aptitude/pkgstates 2>/dev/null |grep "^Package: .*$" |cut -d" " -f 2`
-DSELECT_HOLDS=`dpkg --get-selections |grep hold |cut -f1`
-
 # get the list of packages which are pending an upgrade
 PKGNAMES=`/usr/bin/apt-get -q -y --allow-unauthenticated -s dist-upgrade | \
           /bin/grep ^Inst | /usr/bin/cut -d\  -f2 | /usr/bin/sort`
@@ -142,6 +138,10 @@ TMPFILE="$(mktemp -t apticron.XXXXXXXXXX)"
 for p in $PKGNAMES; do
 	echo $p >> $TMPFILE
 done
+
+# workaround to handle apt-get installing packages hold by aptitude. See #137771.
+APTITUDE_HOLDS=`grep "^State: 2" -B 2 /var/lib/aptitude/pkgstates 2>/dev/null |grep "^Package: .*$" |cut -d" " -f 2`
+DSELECT_HOLDS=`dpkg --get-selections |grep hold |cut -f1`
 
 # packages hold by aptitude don't go to the upgrading candidates list
 for p in $APTITUDE_HOLDS; do
