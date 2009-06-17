@@ -1,3 +1,13 @@
+apticron (1.1.32) unstable; urgency=low
+
+  New config option added: NOTIFY_HOLDS. This determines whether apticron will
+  download/list packages on hold or not. The default behavior is notifying these
+  packages. If you don't want to be mailed about new versions of packages on
+  hold in your system, please set NOTIFY_HOLDS="0" in your apticron config
+  file.
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Tue, 26 May 2009 16:40:56 -0300
+
 apticron (1.1.21) unstable; urgency=low
 
   This release introduces a new option (--cron) and a cron.d snippet to run

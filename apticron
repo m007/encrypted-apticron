@@ -130,7 +130,7 @@ fi
 /usr/bin/apt-get -qq update || true
 
 # get the list of packages which are pending an upgrade
-PKGNAMES=`/usr/bin/apt-get -q -y --allow-unauthenticated -s dist-upgrade | \
+PKGNAMES=`/usr/bin/apt-get -q -y --ignore-hold --allow-unauthenticated -s dist-upgrade | \
           /bin/grep ^Inst | /usr/bin/cut -d\  -f2 | /usr/bin/sort`
 
 # creating the future last_run file
@@ -143,10 +143,16 @@ done
 APTITUDE_HOLDS=`grep "^State: 2" -B 2 /var/lib/aptitude/pkgstates 2>/dev/null |grep "^Package: .*$" |cut -d" " -f 2`
 DSELECT_HOLDS=`dpkg --get-selections |grep hold |cut -f1`
 
-# packages hold by aptitude don't go to the upgrading candidates list
-for p in $APTITUDE_HOLDS; do
-	PKGNAMES=`echo $PKGNAMES |sed "s/\(^\| \)$p\( \|$\)/ /g;s/^ //g"`
-done
+if [ "$NOTIFY_HOLDS" = "0" ]; then
+	# packages hold by aptitude don't go to the upgrading candidates list
+	for p in $APTITUDE_HOLDS; do
+		PKGNAMES=`echo $PKGNAMES |sed "s/\(^\| \)$p\( \|$\)/ /g;s/^ //g"`
+	done
+	# packages hold by deselect don't go to the upgrading candidates list
+	for p in $DSELECT_HOLDS; do
+		PKGNAMES=`echo $PKGNAMES |sed "s/\(^\| \)$p\( \|$\)/ /g;s/^ //g"`
+	done
+fi
 
 # packages already reported won't be reported again if DIFF_ONLY option is marked
 LAST_RUN_FILE="/var/lib/apticron/last_run"
@@ -160,7 +166,7 @@ fi
 if [ -n "$PKGNAMES" ] ; then
 
 	# do the upgrade downloads
-	/usr/bin/apt-get -qq -d --allow-unauthenticated --force-yes dist-upgrade >& /dev/null
+	/usr/bin/apt-get --ignore-hold -qq -d --allow-unauthenticated --force-yes dist-upgrade >& /dev/null
 
   (
 	/bin/cat <<EOF
@@ -190,7 +196,7 @@ EOF
 		echo -e "\n(there are other `cat $LAST_RUN_FILE |wc -l` packages previously reported to you pending an upgrade!)"
 	fi
 
-	MISSING_DEBS=`apt-get -y --allow-unauthenticated --print-uris dist-upgrade \
+	MISSING_DEBS=`apt-get -y --ignore-hold --allow-unauthenticated --print-uris dist-upgrade \
                           | grep "file:" \
                           | sed "s/'file:\(.*\)' .*/\1/g"`
 
@@ -230,7 +236,8 @@ EOF
 
 ========================================================================
 
-The following packages are on hold, then will not be upgraded:
+INFO: the following packages are on hold, then will not be upgraded even if
+they have been present in the upgrading candidates list:
 
 `echo -e "\t" $DSELECT_HOLDS`
 EOF
@@ -239,14 +246,14 @@ EOF
 	if [ -n "$APTITUDE_HOLDS" ] ; then
         	/bin/cat <<EOF
 
-WARNING: The following packages were put on hold by aptitude but will be
-upgraded anyway in case of using apt-get:
+WARNING: the following packages were put on hold by aptitude but will be
+upgraded anyway *in case of using apt-get to do so*:
 
 `echo -e "\t" $APTITUDE_HOLDS`
 
 If you don't want them to be upgraded please use aptitude to upgrade your
-system. This is necessary because aptitude's holds are ignored by both dselect
-and apt-get. For more info please see #137771.
+system. This is necessary because aptitude's holds are currently ignored by
+both dselect and apt-get. For more info please see #137771.
 EOF
 	fi
 
@@ -256,7 +263,8 @@ EOF
 apticron
 EOF
 
-   ) 2>&1 | Mailx -s "$DISTRIB_ID package updates on $SYSTEM" $EMAIL
+#   ) 2>&1 | Mailx -s "$DISTRIB_ID package updates on $SYSTEM" $EMAIL
+   ) 2>&1
 
 fi
 

@@ -66,6 +66,13 @@ EMAIL="$EMAIL"
 # "ip" command
 #
 # IPADDRESSES="192.0.2.1 2001:db8:1:2:3::1"
+
+#
+# Set NOTIFY_HOLDS="0" if you don't want to be notified about new versions of
+# packages on hold in your system. The default behavior is downloading and
+# listing them as any other package.
+#
+# NOTIFY_HOLDS="0"
 EOF
 
 	ucf --debconf-ok --three-way "$tmpfile" /etc/apticron/apticron.conf

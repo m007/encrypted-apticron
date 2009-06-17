@@ -5,6 +5,9 @@ apticron (1.1.32) unstable; urgency=low
   * debian/control:
     + remove inactive uploaders.
     + remove heirloom-mailx from Conflicts due to the fix in #530347.
+  * Support listing packages on hold by both dselect/apt-get and aptitude. This
+    can be chosen through the new config var NOTIFY_HOLDS. Thanks to Daniel B.
+    for reporting this. (Closes: #530655)
 
  -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Tue, 26 May 2009 16:40:56 -0300
 
