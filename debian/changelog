@@ -1,3 +1,10 @@
+apticron (1.1.33) unstable; urgency=low
+
+  * uncomment line which sends the daily email. Thanks to Alexander Galanin.
+    (Closes: #535800)
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sun, 05 Jul 2009 08:56:30 -0300
+
 apticron (1.1.32) unstable; urgency=low
 
   * Use specific mailx parameters for heirloom-mailx. Thanks to Nis Martensen

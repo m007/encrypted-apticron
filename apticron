@@ -263,8 +263,7 @@ EOF
 apticron
 EOF
 
-#   ) 2>&1 | Mailx -s "$DISTRIB_ID package updates on $SYSTEM" $EMAIL
-   ) 2>&1
+   ) 2>&1 | Mailx -s "$DISTRIB_ID package updates on $SYSTEM" $EMAIL
 
 fi
 
