@@ -212,7 +212,7 @@ EOF
 
 	if [ -x /usr/bin/apt-listchanges ] ; then
 		if [ -z "$LISTCHANGES_PROFILE" ] ; then
-			/usr/bin/apt-listchanges --which=both --headers -f text $DEBS 
+			/usr/bin/apt-listchanges --which=both --headers -f text $DEBS
 		else
 			/usr/bin/apt-listchanges -f text --profile=$LISTCHANGES_PROFILE $DEBS
 		fi

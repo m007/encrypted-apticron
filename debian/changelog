@@ -1,6 +1,6 @@
 apticron (1.1.34) unstable; urgency=low
 
-  * Remove useless debian/doc dir. 
+  * Remove useless debian/doc dir.
 
  -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Mon, 06 Jul 2009 10:17:47 -0300
 
