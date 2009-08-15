@@ -94,6 +94,11 @@ DISTRIB_ID="Debian"    # Default to Debian
 # Source the config file
 [ -e /etc/apticron/apticron.conf ] && . /etc/apticron/apticron.conf
 
+if [ -n "$CUSTOM_SUBJECT" ] ; then
+	MAILX_SUBJECT="$CUSTOM_SUBJECT"
+else
+	MAILX_SUBJECT="$DISTRIB_ID package updates on $SYSTEM"
+fi
 
 if [ -z "$IPADDRESSES" ] && [ -x /sbin/ip ]; then
 	# Set the IPv4 addresses
@@ -262,12 +267,6 @@ EOF
 --
 apticron
 EOF
-
-	if [ -n "$CUSTOM_SUBJECT" ] ; then
-		MAILX_SUBJECT="$CUSTOM_SUBJECT"
-	else
-		MAILX_SUBJECT="$DISTRIB_ID package updates on $SYSTEM"
-	fi
 
    ) 2>&1 | Mailx -s "$MAILX_SUBJECT" $EMAIL
 

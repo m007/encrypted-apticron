@@ -25,9 +25,6 @@ msgstr "Sähköpostiosoitteet, joihin lähetetään huomautus:"
 #. Type: string
 #. Description
 #: ../templates:1001
-#| msgid ""
-#| "Specify e-mail addresses, space separated, that should be notified of "
-#| "pending updates."
 msgid ""
 "Specify e-mail addresses, space separated, that should be notified of "
 "pending updates."

@@ -34,9 +34,6 @@ msgstr "Adresse(s) électronique(s) des personnes à prévenir:"
 #. Type: string
 #. Description
 #: ../templates:1001
-#| msgid ""
-#| "Specify e-mail addresses, space separated, that should be notified of "
-#| "pending updates."
 msgid ""
 "Specify e-mail addresses, space separated, that should be notified of "
 "pending updates."

@@ -6,7 +6,7 @@ apticron (1.1.35) unstable; urgency=low
     (Closes: #536515)
   * Fix a minor typographic issue in the potfile template for debconf.
   * debian/control:
-    + depends on mailx, once we (hopefuly) support all current mailx packages.
+    + depends on mailx, once we (hopefully) support all current mailx packages.
       Thanks to Tuomas Jormola. (Closes: #536197)
 
  -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Fri, 14 Aug 2009 22:02:10 -0300
