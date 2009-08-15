@@ -1,3 +1,10 @@
+apticron (1.1.35) unstable; urgency=low
+
+  * Add a new option for custom email subject. Thanks to Georgi Alexandrov.
+    (Closes: #533400)
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Fri, 14 Aug 2009 21:31:43 -0300
+
 apticron (1.1.34) unstable; urgency=low
 
   * Remove useless debian/doc dir.

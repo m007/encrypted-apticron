@@ -73,6 +73,12 @@ EMAIL="$EMAIL"
 # listing them as any other package.
 #
 # NOTIFY_HOLDS="0"
+
+#
+# Set CUSTOM_SUBJECT if you want to replace the default subject used in
+# the notification e-mails. This may help filtering/sorting client-side e-mail.
+#
+# CUSTOM_SUBJECT=""
 EOF
 
 	ucf --debconf-ok --three-way "$tmpfile" /etc/apticron/apticron.conf

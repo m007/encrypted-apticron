@@ -263,7 +263,14 @@ EOF
 apticron
 EOF
 
-   ) 2>&1 | Mailx -s "$DISTRIB_ID package updates on $SYSTEM" $EMAIL
+	if [ -n "$CUSTOM_SUBJECT" ] ; then
+		MAILX_SUBJECT="$CUSTOM_SUBJECT"
+	else
+		MAILX_SUBJECT="$DISTRIB_ID package updates on $SYSTEM"
+	fi
+
+   #) 2>&1 | Mailx -s "$MAILX_SUBJECT" $EMAIL
+   ) 2>&1
 
 fi
 
