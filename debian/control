@@ -10,7 +10,7 @@ Vcs-Git: git://git.debian.org/git/collab-maint/apticron.git
 
 Package: apticron
 Architecture: all
-Depends: bsd-mailx | mailutils, apt (>= 0.6.8), ucf (>= 0.28), ${misc:Depends}
+Depends: mailx, apt (>= 0.6.8), ucf (>= 0.28), ${misc:Depends}
 Recommends: apt-listchanges, iproute
 Description: simple tool to mail about pending package updates
  apticron is a simple script which sends daily emails about pending package

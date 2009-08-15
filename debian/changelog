@@ -5,8 +5,11 @@ apticron (1.1.35) unstable; urgency=low
   * Add Finish translation for debconf. Thanks to Esko Arajärvi.
     (Closes: #536515)
   * Fix a minor typographic issue in the potfile template for debconf.
+  * debian/control:
+    + depends on mailx, once we (hopefuly) support all current mailx packages.
+      Thanks to Tuomas Jormola. (Closes: #536197)
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Fri, 14 Aug 2009 21:41:48 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Fri, 14 Aug 2009 22:02:10 -0300
 
 apticron (1.1.34) unstable; urgency=low
 
