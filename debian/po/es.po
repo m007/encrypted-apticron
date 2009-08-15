@@ -48,7 +48,6 @@ msgstr "Dirección/es de correo electrónico a las que mandar notificaciones:"
 #. Type: string
 #. Description
 #: ../templates:1001
-#, fuzzy
 #| msgid ""
 #| "Specify e-mail addresses, space separated, that should be notified of "
 #| "pending updates."

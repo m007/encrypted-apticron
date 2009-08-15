@@ -32,7 +32,6 @@ msgstr "Emailová adresa(y) pro upozorňování:"
 #. Type: string
 #. Description
 #: ../templates:1001
-#, fuzzy
 #| msgid ""
 #| "Specify e-mail addresses, space separated, that should be notified of "
 #| "pending updates."
