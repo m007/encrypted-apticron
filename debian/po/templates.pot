@@ -26,6 +26,6 @@ msgstr ""
 #. Description
 #: ../templates:1001
 msgid ""
-"Specify e-mail addresses, space seperated, that should be notified of "
+"Specify e-mail addresses, space separated, that should be notified of "
 "pending updates."
 msgstr ""

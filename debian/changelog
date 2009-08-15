@@ -4,8 +4,9 @@ apticron (1.1.35) unstable; urgency=low
     (Closes: #533400)
   * Add Finish translation for debconf. Thanks to Esko Arajärvi.
     (Closes: #536515)
+  * Fix a minor typographic issue in the potfile template for debconf.
 
- -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Fri, 14 Aug 2009 21:31:43 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Fri, 14 Aug 2009 21:41:48 -0300
 
 apticron (1.1.34) unstable; urgency=low
 
