@@ -269,8 +269,7 @@ EOF
 		MAILX_SUBJECT="$DISTRIB_ID package updates on $SYSTEM"
 	fi
 
-   #) 2>&1 | Mailx -s "$MAILX_SUBJECT" $EMAIL
-   ) 2>&1
+   ) 2>&1 | Mailx -s "$MAILX_SUBJECT" $EMAIL
 
 fi
 
