@@ -61,7 +61,7 @@ EMAIL="$EMAIL"
 # IPADDRESSNUM="1"
 
 #
-# Set IPADDRESSES to a whitespace seperated list of reachable addresses for
+# Set IPADDRESSES to a whitespace separated list of reachable addresses for
 # this system. By default, apticron will try to work these out using the
 # "ip" command
 #
