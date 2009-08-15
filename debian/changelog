@@ -2,6 +2,8 @@ apticron (1.1.35) unstable; urgency=low
 
   * Add a new option for custom email subject. Thanks to Georgi Alexandrov.
     (Closes: #533400)
+  * Add Finish translation for debconf. Thanks to Esko Arajärvi.
+    (Closes: #536515)
 
  -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Fri, 14 Aug 2009 21:31:43 -0300
 
