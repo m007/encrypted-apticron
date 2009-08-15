@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: apticron\n"
-"Report-Msgid-Bugs-To: tiago@debian-ba.org\n"
-"POT-Creation-Date: 2006-07-23 20:42-0400\n"
+"Report-Msgid-Bugs-To: apticron@packages.debian.org\n"
+"POT-Creation-Date: 2009-08-14 21:50-0300\n"
 "PO-Revision-Date: 2009-07-10 20:49+0300\n"
 "Last-Translator: Esko Arajärvi <edu@iki.fi>\n"
 "Language-Team: Finnish <debian-l10n-finnish@lists.debian.org>\n"
@@ -25,9 +25,13 @@ msgstr "Sähköpostiosoitteet, joihin lähetetään huomautus:"
 #. Type: string
 #. Description
 #: ../templates:1001
+#, fuzzy
+#| msgid ""
+#| "Specify e-mail addresses, space separated, that should be notified of "
+#| "pending updates."
 msgid ""
-"Specify e-mail addresses, space seperated, that should be notified of "
+"Specify e-mail addresses, space separated, that should be notified of "
 "pending updates."
 msgstr ""
-"Anna välilyönnein eroteltuina sähköpostiosoitteet, joihin tulisi "
-"lähettää tieto odottavista päivityksistä."
+"Anna välilyönnein eroteltuina sähköpostiosoitteet, joihin tulisi lähettää "
+"tieto odottavista päivityksistä."

@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: apticron 1.1.13\n"
-"Report-Msgid-Bugs-To: tiago@debian-ba.org\n"
-"POT-Creation-Date: 2006-07-23 20:42-0400\n"
+"Report-Msgid-Bugs-To: apticron@packages.debian.org\n"
+"POT-Creation-Date: 2009-08-14 21:50-0300\n"
 "PO-Revision-Date: 2006-08-12 15:00+0200\n"
 "Last-Translator: Johannes Starosta <feedback-an-johannes@arcor.de>\n"
 "Language-Team:German <debian-l10n-german@lists.debian.org>\n"
@@ -32,8 +32,12 @@ msgstr "Zu benachrichtigende E-Mail-Adresse(n):"
 #. Type: string
 #. Description
 #: ../templates:1001
+#, fuzzy
+#| msgid ""
+#| "Specify e-mail addresses, space separated, that should be notified of "
+#| "pending updates."
 msgid ""
-"Specify e-mail addresses, space seperated, that should be notified of "
+"Specify e-mail addresses, space separated, that should be notified of "
 "pending updates."
 msgstr ""
 " Geben Sie die E-Mail-Adressen der Benutzer an, die von bevorstehenden "

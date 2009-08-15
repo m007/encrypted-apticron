@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: apticron-eu\n"
-"Report-Msgid-Bugs-To: tiago@debian-ba.org\n"
-"POT-Creation-Date: 2006-07-23 20:42-0400\n"
+"Report-Msgid-Bugs-To: apticron@packages.debian.org\n"
+"POT-Creation-Date: 2009-08-14 21:50-0300\n"
 "PO-Revision-Date: 2008-08-14 09:28+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Euskara <debian-l10n-basque@lists.debian.org>\n"
@@ -25,8 +25,12 @@ msgstr "Berri emateko eposta helbidea(k):"
 #. Type: string
 #. Description
 #: ../templates:1001
+#, fuzzy
+#| msgid ""
+#| "Specify e-mail addresses, space separated, that should be notified of "
+#| "pending updates."
 msgid ""
-"Specify e-mail addresses, space seperated, that should be notified of "
+"Specify e-mail addresses, space separated, that should be notified of "
 "pending updates."
 msgstr ""
 "Zehaztu egiteko dauden bertsio-berritzeei buruzko berri emateko erabiliko "

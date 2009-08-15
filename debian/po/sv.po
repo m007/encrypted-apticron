@@ -8,13 +8,13 @@
 # or http://www.debian.org/intl/l10n/po-debconf/README-trans
 # Developers do not need to manually edit POT or PO files.
 # , fuzzy
-# 
-# 
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: apticron 1.1.12\n"
-"Report-Msgid-Bugs-To: tiago@debian-ba.org\n"
-"POT-Creation-Date: 2006-07-23 20:42-0400\n"
+"Report-Msgid-Bugs-To: apticron@packages.debian.org\n"
+"POT-Creation-Date: 2009-08-14 21:50-0300\n"
 "PO-Revision-Date: 2005-10-03 23:23+0200\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -31,8 +31,12 @@ msgstr "E-postaddressen (kan vara flera) för notifieringar:"
 #. Type: string
 #. Description
 #: ../templates:1001
+#, fuzzy
+#| msgid ""
+#| "Specify e-mail addresses, space separated, that should be notified of "
+#| "pending updates."
 msgid ""
-"Specify e-mail addresses, space seperated, that should be notified of "
+"Specify e-mail addresses, space separated, that should be notified of "
 "pending updates."
 msgstr ""
 "Specificera e-postaddresser som ska bli notfierade om möjliga uppdateringar "

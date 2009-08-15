@@ -15,8 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: apticron\n"
-"Report-Msgid-Bugs-To: tiago@debian-ba.org\n"
-"POT-Creation-Date: 2006-07-23 20:42-0400\n"
+"Report-Msgid-Bugs-To: apticron@packages.debian.org\n"
+"POT-Creation-Date: 2009-08-14 21:50-0300\n"
 "PO-Revision-Date: 2005-03-25 20:03+0100\n"
 "Last-Translator: Guilhelm Panaget <guilhelm.panaget@free.fr>\n"
 "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
@@ -34,8 +34,12 @@ msgstr "Adresse(s) électronique(s) des personnes à prévenir:"
 #. Type: string
 #. Description
 #: ../templates:1001
+#, fuzzy
+#| msgid ""
+#| "Specify e-mail addresses, space separated, that should be notified of "
+#| "pending updates."
 msgid ""
-"Specify e-mail addresses, space seperated, that should be notified of "
+"Specify e-mail addresses, space separated, that should be notified of "
 "pending updates."
 msgstr ""
 "Veuillez indiquer les adresses électroniques, séparées par des espaces, des "
