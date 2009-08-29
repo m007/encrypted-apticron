@@ -1,3 +1,10 @@
+apticron (1.1.36) unstable; urgency=low
+
+  * apticron.conf now states that multiple address are space-separated. Thanks
+    to Paul Nijjar. (Closes: #544143)
+
+ -- Tiago Bortoletto Vaz <tiago@debian-ba.org>  Sat, 29 Aug 2009 08:27:07 -0300
+
 apticron (1.1.35) unstable; urgency=low
 
   * Add a new option for custom email subject. Thanks to Georgi Alexandrov.

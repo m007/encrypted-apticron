@@ -28,7 +28,8 @@ case "$1" in
 	cat <<EOF > "$tmpfile"
 # apticron.conf
 #
-# set EMAIL to a list of addresses which will be notified of impending updates
+# set EMAIL to a space separated list of addresses which will be notified of
+# impending updates
 #
 EMAIL="$EMAIL"
 
