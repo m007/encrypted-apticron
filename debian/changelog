@@ -1,3 +1,24 @@
+apticron (1.1.39) unstable; urgency=low
+
+  * Fix missing dependency on cron. Thanks to Evan Broder. (Closes: #572421)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Fri, 05 Mar 2010 00:13:50 -0300
+
+apticron (1.1.38) unstable; urgency=low
+
+  * New src format: 3.0 (native)
+  * Improve description
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Sun, 22 Nov 2009 20:39:17 -0200
+
+apticron (1.1.37) unstable; urgency=low
+
+  * Don't send STDERR to /dev/null in order to give to the user basic debug
+    info when apt-get fails. Thanks to Leandro Lucarella. (Closes: #552129)
+  * Now using my @d.o email for this package.
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Sun, 25 Oct 2009 09:39:29 -0200
+
 apticron (1.1.36) unstable; urgency=low
 
   * apticron.conf now states that multiple address are space-separated. Thanks

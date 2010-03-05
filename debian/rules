@@ -29,6 +29,7 @@ binary-indep: build install
 	dh_installman apticron.1
 	dh_installchangelogs
 	dh_installdocs
+	dh_lintian
 	dh_installdeb
 	dh_compress
 	dh_fixperms
