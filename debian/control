@@ -3,13 +3,13 @@ Section: admin
 Priority: extra
 Maintainer: Tiago Bortoletto Vaz <tiago@debian.org>
 Build-Depends: debhelper (>= 6.0.7~), po-debconf
-Standards-Version: 3.8.3
+Standards-Version: 3.8.4
 Vcs-Browser: http://git.debian.org/?p=collab-maint/apticron.git
 Vcs-Git: git://git.debian.org/git/collab-maint/apticron.git
 
 Package: apticron
 Architecture: all
-Depends: mailx, apt (>= 0.6.8), ucf (>= 0.28), ${misc:Depends}
+Depends: mailx, apt (>= 0.6.8), ucf (>= 0.28), cron, ${misc:Depends}
 Recommends: apt-listchanges, iproute
 Description: Simple tool to mail about pending package updates
  Apticron is a simple script which sends daily emails about pending package
