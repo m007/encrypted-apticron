@@ -1,8 +1,9 @@
 apticron (1.1.39) unstable; urgency=low
 
   * Fix missing dependency on cron. Thanks to Evan Broder. (Closes: #572421)
+  * Update Policy version to 3.8.4.
 
- -- Tiago Bortoletto Vaz <tiago@debian.org>  Fri, 05 Mar 2010 00:13:50 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Fri, 05 Mar 2010 00:15:45 -0300
 
 apticron (1.1.38) unstable; urgency=low
 
