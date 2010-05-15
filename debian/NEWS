@@ -1,4 +1,4 @@
-apticron (1.1.32) unstable; urgency=low
+apticron (1.1.40) unstable; urgency=low
 
   New config option added: NOTIFY_NEW.# Set NOTIFY_NEW="0" if you don't want to
   be notified about packages which are not installed in your system. Yes, it's
