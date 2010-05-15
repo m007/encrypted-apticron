@@ -97,7 +97,7 @@ DISTRIB_ID="Debian"    # Default to Debian
 if [ -n "$CUSTOM_SUBJECT" ] ; then
 	MAILX_SUBJECT="$CUSTOM_SUBJECT"
 else
-	MAILX_SUBJECT="$DISTRIB_ID package updates on $SYSTEM"
+	MAILX_SUBJECT="$DISTRIB_ID package update(s) for $SYSTEM"
 fi
 
 if [ -z "$IPADDRESSES" ] && [ -x /sbin/ip ]; then
@@ -168,6 +168,8 @@ if [ "$NOTIFY_NEW" = "0" ]; then
 	        fi
 	done
 fi
+
+NUM_PACKAGES=`echo $PKGNAMES |wc -w`
 
 # packages already reported won't be reported again if DIFF_ONLY option is marked
 LAST_RUN_FILE="/var/lib/apticron/last_run"
@@ -278,7 +280,7 @@ EOF
 apticron
 EOF
 
-   ) 2>&1 | Mailx -s "$MAILX_SUBJECT" $EMAIL
+   ) 2>&1 | Mailx -s "$NUM_PACKAGES $MAILX_SUBJECT" $EMAIL
 
 fi
 

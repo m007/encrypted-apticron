@@ -1,8 +1,10 @@
 apticron (1.1.40) unstable; urgency=low
 
-  * Add new option NOTIFY_NEW. (Closes: #531002, #557209)
+  * Add new option NOTIFY_NEW. Thanks to Teodor. (Closes: #531002, #557209)
+  * Add number of pending updates to mail subject. Thanks to Michel.
+   (Closes: #581241)
 
- -- Tiago Bortoletto Vaz <tiago@debian.org>  Sat, 15 May 2010 01:58:39 +0000
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Sat, 15 May 2010 02:24:15 +0000
 
 apticron (1.1.39) unstable; urgency=low
 
