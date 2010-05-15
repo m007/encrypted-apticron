@@ -76,6 +76,18 @@ EMAIL="$EMAIL"
 # NOTIFY_HOLDS="0"
 
 #
+# Set NOTIFY_NEW="0" if you don't want to be notified about packages which
+# are not installed in your system. Yes, it's possible! There are some issues
+# related to systems which have mixed stable/unstable sources. In these cases
+# apt-get will consider for example that packages with "Priority:
+# required"/"Essential: yes" in unstable but not in stable should be installed,
+# so they will be listed in dist-upgrade output. Please take a look at
+# http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=531002#44
+#
+# NOTIFY_NEW="0"
+
+
+#
 # Set CUSTOM_SUBJECT if you want to replace the default subject used in
 # the notification e-mails. This may help filtering/sorting client-side e-mail.
 #
