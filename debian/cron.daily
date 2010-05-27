@@ -1,3 +1,7 @@
 #!/bin/sh
 
-test -x /usr/sbin/apticron && /usr/sbin/apticron --cron
+if [ ! -x /usr/sbin/apticron ] ; then
+	exit 0
+else
+	/usr/sbin/apticron
+fi
