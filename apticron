@@ -162,10 +162,9 @@ fi
 if [ "$NOTIFY_NEW" = "0" ]; then
 	# new packages don't go to the upgrading candidates list (see #531002)
 	for p in $PKGNAMES; do
-	        i=`dpkg -s $p 2>/dev/null| grep "^Status: install ok installed"`
-	        if [ -z "$i" ] ; then
-	                PKGNAMES=`echo $PKGNAMES |sed "s/\(^\| \)$p\( \|$\)/ /g;s/^ //g"`
-	        fi
+        	if [ -z "`dpkg -s $p 2>/dev/null| grep '^Status: install ok installed'`" ] ; then
+	       		PKGNAMES=`echo $PKGNAMES |sed "s/\(^\| \)$p\( \|$\)/ /g;s/^ //g"`
+		fi
 	done
 fi
 

@@ -1,3 +1,10 @@
+apticron (1.1.42) unstable; urgency=low
+
+  * Avoid exiting with error when testing if a package is installed. Thanks to
+    Alexander Galanin for the patch. (Closes: #584600)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Mon, 14 Jun 2010 02:18:43 -0300
+
 apticron (1.1.41) unstable; urgency=low
 
   * Fix return value in cronjob. Thanks to Holger Levsen. (Closes: #574461)
