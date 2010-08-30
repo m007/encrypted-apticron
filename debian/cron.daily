@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if [ ! -x /usr/sbin/apticron ] ; then
-	exit 0
-else
-	/usr/sbin/apticron
-fi

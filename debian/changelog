@@ -1,3 +1,10 @@
+apticron (1.1.43) unstable; urgency=low
+
+  * Remove deprecated cron.daily file. Thanks to Piotr Lewandowski.
+    (Closes: #587597)
+
+ -- Tássia Camões Araújo <tassia@gmail.com>  Sun, 29 Aug 2010 23:19:02 -0300
+
 apticron (1.1.42) unstable; urgency=low
 
   * Avoid exiting with error when testing if a package is installed. Thanks to
