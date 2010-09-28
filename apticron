@@ -209,7 +209,7 @@ EOF
 	done
 
 	if [ "$DIFF_ONLY" = "1" ] && [ -e "$LAST_RUN_FILE" ]; then
-		echo -e "\n(there are other `cat $LAST_RUN_FILE |wc -l` packages previously reported to you pending an upgrade!)"
+		echo -e "\n(there are $(grep -xf $LAST_RUN_FILE $TMPFILE |wc -l) other packages previously reported to you pending an upgrade!)"
 	fi
 
 	MISSING_DEBS=`apt-get -y --ignore-hold --allow-unauthenticated --print-uris dist-upgrade \

@@ -1,3 +1,10 @@
+apticron (1.1.44) unstable; urgency=low
+
+  * Fix DIFF_ONLY issue which was reporting wrong number of previously reported
+    packages. Thanks to Dermot O'Dwyer. (Closes: #596919)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Tue, 28 Sep 2010 00:32:48 -0300
+
 apticron (1.1.43) unstable; urgency=low
 
   * Remove deprecated cron.daily file. Thanks to Piotr Lewandowski.
