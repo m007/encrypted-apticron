@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Tiago Bortoletto Vaz <tiago@debian.org>
 Uploaders: Tássia Camões Araújo <tassia@gmail.com>
 Build-Depends: debhelper (>= 6.0.7~), po-debconf
-Standards-Version: 3.8.4
+Standards-Version: 3.9.1
 Vcs-Browser: http://git.debian.org/?p=collab-maint/apticron.git
 Vcs-Git: git://git.debian.org/git/collab-maint/apticron.git
 
