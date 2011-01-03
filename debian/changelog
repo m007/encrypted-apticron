@@ -1,3 +1,11 @@
+apticron (1.1.45) unstable; urgency=low
+
+  * Improve re for matching hold packages. Thanks to Slavko. (Closes: #607826)
+  * Remove cron.daily from old apticron installations. Thanks to Salvatore
+    Bonaccorso. (Closes: #587597)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Mon, 03 Jan 2011 12:02:43 -0200
+
 apticron (1.1.44) unstable; urgency=low
 
   * Fix DIFF_ONLY issue which was reporting wrong number of previously reported

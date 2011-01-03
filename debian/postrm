@@ -16,4 +16,8 @@ case "$1" in
     ;;
 esac
 
+# Remove cron.daily file which has been installed by old (and bugged)
+# apticron versions. (see #587597)
+dpkg-maintscript-helper rm_conffile /etc/cron.daily/apticron -- "$@"
+
 #DEBHELPER#
