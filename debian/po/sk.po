@@ -13,10 +13,10 @@ msgstr ""
 "PO-Revision-Date: 2011-01-30 18:34+0100\n"
 "Last-Translator: Slavko <linux@slavino.sk>\n"
 "Language-Team: Slovak <nomail>\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sk\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #. Type: string
@@ -34,4 +34,3 @@ msgid ""
 msgstr ""
 "Zadajte emailové adresy, oddelené medzerami, na ktoré budú zasielané "
 "upozornenia o čakajúcich aktualizáciách."
-
