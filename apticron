@@ -35,8 +35,8 @@ if [ -n "$1" ]; then
 	echo "Usage: apticron [--cron]"
 	echo "Mails a list of packages that are pending-upgrade to the"
 	echo "email address specified in /etc/apticron/apticron.conf"
-	echo "--cron:  used by cron scripts in order not to run the job"
-	echo "         more than once in a day."
+	echo "--cron:  used when invoked by cron in order to run no"
+	echo "         more than once a day."
 	exit 1
 fi
 
