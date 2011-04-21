@@ -22,7 +22,7 @@ Mailx() {
 if [ "x$1" = "x--cron" ] ; then
 
 	shift
-	tsfile='/var/lib/misc/apticron.cron'
+	tsfile='/var/lib/apticron/cron_run'
 
 	# Run only once a day ( grant 59 mins allowance )
 	test "x$( find $tsfile -mmin -1381 2>/dev/null )" = "x$tsfile" && exit 0

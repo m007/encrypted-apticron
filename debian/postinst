@@ -26,6 +26,17 @@ case "$1" in
 		mkdir /etc/apticron
 	fi
 
+	# Move the old timestamp file
+	tsfile_new='/var/lib/apticron/cron_run'
+	tsfile_old='/var/lib/misc/apticron.cron'
+	if [ -f "$tsfile_old" ] ; then
+		if [ ! -e "$tsfile_new" ] ; then
+			mv "$tsfile_old" "$tsfile_new"
+		else
+			rm -f "$tsfile_old"
+		fi
+	fi
+
 	tmpfile="$( mktemp -t apticron.conf.XXXXXXXXXX )"
 	chmod 0644 "$tmpfile"
 
