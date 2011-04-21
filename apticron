@@ -210,7 +210,7 @@ EOF
 
 You can perform the upgrade by issuing the command:
 
-	aptitude full-upgrade
+	apt-get dist-upgrade
 
 as root on $SYSTEM
 EOF
