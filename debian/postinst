@@ -134,7 +134,7 @@ EOF
 	cat <<EOF >"$tmpfile"
 # cron entry for apticron
 
-$min * * * * root test -x /usr/sbin/apticron && /usr/sbin/apticron --cron
+$min * * * * root if test -x /usr/sbin/apticron; then /usr/sbin/apticron --cron; else true; fi
 EOF
 	ucf --debconf-ok --three-way "$tmpfile" /etc/cron.d/apticron
 	rm -f "$tmpfile"
