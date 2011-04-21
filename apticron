@@ -50,7 +50,7 @@ LISTCHANGES_PROFILE=""
 eval `/usr/bin/apt-config shell DIRCACHE Dir::Cache`
 
 # Set the SYSTEM
-SYSTEM=`/bin/hostname -f`
+SYSTEM=`/bin/hostname --all-fqdns`
 
 # Set the IPADDRESSNUM
 IPADDRESSNUM="1"
@@ -70,7 +70,7 @@ fi
 
 if [ -z "$IPADDRESSES" ] && [ -x /sbin/ip ]; then
 	# Set the IPv4 addresses
-	IPADDRESSES=`(echo $( /bin/hostname -i ) ;
+	IPADDRESSES=`(echo $( /bin/hostname --all-ip-addresses ) ;
 		     /sbin/ip -f inet addr show scope global 2> /dev/null | \
 		     /bin/grep "scope global" |\
 		     /usr/bin/head -$IPADDRESSNUM |\
