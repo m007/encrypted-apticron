@@ -63,9 +63,10 @@ DISTRIB_ID="Debian"    # Default to Debian
 [ -e /etc/apticron/apticron.conf ] && . /etc/apticron/apticron.conf
 
 if [ -n "$CUSTOM_SUBJECT" ] ; then
-	MAILX_SUBJECT="$CUSTOM_SUBJECT"
+	MAILX_SUBJECT=$(eval "echo \"${CUSTOM_SUBJECT}\"")
 else
-	MAILX_SUBJECT="$DISTRIB_ID package update(s) for $SYSTEM"
+	MAILX_SUBJECT="$NUM_PACKAGES $DISTRIB_ID package update(s) for $SYSTEM"
+
 fi
 
 if [ -z "$IPADDRESSES" ] && [ -x /sbin/ip ]; then
@@ -247,7 +248,7 @@ EOF
 apticron
 EOF
 
-   ) 2>&1 | Mailx -s "$NUM_PACKAGES $MAILX_SUBJECT" $EMAIL
+   ) 2>&1 | Mailx -s "$MAILX_SUBJECT" $EMAIL
 
 fi
 

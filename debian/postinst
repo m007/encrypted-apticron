@@ -106,6 +106,8 @@ EMAIL="$EMAIL"
 #
 # Set CUSTOM_SUBJECT if you want to replace the default subject used in
 # the notification e-mails. This may help filtering/sorting client-side e-mail.
+# If you want to use internal vars please use single quotes here. Ex:
+# $CUSTOM_SUBJECT='[apticron] $SYSTEM: $NUM_PACKAGES package update(s)'
 #
 # CUSTOM_SUBJECT=""
 EOF
