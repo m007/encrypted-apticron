@@ -104,23 +104,16 @@ EOF
 	# read time from cron.d job, if any
 	if [ -f /etc/cron.d/apticron ] ; then
 
-		time=$( grep -v '^[[:space:]]*\(\#\|$\)' /etc/cron.d/apticron \
+		min=$( grep -v '^[[:space:]]*\(\#\|$\)' /etc/cron.d/apticron \
 			2>/dev/null | {
-			read min hour null ||true
-			if isDigit "$hour" && isDigit "$min" ; then
-				echo "$hour:$min"
-			fi
+			read min null || true
+			isDigit "$min" && echo "$min"
 			} )
 
-		if [ "$time" ] ; then
-			hour="${time%%:*}"
-			min="${time##*:}"
-		fi
 	fi
 
 	# get random time if cron.d snippet doesn't exist or is malformed
-	if ! [ "$hour" -a "$min" ] ; then
-		hour=$(( $( od -vAn -N2 -tu4 < /dev/urandom ) % 24 ))
+	if ! isDigit "$min" ; then
 		min=$(( $( od -vAn -N2 -tu4 < /dev/urandom ) % 60 ))
 	fi
 
@@ -130,7 +123,7 @@ EOF
 	cat <<EOF >"$tmpfile"
 # cron entry for apticron
 
-$min $hour * * * root test -x /usr/sbin/apticron && /usr/sbin/apticron --cron
+$min * * * * root test -x /usr/sbin/apticron && /usr/sbin/apticron --cron
 EOF
 	ucf --debconf-ok --three-way "$tmpfile" /etc/cron.d/apticron
 	rm -f "$tmpfile"

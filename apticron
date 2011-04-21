@@ -1,18 +1,5 @@
 #!/bin/bash -e
 
-isDigit() {
-
-	test -n "$1" || return 1
-	string="$1"
-
-	while [ "${string#[[:digit:]]}" != "$string" ]; do
-		string="${string#[[:digit:]]}"
-	done
-
-	[ -z "$string" ] || return 1
-
-}
-
 # Character set handling differs between the different mailx
 # implementations in Debian. Make sure we send proper headers, and a
 # text/plain content type.
@@ -37,30 +24,11 @@ if [ "x$1" = "x--cron" ] ; then
 	shift
 	tsfile='/var/lib/misc/apticron.cron'
 
-	# Run only once a day ( grant 1min allowance )
-	test "x$( find $tsfile -mmin -1339 2>/dev/null )" = "x$tsfile" && exit 0
+	# Run only once a day ( grant 59 mins allowance )
+	test "x$( find $tsfile -mmin -1381 2>/dev/null )" = "x$tsfile" && exit 0
 
-	# Try to ensure that next run will be launched by cron.d snippet
-	if [ -f /etc/cron.d/apticron ] ; then
-
-		time=$( grep -v '^[[:space:]]*\(\#\|$\)' /etc/cron.d/apticron \
-			2>/dev/null | {
-			read min hour null
-			if isDigit "$hour" && isDigit "$min" ; then
-				echo "$hour:$min"
-			fi
-			} )
-
-		if [ "$time" ] ; then
-			datecron=$( date -d "$time" +%s ) || true
-		else
-			# Use current time in case of
-			# malformed/incomplete cron.d snippet
-			datecron=$( date -d "$( date +%H:%M )" +%s ) || true
-		fi
-
-		touch -t "$( date -d @$datecron +%m%d%H%M )" $tsfile || true
-	fi
+	# Update the time-stamp file
+	LC_TIME=C touch -d "$( date +%H:%M )" "$tsfile" || true
 fi
 
 if [ -n "$1" ]; then
