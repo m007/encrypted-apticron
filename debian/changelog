@@ -1,3 +1,20 @@
+apticron (1.1.47) unstable; urgency=low
+
+  [ patches by Gian Piero Carrubba ]
+  * Run every hour via cron.d snippet just exiting if fully executed in the
+    past 24h. (Closes: #587597)
+  * Reword the '--cron' parameter help message.
+  * Move the timestamp file to /var/lib/apticron as it now exists.
+  * cron.d snippet: cleanly exit if apticron has been removed.
+  * Supposedly trap all errors when parsing existent cron.d snippet.
+
+  [ Tiago Bortoletto Vaz]
+  * Add Danish translation. Thanks to Joe Dalton. (Closes: #623093)
+  * Add hostname options suggested by hostname manpage to avoid warnings.
+    Thanks to Simon Waters. (Closes: #613504)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Wed, 20 Apr 2011 23:32:32 -0300
+
 apticron (1.1.46) unstable; urgency=low
 
   * Add Slovak po-debconf translation. Thanks to Slavko. (Closes: #611557)
