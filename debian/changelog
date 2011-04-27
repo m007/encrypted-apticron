@@ -1,3 +1,11 @@
+apticron (1.1.49) unstable; urgency=low
+
+  * Set locale to C rather than en to avoid warning messages in systems which
+    have no English locales installed. Thanks to gregor herrmann.
+    (Closes: #624288)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Wed, 27 Apr 2011 08:17:50 -0300
+
 apticron (1.1.48) unstable; urgency=low
 
   * Suggesting apt-get dist-upgrade instead of aptitude, once apticron's
