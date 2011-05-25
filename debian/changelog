@@ -1,3 +1,10 @@
+apticron (1.1.50) UNRELEASED; urgency=low
+
+  * Fix typo s/deselect/dselect/ in long description and apticron code
+    comments. Thanks to Uwe Kleine-König. (Closes: #627759)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Wed, 25 May 2011 08:48:41 -0300
+
 apticron (1.1.49) unstable; urgency=low
 
   * Set locale to C rather than en to avoid warning messages in systems which
