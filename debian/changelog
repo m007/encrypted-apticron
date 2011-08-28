@@ -1,3 +1,9 @@
+apticron (1.1.51) UNRELEASED; urgency=low
+
+  * Fix typo in manpage. Thanks to Matt Kraai. (Closes: #632841)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Sun, 28 Aug 2011 20:56:15 -0300
+
 apticron (1.1.50) unstable; urgency=low
 
   * Fix typo s/deselect/dselect/ in long description and apticron code
