@@ -1,4 +1,4 @@
-apticron (1.1.50) UNRELEASED; urgency=low
+apticron (1.1.50) unstable; urgency=low
 
   * Fix typo s/deselect/dselect/ in long description and apticron code
     comments. Thanks to Uwe Kleine-König. (Closes: #627759)
