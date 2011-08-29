@@ -1,3 +1,10 @@
+apticron (1.1.51) unstable; urgency=low
+
+  New config option CUSTOM_FROM allows setting a custom sender by replacing the
+  default 'From:' field in the notification emails.
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Mon, 29 Aug 2011 00:00:23 -0300
+
 apticron (1.1.40) unstable; urgency=low
 
   New config option added: NOTIFY_NEW.# Set NOTIFY_NEW="0" if you don't want to

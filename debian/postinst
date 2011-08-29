@@ -102,7 +102,6 @@ EMAIL="$EMAIL"
 #
 # NOTIFY_NEW="0"
 
-
 #
 # Set CUSTOM_SUBJECT if you want to replace the default subject used in
 # the notification e-mails. This may help filtering/sorting client-side e-mail.
@@ -110,6 +109,13 @@ EMAIL="$EMAIL"
 # \$CUSTOM_SUBJECT='[apticron] \$SYSTEM: \$NUM_PACKAGES package update(s)'
 #
 # CUSTOM_SUBJECT=""
+
+#
+# Set CUSTOM_FROM if you want to replace the default sender by changing the
+# 'From:' field used in the notification e-mails. Your default sender will
+# be something like `id -un`@`hostname --long`.
+#
+# CUSTOM_FROM=""
 EOF
 
 	ucf --debconf-ok --three-way "$tmpfile" /etc/apticron/apticron.conf

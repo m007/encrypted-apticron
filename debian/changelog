@@ -1,9 +1,11 @@
-apticron (1.1.51) UNRELEASED; urgency=low
+apticron (1.1.51) unstable; urgency=low
 
   * Fix typo in manpage. Thanks to Matt Kraai. (Closes: #632841)
   * Fix CUSTOM_SUBJECT section in config file.
+  * Add new config option CUSTOM_FROM which allows setting a custom sender by
+    replacing the default 'From:' in the notification emails. (Closes: #632743)
 
- -- Tiago Bortoletto Vaz <tiago@debian.org>  Sun, 28 Aug 2011 21:40:25 -0300
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Mon, 29 Aug 2011 00:00:23 -0300
 
 apticron (1.1.50) unstable; urgency=low
 

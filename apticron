@@ -8,14 +8,26 @@ Mailx() {
 	then
 		# heirloom-mailx creates correct headers, but needs help
 		# if the terminal charset (LC_CTYPE) is no UTF-8 locale
-		/usr/bin/mailx -S ttycharset=utf-8 "$@"
+		if [ -n "$CUSTOM_FROM" ] ; then
+			/usr/bin/mailx -S ttycharset=utf-8 -r "$CUSTOM_FROM" "$@"
+		else
+			/usr/bin/mailx -S ttycharset=utf-8 "$@"
+		fi
 	else
 		# bsd-mailx/mailutils' mailx don't do character set
 		# conversion, but do not support MIME either.
-		/usr/bin/mailx -a "MIME-Version: 1.0" \
-			-a "Content-type: text/plain; charset=UTF-8" \
-			-a "Content-transfer-encoding: 8bit" \
-			"$@"
+		if [ -n "$CUSTOM_FROM" ] ; then
+			/usr/bin/mailx -a "MIME-Version: 1.0" \
+				-a "Content-type: text/plain; charset=UTF-8" \
+				-a "Content-transfer-encoding: 8bit" \
+				-a "From: $CUSTOM_FROM" \
+				"$@"
+		else
+			/usr/bin/mailx -a "MIME-Version: 1.0" \
+				-a "Content-type: text/plain; charset=UTF-8" \
+				-a "Content-transfer-encoding: 8bit" \
+				"$@"
+		fi
 	fi
 }
 
@@ -62,11 +74,11 @@ DISTRIB_ID="Debian"    # Default to Debian
 # Source the config file
 [ -e /etc/apticron/apticron.conf ] && . /etc/apticron/apticron.conf
 
+# Custom subject
 if [ -n "$CUSTOM_SUBJECT" ] ; then
 	MAILX_SUBJECT=$(eval "echo \"${CUSTOM_SUBJECT}\"")
 else
 	MAILX_SUBJECT="$NUM_PACKAGES $DISTRIB_ID package update(s) for $SYSTEM"
-
 fi
 
 if [ -z "$IPADDRESSES" ] && [ -x /sbin/ip ]; then
