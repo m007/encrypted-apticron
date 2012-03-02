@@ -1,3 +1,10 @@
+apticron (1.1.53) unstable; urgency=low
+
+  * Add an option to (not) use --all-fqdns from hostname command.
+    (Closes: #645988)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Fri, 02 Mar 2012 21:50:53 +0000
+
 apticron (1.1.52) unstable; urgency=low
 
   * Fix number of packages no longer being reported in subject. Thanks to
