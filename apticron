@@ -62,7 +62,7 @@ LISTCHANGES_PROFILE=""
 eval `/usr/bin/apt-config shell DIRCACHE Dir::Cache`
 
 # Set the SYSTEM
-SYSTEM=`/bin/hostname --all-fqdns`
+SYSTEM=`/bin/hostname`
 
 # Set the IPADDRESSNUM
 IPADDRESSNUM="1"
@@ -73,6 +73,11 @@ DISTRIB_ID="Debian"    # Default to Debian
 
 # Source the config file
 [ -e /etc/apticron/apticron.conf ] && . /etc/apticron/apticron.conf
+
+# Force resolving and showing all FQDNs
+if [ -n "$ALL_FQDNS" ] ; then
+	SYSTEM=`/bin/hostname --all-fqdns`
+fi
 
 # Custom subject
 if [ -n "$CUSTOM_SUBJECT" ] ; then
@@ -150,6 +155,13 @@ if [ "$NOTIFY_NEW" = "0" ]; then
 fi
 
 NUM_PACKAGES=`echo $PKGNAMES |wc -w`
+
+# Custom subject
+if [ -n "$CUSTOM_SUBJECT" ] ; then
+	MAILX_SUBJECT=$(eval "echo \"${CUSTOM_SUBJECT}\"")
+else
+	MAILX_SUBJECT="$NUM_PACKAGES $DISTRIB_ID package update(s) for $SYSTEM"
+fi
 
 # packages already reported won't be reported again if DIFF_ONLY option is marked
 LAST_RUN_FILE="/var/lib/apticron/last_run"

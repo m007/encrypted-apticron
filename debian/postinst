@@ -65,8 +65,20 @@ EMAIL="$EMAIL"
 # LISTCHANGES_PROFILE="apticron"
 
 #
+# From hostname manpage: "Displays  all FQDNs of the machine. This option
+# enumerates all configured network addresses on all configured network inter‐
+# faces, and translates them to DNS domain names. Addresses that cannot be
+# translated (i.e. because they do not have an appro‐ priate  reverse DNS
+# entry) are skipped. Note that different addresses may resolve to the same
+# name, therefore the output may contain duplicate entries. Do not make any
+# assumptions about the order of the output." Default is enabled.
+#
+ALL_FQDNS ="1"
+
+#
 # Set SYSTEM if you would like apticron to use something other than the output
-# of "hostname -f" for the system name in the mails it generates
+# of "hostname -f" for the system name in the mails it generates. This option
+# overrides the ALL_FQDNS above.
 #
 # SYSTEM="foobar.example.com"
 
