@@ -79,13 +79,6 @@ if [ -n "$ALL_FQDNS" ] ; then
 	SYSTEM=`/bin/hostname --all-fqdns`
 fi
 
-# Custom subject
-if [ -n "$CUSTOM_SUBJECT" ] ; then
-	MAILX_SUBJECT=$(eval "echo \"${CUSTOM_SUBJECT}\"")
-else
-	MAILX_SUBJECT="$NUM_PACKAGES $DISTRIB_ID package update(s) for $SYSTEM"
-fi
-
 if [ -z "$IPADDRESSES" ] && [ -x /sbin/ip ]; then
 	# Set the IPv4 addresses
 	IPADDRESSES=`(echo $( /bin/hostname --all-ip-addresses ) ;
