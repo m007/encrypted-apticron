@@ -74,13 +74,6 @@ DISTRIB_ID="Debian"    # Default to Debian
 # Source the config file
 [ -e /etc/apticron/apticron.conf ] && . /etc/apticron/apticron.conf
 
-# Custom subject
-if [ -n "$CUSTOM_SUBJECT" ] ; then
-	MAILX_SUBJECT=$(eval "echo \"${CUSTOM_SUBJECT}\"")
-else
-	MAILX_SUBJECT="$NUM_PACKAGES $DISTRIB_ID package update(s) for $SYSTEM"
-fi
-
 if [ -z "$IPADDRESSES" ] && [ -x /sbin/ip ]; then
 	# Set the IPv4 addresses
 	IPADDRESSES=`(echo $( /bin/hostname --all-ip-addresses ) ;
@@ -150,6 +143,13 @@ if [ "$NOTIFY_NEW" = "0" ]; then
 fi
 
 NUM_PACKAGES=`echo $PKGNAMES |wc -w`
+
+# Custom subject
+if [ -n "$CUSTOM_SUBJECT" ] ; then
+	MAILX_SUBJECT=$(eval "echo \"${CUSTOM_SUBJECT}\"")
+else
+	MAILX_SUBJECT="$NUM_PACKAGES $DISTRIB_ID package update(s) for $SYSTEM"
+fi
 
 # packages already reported won't be reported again if DIFF_ONLY option is marked
 LAST_RUN_FILE="/var/lib/apticron/last_run"

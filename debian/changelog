@@ -1,3 +1,10 @@
+apticron (1.1.52) unstable; urgency=low
+
+  * Fix number of packages no longer being reported in subject. Thanks to
+    Dermot O'Dwyer. (Closes: #652370)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Wed, 28 Dec 2011 18:22:36 -0500
+
 apticron (1.1.51) unstable; urgency=low
 
   * Fix typo in manpage. Thanks to Matt Kraai. (Closes: #632841)
