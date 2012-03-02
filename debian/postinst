@@ -73,7 +73,7 @@ EMAIL="$EMAIL"
 # name, therefore the output may contain duplicate entries. Do not make any
 # assumptions about the order of the output." Default is enabled.
 #
-ALL_FQDNS ="1"
+ALL_FQDNS="1"
 
 #
 # Set SYSTEM if you would like apticron to use something other than the output
