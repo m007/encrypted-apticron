@@ -3,7 +3,7 @@ apticron (1.1.54) unstable; urgency=low
   * New Indonesian translation for debconf template. Thanks to Kurniawan
     Haikal. (Closes: #658480)
 
- -- Tiago Bortoletto Vaz <tiago@x61>  Sun, 11 Mar 2012 13:12:48 -0400
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Sun, 11 Mar 2012 13:12:48 -0400
 
 apticron (1.1.53) unstable; urgency=low
 
