@@ -2,6 +2,7 @@ apticron (1.1.55) unstable; urgency=low
 
   * Add an option to send report even there is no updates. Thanks to Luc Didry.
     (Closes: #657126)
+  * Depends on bzip2. Thanks to Erik Braun. (Closes: #673985)
 
  -- Tiago Bortoletto Vaz <tiago@debian.org>  Tue, 22 May 2012 21:12:39 -0400
 
