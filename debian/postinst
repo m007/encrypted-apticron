@@ -115,12 +115,26 @@ EMAIL="$EMAIL"
 # NOTIFY_NEW="0"
 
 #
+# Set NOTIFY_NO_UPDATES="0" if you don't want to be notified when there is no
+# new versions. Set to 1 could assure you that apticron works well.
+#
+# NOTIFY_NO_UPDATES="0"
+
+#
 # Set CUSTOM_SUBJECT if you want to replace the default subject used in
 # the notification e-mails. This may help filtering/sorting client-side e-mail.
 # If you want to use internal vars please use single quotes here. Ex:
 # \$CUSTOM_SUBJECT='[apticron] \$SYSTEM: \$NUM_PACKAGES package update(s)'
 #
 # CUSTOM_SUBJECT=""
+
+# Set CUSTOM_NO_UPDATES_SUBJECT if you want to replace the default subject used
+# in the no update notification e-mails. This may help filtering/sorting
+# client-side e-mail.
+# If you want to use internal vars please use single quotes here. Ex:
+# \$CUSTOM_NO_UPDATES_SUBJECT='[apticron] \$SYSTEM: no updates'
+#
+# CUSTOM_NO_UPDATES_SUBJECT=""
 
 #
 # Set CUSTOM_FROM if you want to replace the default sender by changing the

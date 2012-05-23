@@ -156,6 +156,13 @@ else
 	MAILX_SUBJECT="$NUM_PACKAGES $DISTRIB_ID package update(s) for $SYSTEM"
 fi
 
+# Custom no update subject
+if [ -n "$CUSTOM_NO_UPDATES_SUBJECT" ] ; then
+	MAILX_NO_UPDATE_SUBJECT=$(eval "echo \"${CUSTOM_NO_UPDATES_SUBJECT}\"")
+else
+	MAILX_NO_UPDATE_SUBJECT="No updates for $SYSTEM"
+fi
+
 # packages already reported won't be reported again if DIFF_ONLY option is marked
 LAST_RUN_FILE="/var/lib/apticron/last_run"
 if [ "$DIFF_ONLY" = "1" ] && [ -e "$LAST_RUN_FILE" ]; then
@@ -267,6 +274,13 @@ EOF
 
    ) 2>&1 | Mailx -s "$MAILX_SUBJECT" $EMAIL
 
+elif  [ "$NOTIFY_NO_UPDATES" = "1" ] ; then
+  (
+        /bin/cat <<EOF
+No new packages today.
+EOF
+
+   ) 2>&1 | Mailx -s "$MAILX_NO_UPDATE_SUBJECT" $EMAIL
 fi
 
 # updating the last_run file

@@ -1,3 +1,10 @@
+apticron (1.1.55) unstable; urgency=low
+
+  * Add an option to send report even there is no updates. Thanks to Luc Didry.
+    (Closes: #657126)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Tue, 22 May 2012 21:12:39 -0400
+
 apticron (1.1.54) unstable; urgency=low
 
   * New Indonesian translation for debconf template. Thanks to Kurniawan
