@@ -1,3 +1,9 @@
+apticron (1.1.56) UNRELEASED; urgency=low
+
+  * Fix cron_run path in manpage. Thanks to Tim Phipps. (Closes: #706199)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Thu, 22 Aug 2013 12:28:24 +0200
+
 apticron (1.1.55) unstable; urgency=low
 
   * Add an option to send report even there is no updates. Thanks to Luc Didry.
