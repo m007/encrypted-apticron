@@ -1,6 +1,10 @@
 apticron (1.1.56) UNRELEASED; urgency=low
 
+  [ Tiago Bortoletto Vaz ]
   * Fix cron_run path in manpage. Thanks to Tim Phipps. (Closes: #706199)
+
+  [ Andreas Henriksson ]
+  * Recommend iproute2 instead of transitional package iproute
 
  -- Tiago Bortoletto Vaz <tiago@debian.org>  Thu, 22 Aug 2013 12:28:24 +0200
 

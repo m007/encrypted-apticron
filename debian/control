@@ -12,7 +12,7 @@ Package: apticron
 Architecture: all
 Pre-Depends: dpkg (>= 1.15.7.2)
 Depends: mailx, apt (>= 0.6.8), ucf (>= 0.28), cron, bzip2, ${misc:Depends}
-Recommends: apt-listchanges, iproute
+Recommends: apt-listchanges, iproute2
 Description: Simple tool to mail about pending package updates
  Apticron is a simple script which sends daily emails about pending package
  updates such as security updates, properly handling packages on hold both by
