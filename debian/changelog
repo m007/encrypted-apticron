@@ -1,4 +1,4 @@
-apticron (1.1.56) UNRELEASED; urgency=low
+apticron (1.1.56) unstable; urgency=low
 
   [ Tiago Bortoletto Vaz ]
   * Fix cron_run path in manpage. Thanks to Tim Phipps. (Closes: #706199)
