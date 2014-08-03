@@ -9,6 +9,8 @@ apticron (1.1.57) UNRELEASED; urgency=low
   [ Tiago Bortoletto Vaz ]
   * Fix handling packages in hold by aptitude. Thanks to Kiko Piris. (Closes:
     #707230)
+  * Add -f parameter to hostname as default behavior. Thanks to Eduardo dos
+    Santos Leggiero. (Closes: #721123)
 
  -- Tiago Bortoletto Vaz <tiago@debian.org>  Sun, 03 Aug 2014 15:37:19 -0400
 

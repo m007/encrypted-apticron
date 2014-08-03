@@ -62,7 +62,7 @@ LISTCHANGES_PROFILE=""
 eval `/usr/bin/apt-config shell DIRCACHE Dir::Cache`
 
 # Set the SYSTEM
-SYSTEM=`/bin/hostname`
+SYSTEM=`/bin/hostname -f`
 
 # Set the IPADDRESSNUM
 IPADDRESSNUM="1"
