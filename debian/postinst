@@ -96,6 +96,14 @@ EMAIL="$EMAIL"
 #
 # IPADDRESSES="192.0.2.1 2001:db8:1:2:3::1"
 
+
+#
+# Set ALLOW_UNAUTHENTICATED="1" if you want to download packages even if they
+# can't be authenticated. Since apticron 1.56 the default behavior is to
+# download authenticated packages only.
+#
+# ALLOW_UNAUTHENTICATED="0"
+
 #
 # Set NOTIFY_HOLDS="0" if you don't want to be notified about new versions of
 # packages on hold in your system. The default behavior is downloading and
