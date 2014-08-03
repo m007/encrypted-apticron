@@ -175,12 +175,7 @@ fi
 if [ -n "$PKGNAMES" ] ; then
 
 	# do the upgrade downloads
-
-    if  [ "$ALLOW_UNAUTHENTICATED" = "1" ] ; then
-        /usr/bin/apt-get --ignore-hold -qq -d --allow-unauthenticated --force-yes dist-upgrade > /dev/null
-    else
-	    /usr/bin/apt-get --ignore-hold -qq -d --force-yes dist-upgrade > /dev/null
-    fi
+    /usr/bin/apt-get --ignore-hold -qq -d --allow-unauthenticated --force-yes dist-upgrade > /dev/null
 
   (
 	/bin/cat <<EOF

@@ -11,9 +11,6 @@ apticron (1.1.56) unstable; urgency=low
     #707230)
   * Add -f parameter to hostname as default behavior. Thanks to Eduardo dos
     Santos Leggiero. (Closes: #721123)
-  * Add ALLOW_UNAUTHENTICATED option to allow apt-get'ing unauthenticated
-    packages. Default behavior is ALLOW_UNAUTHENTICATED=0. Thanks to Julian
-    Brost. (Closes: #741483)
 
  -- Tiago Bortoletto Vaz <tiago@debian.org>  Sun, 03 Aug 2014 15:37:19 -0400
 
