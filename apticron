@@ -124,7 +124,7 @@ for p in $PKGNAMES; do
 done
 
 # workaround to handle apt-get installing packages hold by aptitude. See #137771.
-APTITUDE_HOLDS=`grep "^State: 2" -B 2 /var/lib/aptitude/pkgstates 2>/dev/null |grep "^Package: .*$" |cut -d" " -f 2`
+APTITUDE_HOLDS=`grep "^State: 2" -B 3 /var/lib/aptitude/pkgstates 2>/dev/null |grep "^Package: .*$" |cut -d" " -f 2`
 DSELECT_HOLDS=`dpkg --get-selections |grep "hold$" |cut -f1`
 
 if [ "$NOTIFY_HOLDS" = "0" ]; then

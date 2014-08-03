@@ -1,4 +1,4 @@
-apticron (1.1.56) UNRELEASED; urgency=low
+apticron (1.1.57) UNRELEASED; urgency=low
 
   [ Tiago Bortoletto Vaz ]
   * Fix cron_run path in manpage. Thanks to Tim Phipps. (Closes: #706199)
@@ -6,7 +6,11 @@ apticron (1.1.56) UNRELEASED; urgency=low
   [ Andreas Henriksson ]
   * Recommend iproute2 instead of transitional package iproute
 
- -- Tiago Bortoletto Vaz <tiago@debian.org>  Thu, 22 Aug 2013 12:28:24 +0200
+  [ Tiago Bortoletto Vaz ]
+  * Fix handling packages in hold by aptitude. Thanks to Kiko Piris. (Closes:
+    #707230)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Sun, 03 Aug 2014 15:37:19 -0400
 
 apticron (1.1.55) unstable; urgency=low
 
