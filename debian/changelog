@@ -6,6 +6,7 @@ apticron (1.1.58) unstable; urgency=medium
   * Fix ALL_FQDNS condition. Thanks to Jakob Thomas. (Closes: #805483)
   * Fix apticron not honoring aptitude holds. Thanks to Christoph Mitasch.
     (Closes: #782500)
+  * Depends on apt >= 1.1~exp9.
 
  -- Tiago Bortoletto Vaz <tiago@debian.org>  Fri, 15 Jan 2016 08:53:52 -0500
 
