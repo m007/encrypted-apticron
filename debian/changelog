@@ -4,6 +4,8 @@ apticron (1.1.58) unstable; urgency=medium
     "--allow-unauthenticated", so it has also been removed for security
     reasons. Thanks to Landry MINOZA. (Closes: #806948)
   * Fix ALL_FQDNS condition. Thanks to Jakob Thomas. (Closes: #805483)
+  * Fix apticron not honoring aptitude holds. Thanks to Christoph Mitasch.
+    (Closes: #782500)
 
  -- Tiago Bortoletto Vaz <tiago@debian.org>  Fri, 15 Jan 2016 08:53:52 -0500
 
