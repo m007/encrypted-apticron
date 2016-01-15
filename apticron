@@ -75,7 +75,7 @@ DISTRIB_ID="Debian"    # Default to Debian
 [ -e /etc/apticron/apticron.conf ] && . /etc/apticron/apticron.conf
 
 # Force resolving and showing all FQDNs
-if [ -n "$ALL_FQDNS" ] ; then
+if [ "$ALL_FQDNS" = "1" ] ; then
 	SYSTEM=`/bin/hostname --all-fqdns`
 fi
 
@@ -175,7 +175,7 @@ fi
 if [ -n "$PKGNAMES" ] ; then
 
 	# do the upgrade downloads
-    /usr/bin/apt-get --ignore-hold -qq -d --allow-unauthenticated --force-yes dist-upgrade > /dev/null
+    /usr/bin/apt-get --ignore-hold -qq -d dist-upgrade > /dev/null
 
   (
 	/bin/cat <<EOF
