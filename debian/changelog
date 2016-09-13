@@ -1,3 +1,10 @@
+apticron (1.1.59) unstable; urgency=medium
+
+  * Add trailing slash to DIRCACHE and make apt-listchanges happy.
+    Thanks to Landry MINOZA. (Closes: #837413)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Tue, 13 Sep 2016 12:25:39 -0400
+
 apticron (1.1.58) unstable; urgency=medium
 
   * Remove deprecated "--force-yes" option. Now "-qq" no longer depends on

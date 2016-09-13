@@ -190,7 +190,7 @@ The following packages are currently pending an upgrade$EXTRA_REPORT:
 
 EOF
 
-	PKGPATH="/${DIRCACHE}archives/"
+	PKGPATH="/${DIRCACHE}/archives/"
 	for PKG in $PKGNAMES ; do
 		VER=`LC_ALL=C /usr/bin/apt-cache policy $PKG |\
 		     /bin/grep Candidate: | /usr/bin/cut -f 4 -d \ `
