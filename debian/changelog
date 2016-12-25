@@ -1,3 +1,9 @@
+apticron (1.1.60) UNRELEASED; urgency=medium
+
+  * Fix for s-nail. Thanks to Nick Coleman. (Closes: #812719)
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Sun, 25 Dec 2016 08:30:55 -0500
+
 apticron (1.1.59) unstable; urgency=medium
 
   * Add trailing slash to DIRCACHE and make apt-listchanges happy.
