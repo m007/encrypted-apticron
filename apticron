@@ -87,8 +87,7 @@ if [ -z "$IPADDRESSES" ] && [ -x /sbin/ip ]; then
 		     /bin/grep "scope global" |\
 		     /usr/bin/head -$IPADDRESSNUM |\
 		     /usr/bin/awk '{ print $2 }' |\
-		     /usr/bin/cut -d/ -f1) |\
-		     /usr/bin/uniq || true`
+             /usr/bin/cut -d/ -f1) || true`
 
 	# Set the IPv6 addresses
 	IPADDRESSES="$IPADDRESSES `/sbin/ip -f inet6 addr show scope global 2> /dev/null | \
@@ -105,6 +104,10 @@ if [ -n "$IPADDRESSES" ] ; then
 		# Add the Address
 		ADDRESSES="${ADDRESSES} ${address}"
 	done
+    ADDRESSES=$(echo $ADDRESSES |\
+                /bin/sed 's/\s/\n/g' |\
+                /usr/bin/sort |\
+                /usr/bin/uniq)
 
 	ADDRESSES=`echo $ADDRESSES | /usr/bin/fmt -w68 |\
 		   /bin/sed 's/^/\t[ /;s/\$/ ]/'`

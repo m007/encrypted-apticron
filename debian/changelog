@@ -1,4 +1,10 @@
-apticron (1.1.60) UNRELEASED; urgency=medium
+apticron (1.1.61) unstable; urgency=medium
+
+  * Fix duplicate IP in mail report.
+
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Sun, 25 Dec 2016 18:58:45 -0500
+
+apticron (1.1.60) unstable; urgency=medium
 
   * Fix for s-nail. Thanks to Nick Coleman. (Closes: #812719)
 
