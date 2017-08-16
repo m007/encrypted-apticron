@@ -1,0 +1,8 @@
+#!/bin/bash
+
+TARGET="/usr/sbin/apticron"
+
+curl --silent --show-error --output $TARGET https://raw.githubusercontent.com/m007/encrypted-apticron/master/apticron
+
+chown root:root $TARGET
+chmod 755 $TARGET
