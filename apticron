@@ -53,24 +53,15 @@ if [ -n "$1" ]; then
 	exit 1
 fi
 
-# a sane default for email
-EMAIL=root
-
-# By default we have no profile
-LISTCHANGES_PROFILE=""
-
 # Set $DIRCACHE
 eval `/usr/bin/apt-config shell DIRCACHE Dir::Cache`
-
-# Set the SYSTEM
-SYSTEM=`/bin/hostname -f`
-
-# Set the IPADDRESSNUM
-IPADDRESSNUM="1"
 
 # Source lsb-release so we know what distribution we are
 DISTRIB_ID="Debian"    # Default to Debian
 [ -e /etc/lsb-release ] && . /etc/lsb-release
+
+# Source the default config file
+. /usr/lib/apticron/apticron.conf
 
 # Source the config file
 [ -e /etc/apticron/apticron.conf ] && . /etc/apticron/apticron.conf

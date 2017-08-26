@@ -19,6 +19,9 @@ install: build
 	mkdir -p $(CURDIR)/debian/apticron/usr/sbin/
 	cp apticron ${CURDIR}/debian/apticron/usr/sbin/
 	chmod 0755 ${CURDIR}/debian/apticron/usr/sbin/apticron
+	mkdir -p $(CURDIR)/debian/apticron/usr/lib/apticron/
+	cp apticron.conf $(CURDIR)/debian/apticron/usr/lib/apticron/
+	chmod 0755 $(CURDIR)/debian/apticron/usr/lib/apticron/
 	dh_testroot
 	dh_installdirs
 	dh_installdebconf
