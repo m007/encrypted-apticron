@@ -4,8 +4,11 @@ apticron (1.1.62) unstable; urgency=medium
     patch. (Closes: #850852)
   * Fix cron file path in manpage. Thanks to Bruno Bierbaumer. (Closes:
     #777575)
+  * Add BUGS section in manpage explaining the issue with apticron reporting
+    non-installed packages, which is not a bug from apticron itself.
+    (Closes: #760177)
 
- -- Tiago Bortoletto Vaz <tiago@debian.org>  Sat, 26 Aug 2017 17:23:15 -0400
+ -- Tiago Bortoletto Vaz <tiago@debian.org>  Thu, 31 Aug 2017 19:04:10 -0400
 
 apticron (1.1.61) unstable; urgency=medium
 

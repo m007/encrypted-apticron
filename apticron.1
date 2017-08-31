@@ -37,6 +37,11 @@ Time stamp file used by apticron when invoked with \-\-cron option.
 .BR apt-listchanges (1),
 .BR cron (8)
 .br
+.SH BUGS
+In a particular situation apticron may report non-installed packages to be
+upgraded. It's inconvenient, but it's not a bug in apticron itself. Please see
+https://bugs.debian.org/544481#105 for details.
+
 .SH AUTHOR
 Apticron was initially developed by Colm MacCarthaigh
 <colm.maccarthaigh@heanet.ie> with contributions from Marc Sherman
