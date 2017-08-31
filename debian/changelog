@@ -1,5 +1,6 @@
 apticron (1.1.62) unstable; urgency=medium
 
+  [ Tiago Bortoletto Vaz ]
   * Make apticron configuration stateless. Thanks to Gioele Barabucci for the
     patch. (Closes: #850852)
   * Fix cron file path in manpage. Thanks to Bruno Bierbaumer. (Closes:
@@ -7,6 +8,8 @@ apticron (1.1.62) unstable; urgency=medium
   * Add BUGS section in manpage explaining the issue with apticron reporting
     non-installed packages, which is not a bug from apticron itself.
     (Closes: #760177)
+  * Add --allow-change-held-packages to apt-get calls. Thanks to Michel, Vincas
+    Dargis and Michael Lange for reporting. (Closes: #816959, #781639, #840064)
 
  -- Tiago Bortoletto Vaz <tiago@debian.org>  Thu, 31 Aug 2017 19:04:10 -0400
 

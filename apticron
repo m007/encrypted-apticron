@@ -109,7 +109,7 @@ fi
 /usr/bin/apt-get -qq update || true
 
 # get the list of packages which are pending an upgrade
-PKGNAMES=`/usr/bin/apt-get -q -y --ignore-hold --allow-unauthenticated -s dist-upgrade | \
+PKGNAMES=`/usr/bin/apt-get -q -y --ignore-hold --allow-change-held-packages --allow-unauthenticated -s dist-upgrade | \
           /bin/grep ^Inst | /usr/bin/cut -d\  -f2 | /usr/bin/sort`
 
 # creating the future last_run file
@@ -170,7 +170,7 @@ fi
 if [ -n "$PKGNAMES" ] ; then
 
 	# do the upgrade downloads
-    /usr/bin/apt-get --ignore-hold -qq -d dist-upgrade > /dev/null
+    /usr/bin/apt-get --allow-change-held-packages --ignore-hold -qq -d dist-upgrade > /dev/null
 
   (
 	/bin/cat <<EOF
@@ -200,7 +200,7 @@ EOF
 		echo -e "\n(there are $(grep -xf $LAST_RUN_FILE $TMPFILE |wc -l) other packages previously reported to you pending an upgrade!)"
 	fi
 
-	MISSING_DEBS=`apt-get -y --ignore-hold --allow-unauthenticated --print-uris dist-upgrade \
+	MISSING_DEBS=`apt-get -y --ignore-hold --allow-change-held-packages --allow-unauthenticated --print-uris dist-upgrade \
                           | grep "file:" \
                           | sed "s/'file:\(.*\)' .*/\1/g"`
 
