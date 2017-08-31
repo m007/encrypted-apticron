@@ -2,6 +2,8 @@ apticron (1.1.62) unstable; urgency=medium
 
   * Make apticron configuration stateless. Thanks to Gioele Barabucci for the
     patch. (Closes: #850852)
+  * Fix cron file path in manpage. Thanks to Bruno Bierbaumer. (Closes:
+    #777575)
 
  -- Tiago Bortoletto Vaz <tiago@debian.org>  Sat, 26 Aug 2017 17:23:15 -0400
 
