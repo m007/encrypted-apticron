@@ -4,6 +4,8 @@
 # implementations in Debian. Make sure we send proper headers, and a
 # text/plain content type.
 Mailx() {
+    # The statement msg="$(xargs --null echo)" will fail if the generated message
+    # is very long with xargs: argument line too long.
     msg="$(xargs --null echo)"
     if which gpg > /dev/null ; then
         msg=$(echo "$msg" | gpg --trust-model always --batch --armor --encrypt --recipient $EMAIL --sign --passphrase $GPG_PASS_PHRASE)
