@@ -60,9 +60,6 @@ eval `/usr/bin/apt-config shell DIRCACHE Dir::Cache`
 DISTRIB_ID="Debian"    # Default to Debian
 [ -e /etc/lsb-release ] && . /etc/lsb-release
 
-# Source the default config file
-. /usr/lib/apticron/apticron.conf
-
 # Source the config file
 [ -e /etc/apticron/apticron.conf ] && . /etc/apticron/apticron.conf
 

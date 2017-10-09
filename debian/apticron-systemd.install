@@ -1,4 +1,4 @@
 apticron          usr/sbin/
-apticron.conf     usr/lib/apticron/
+apticron.conf     etc/apticron/
 apticron.service  lib/systemd/system
 apticron.timer    lib/systemd/system
