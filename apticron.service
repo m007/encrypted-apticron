@@ -1,0 +1,6 @@
+[Unit]
+Description=Launch apticron to notify of packages pending an update
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/apticron
