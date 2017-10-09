@@ -7,6 +7,7 @@ apticron (1.2.0) UNRELEASED; urgency=medium
     (Closes: #850853)
   * Fix Vcs-Browser. Thanks to Gioele Barabucci for the patch. (Closes:
     #877634)
+  * Conf file goes to /etc/apticron/ only.
 
  -- Tiago Bortoletto Vaz <tiago@debian.org>  Mon, 09 Oct 2017 10:46:42 -0400
 
