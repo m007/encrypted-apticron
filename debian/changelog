@@ -1,8 +1,12 @@
-apticron (1.1.63) UNRELEASED; urgency=medium
+apticron (1.2.0) UNRELEASED; urgency=medium
 
   * Remove Tassia from Uploaders.
   * Build-depends on debhelper >= 9
   * Simplify debian/rules
+  * Add apticron-systemd package. Thanks to Gioele Barabucci for the patch.
+    (Closes: #850853)
+  * Fix Vcs-Browser. Thanks to Gioele Barabucci for the patch. (Closes:
+    #877634)
 
  -- Tiago Bortoletto Vaz <tiago@debian.org>  Mon, 09 Oct 2017 10:46:42 -0400
 
