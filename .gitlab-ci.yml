@@ -2,6 +2,7 @@ image: debian:stretch
 
 variables:
   FINGERPRINT: 30CD5E17BDA2FBC3
+  SLEEP_TIME: 7
   INSTALL_SCRIPT: /tmp/install
   OUTPUT_FILE: /tmp/encrypted-output.gpg
   UNENCR_FILE: /tmp/unencrypted-output.txt
@@ -11,24 +12,15 @@ before_script:
   - apt-get update -q && apt-get install -qy curl apticron gnupg
   - gpg --keyserver pgp.mit.edu --receive-keys $FINGERPRINT
   - sed -i '/^EMAIL=/s/root/matthias.baumgarten@web.de/' /etc/apticron/apticron.conf
-  - curl -o $INSTALL_SCRIPT https://raw.githubusercontent.com/m007/encrypted-apticron/master/install
-  - chmod +x $INSTALL_SCRIPT
-  - $INSTALL_SCRIPT
-
-testEncryptedOutput:
-  stage: test
-  script:
-    - apticron
-    - sleep 7
-    - sed -n '/.*BEGIN PGP MESSAGE.*/,/.*END PGP MESSAGE.*/p' /var/mail/mail > $OUTPUT_FILE 2>&1
-    - if [[ $(file $OUTPUT_FILE) =~ "PGP message Public-Key Encrypted Session Key" ]]; then exit 0; else exit 1; fi
+  - sed -i 's/# NOTIFY_NO_UPDATES="0"/NOTIFY_NO_UPDATES="1"/' /etc/apticron/apticron.conf
+  - ln -sf $PWD/apticron -t /usr/sbin/
 
 testUnencryptedOutput:
   stage: test
   script:
     - apt-get purge -qy gnupg
     - apticron
-    - sleep 7
+    - sleep $SLEEP_TIME
     - sed -n '/^apticron report/,/^apticron$/p' /var/mail/mail > $UNENCR_FILE 2>&1
     - if grep -q "^apticron$" $UNENCR_FILE; then exit 0; else exit 1; fi
 
@@ -37,6 +29,14 @@ testMissingPublicKeyOutput:
   script:
     - gpg --batch --yes --delete-keys $FINGERPRINT
     - apticron
-    - sleep 7
+    - sleep $SLEEP_TIME
     - sed -n '/^apticron report/,/^apticron$/p' /var/mail/mail > $NOPKEY_FILE 2>&1
     - if grep -q "^apticron$" $NOPKEY_FILE; then exit 0; else exit 1; fi
+
+testEncryptedOutput:
+  stage: test
+  script:
+    - apticron
+    - sleep $SLEEP_TIME
+    - sed -n '/.*BEGIN PGP MESSAGE.*/,/.*END PGP MESSAGE.*/p' /var/mail/mail > $OUTPUT_FILE 2>&1
+    - if [[ $(file $OUTPUT_FILE) =~ "PGP message Public-Key Encrypted Session Key" ]]; then exit 0; else exit 1; fi
