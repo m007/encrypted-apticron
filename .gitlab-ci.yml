@@ -3,7 +3,6 @@ image: debian:stretch
 variables:
   FINGERPRINT: 30CD5E17BDA2FBC3
   SLEEP_TIME: 7
-  INSTALL_SCRIPT: /tmp/install
   OUTPUT_FILE: /tmp/encrypted-output.gpg
   UNENCR_FILE: /tmp/unencrypted-output.txt
   NOPKEY_FILE: /tmp/no-public-key-output.txt
