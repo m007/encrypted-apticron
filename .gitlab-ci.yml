@@ -3,9 +3,6 @@ image: debian:stretch
 variables:
   FINGERPRINT: 30CD5E17BDA2FBC3
   SLEEP_TIME: 7
-  OUTPUT_FILE: /tmp/encrypted-output.gpg
-  UNENCR_FILE: /tmp/unencrypted-output.txt
-  NOPKEY_FILE: /tmp/no-public-key-output.txt
 
 before_script:
   - apt-get update -q && apt-get install -qy curl apticron gnupg
@@ -18,24 +15,41 @@ testUnencryptedOutput:
   stage: test
   script:
     - apt-get purge -qy gnupg
-    - apticron
-    - sleep $SLEEP_TIME
-    - sed -n '/^apticron report/,/^apticron$/p' /var/mail/mail > $UNENCR_FILE 2>&1
-    - if grep -q "^apticron$" $UNENCR_FILE; then exit 0; else exit 1; fi
+    - apticron && sleep $SLEEP_TIME
+    - ./assertThatMailIsUnencrypted
 
 testMissingPublicKeyOutput:
   stage: test
   script:
     - gpg --batch --yes --delete-keys $FINGERPRINT
-    - apticron
-    - sleep $SLEEP_TIME
-    - sed -n '/^apticron report/,/^apticron$/p' /var/mail/mail > $NOPKEY_FILE 2>&1
-    - if grep -q "^apticron$" $NOPKEY_FILE; then exit 0; else exit 1; fi
+    - apticron && sleep $SLEEP_TIME
+    - ./assertThatMailIsUnencrypted
 
 testEncryptedOutput:
   stage: test
   script:
-    - apticron
-    - sleep $SLEEP_TIME
-    - sed -n '/.*BEGIN PGP MESSAGE.*/,/.*END PGP MESSAGE.*/p' /var/mail/mail > $OUTPUT_FILE 2>&1
-    - if [[ $(file $OUTPUT_FILE) =~ "PGP message Public-Key Encrypted Session Key" ]]; then exit 0; else exit 1; fi
+    - apticron && sleep $SLEEP_TIME
+    - ./assertThatMailIsEncrypted
+
+testUnencryptedOutputWithHeirloom:
+  stage: test
+  script:
+    - apt-get update -q && apt-get install -qy heirloom-mailx
+    - apt-get purge -qy gnupg
+    - apticron && sleep $SLEEP_TIME
+    - ./assertThatMailIsUnencrypted
+
+testMissingPublicKeyOutputWithHeirloom:
+  stage: test
+  script:
+    - apt-get update -q && apt-get install -qy heirloom-mailx
+    - gpg --batch --yes --delete-keys $FINGERPRINT
+    - apticron && sleep $SLEEP_TIME
+    - ./assertThatMailIsUnencrypted
+
+testEncryptedOutputWithHeirloom:
+  stage: test
+  script:
+    - apt-get update -q && apt-get install -qy heirloom-mailx
+    - apticron && sleep $SLEEP_TIME
+    - ./assertThatMailIsEncrypted
