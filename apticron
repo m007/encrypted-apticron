@@ -7,8 +7,10 @@ Mailx() {
     # The statement msg="$(xargs --null echo)" will fail if the generated message
     # is very long with xargs: argument line too long.
     msg=$(xargs --null echo)
-    if gpg --list-public-keys "$EMAIL" > /dev/null 2>&1; then
-        msg=$(echo "$msg" | gpg --trust-model always --batch --armor --encrypt --recipient "$EMAIL")
+    if [ x$GPG_ENCRYPT = "x1" ]; then
+        if gpg --list-public-keys "$EMAIL" > /dev/null 2>&1; then
+            msg=$(echo "$msg" | gpg --trust-model always --batch --armor --encrypt --recipient "$EMAIL")
+        fi
     fi
 
     local MAILER="`readlink -e /usr/bin/mailx`"
