@@ -1,8 +1,11 @@
-#!/bin/bash
+#!/bin/bash -eu
 
-TARGET="/usr/sbin/apticron"
+BIN_TARGET="/usr/sbin/apticron"
+cp apticron $BIN_TARGET
+chown root:root $BIN_TARGET
+chmod 755 $BIN_TARGET
 
-curl --silent --show-error --output $TARGET https://raw.githubusercontent.com/m007/encrypted-apticron/master/apticron
-
-chown root:root $TARGET
-chmod 755 $TARGET
+CONF_TARGET="/etc/apticron/apticron.conf"
+cp apticron.conf $CONF_TARGET
+chown root:root $CONF_TARGET
+chmod 644 $CONF_TARGET

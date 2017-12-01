@@ -7,6 +7,7 @@ variables:
 before_script:
   - apt-get update -q && apt-get install -qy curl apticron gnupg
   - gpg --keyserver pgp.mit.edu --receive-keys $FINGERPRINT
+  - ln -sf $PWD/apticron.conf -t /etc/apticron/
   - sed -i '/^EMAIL=/s/root/matthias.baumgarten@web.de/' /etc/apticron/apticron.conf
   - sed -i 's/# NOTIFY_NO_UPDATES="0"/NOTIFY_NO_UPDATES="1"/' /etc/apticron/apticron.conf
   - ln -sf $PWD/apticron -t /usr/sbin/
@@ -54,6 +55,13 @@ testEncryptedOutputWithHeirloom:
     - apticron && sleep $SLEEP_TIME
     - ./assertThatMailIsEncrypted
 
+testThatDisablingIsObeyed:
+  stage: test
+  script:
+  - sed -i '/^GPG_ENCRYPT/c\GPG_ENCRYPT="0"' /etc/apticron/apticron.conf
+  - apticron && sleep $SLEEP_TIME
+  - ./assertThatMailIsUnencrypted
+
 createPatchForDebianRepository:
   stage: deploy
   variables:
@@ -63,7 +71,7 @@ createPatchForDebianRepository:
   script:
     - git remote add debian git://git.debian.org/git/collab-maint/apticron.git
     - git fetch debian
-    - git diff debian/master HEAD apticron > $PATCH_FILE
+    - git diff debian/master HEAD apticron apticron.conf > $PATCH_FILE
   artifacts:
     paths:
       - $PATCH_FILE
