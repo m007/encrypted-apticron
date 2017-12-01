@@ -53,3 +53,17 @@ testEncryptedOutputWithHeirloom:
     - apt-get update -q && apt-get install -qy heirloom-mailx
     - apticron && sleep $SLEEP_TIME
     - ./assertThatMailIsEncrypted
+
+createPatchForDebianRepository:
+  stage: deploy
+  variables:
+    PATCH_FILE: apticron.patch
+  before_script:
+    - apt-get update -q && apt-get install -qy git
+  script:
+    - git remote add debian git://git.debian.org/git/collab-maint/apticron.git
+    - git fetch debian
+    - git diff debian/master HEAD apticron > $PATCH_FILE
+  artifacts:
+    paths:
+      - $PATCH_FILE
