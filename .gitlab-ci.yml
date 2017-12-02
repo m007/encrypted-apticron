@@ -81,6 +81,8 @@ createPatchForDebianRepository:
       - $PATCH_FILE
 
 uploadPatchToNC:
+  only:
+    - /^master$/
   image:
     name: tutum/curl:latest
   stage: deploy
