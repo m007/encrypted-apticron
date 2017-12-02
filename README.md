@@ -4,20 +4,15 @@ This version replaces the original [`apticron`](https://tracker.debian.org/pkg/a
 **On the origin of the idea for this project:** Intercepting emails send by `apticron` would possibly provide very valuable information for an attacker of a system.
 Since she/he would then know which packages on that system do need a (security) update.
 
-## Install
+## How to install
 
 It is recommended that you first install the `apticron` version provided by your distribution.
 This will initially prompt you to configure `apticron` like you need it.
-**Afterwards** use the `./install` script of this repository to replace the original `apticron` version with this version.
+**Afterwards** use the `./install` script of this repository to replace the original `apticron` version with this one.
 
-## Usage
+## How it works
 
 This version automatically will identify the public key to be used for encrypting by the email address given in the standard `apticron.conf`. The root user of your system needs to know that public key, if `apticron` is executed by the system (as usual).
-
-The default is that `apticron` is run as defined in `/etc/cron.d/apticron` which should look like
-```bash
-4 * * * * root if test -x /usr/sbin/apticron; then /usr/sbin/apticron --cron; else true; fi
-```
 
 ## State of the debian package
 
