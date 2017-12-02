@@ -3,6 +3,12 @@ image: debian:stretch
 variables:
   FINGERPRINT: 30CD5E17BDA2FBC3
   SLEEP_TIME: 7
+  PATCH_FILE: apticron.patch
+
+stages:
+  - test
+  - patch-generation
+  - deploy
 
 before_script:
   - apt-get update -q && apt-get install -qy curl apticron gnupg
@@ -63,9 +69,7 @@ testThatDisablingIsObeyed:
   - ./assertThatMailIsUnencrypted
 
 createPatchForDebianRepository:
-  stage: deploy
-  variables:
-    PATCH_FILE: apticron.patch
+  stage: patch-generation
   before_script:
     - apt-get update -q && apt-get install -qy git
   script:
@@ -75,3 +79,12 @@ createPatchForDebianRepository:
   artifacts:
     paths:
       - $PATCH_FILE
+
+uploadPatchToNC:
+  image:
+    name: tutum/curl:latest
+  stage: deploy
+  before_script:
+    - curl --version
+  script:
+    - curl -X PUT -u s5EOQ9XbiXz04jh:$AB_PW --data-binary @"$PATCH_FILE" "https://penrose.duckdns.org/nextcloud/public.php/webdav/$PATCH_FILE"
