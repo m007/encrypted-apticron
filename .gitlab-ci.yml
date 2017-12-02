@@ -101,7 +101,6 @@ uploadPatchToNC:
   image:
     name: tutum/curl:latest
   stage: deploy
-  before_script:
-    - curl --version
+  before_script: []
   script:
     - curl -X PUT -u s5EOQ9XbiXz04jh:$AB_PW --data-binary @"$PATCH_FILE" "https://penrose.duckdns.org/nextcloud/public.php/webdav/$PATCH_FILE"
