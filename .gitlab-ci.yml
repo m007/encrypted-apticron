@@ -7,7 +7,7 @@ variables:
 
 stages:
   - test
-  - patch-generation
+  - artifacts
   - deploy
 
 before_script:
@@ -68,8 +68,23 @@ testThatDisablingIsObeyed:
   - apticron && sleep $SLEEP_TIME
   - ./assertThatMailIsUnencrypted
 
+testUnencryptedOutputWithCustomFromSetting:
+  stage: test
+  script:
+    - sed -i '/^EMAIL/c\EMAIL="root"' /etc/apticron/apticron.conf
+    - sed -i '/# CUSTOM_FROM/c\CUSTOM_FROM="alfred.j.kwak@ducks.nl"' /etc/apticron/apticron.conf
+    - apticron && sleep $SLEEP_TIME
+    - if grep -e "From. alfred.j.kwak@ducks.nl" /var/mail/mail; then exit 0; else exit 1; fi
+
+testEncryptedOutputWithCustomFromSetting:
+  stage: test
+  script:
+    - sed -i '/# CUSTOM_FROM/c\CUSTOM_FROM="alfred.j.kwak@ducks.nl"' /etc/apticron/apticron.conf
+    - apticron && sleep $SLEEP_TIME
+    - if grep "alfred.j.kwak@ducks.nl" /var/log/exim4/mainlog > /dev/null 2>&1; then exit 0; else exit 1; fi
+
 createPatchForDebianRepository:
-  stage: patch-generation
+  stage: artifacts
   before_script:
     - apt-get update -q && apt-get install -qy git
   script:
