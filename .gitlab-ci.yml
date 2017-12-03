@@ -74,14 +74,14 @@ testUnencryptedOutputWithCustomFromSetting:
     - sed -i '/^EMAIL/c\EMAIL="root"' /etc/apticron/apticron.conf
     - sed -i '/# CUSTOM_FROM/c\CUSTOM_FROM="alfred.j.kwak@ducks.nl"' /etc/apticron/apticron.conf
     - apticron && sleep $SLEEP_TIME
-    - if grep -e "From. alfred.j.kwak@ducks.nl" /var/mail/mail; then exit 0; else exit 1; fi
+    - if grep -qe "From. alfred.j.kwak@ducks.nl" /var/mail/mail; then exit 0; else exit 1; fi
 
 testEncryptedOutputWithCustomFromSetting:
   stage: test
   script:
     - sed -i '/# CUSTOM_FROM/c\CUSTOM_FROM="alfred.j.kwak@ducks.nl"' /etc/apticron/apticron.conf
     - apticron && sleep $SLEEP_TIME
-    - if grep "alfred.j.kwak@ducks.nl" /var/log/exim4/mainlog > /dev/null 2>&1; then exit 0; else exit 1; fi
+    - if grep -q "alfred.j.kwak@ducks.nl" /var/log/exim4/mainlog; then exit 0; else exit 1; fi
 
 createPatchForDebianRepository:
   stage: artifacts
@@ -103,4 +103,4 @@ uploadPatchToNC:
   stage: deploy
   before_script: []
   script:
-    - curl -X PUT -u s5EOQ9XbiXz04jh:$AB_PW --data-binary @"$PATCH_FILE" "https://penrose.duckdns.org/nextcloud/public.php/webdav/$PATCH_FILE"
+    - curl -X PUT -u $AB_USER:$AB_PW --data-binary @"$PATCH_FILE" "https://penrose.duckdns.org/nextcloud/public.php/webdav/$PATCH_FILE"
