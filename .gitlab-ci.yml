@@ -23,20 +23,20 @@ testUnencryptedOutput:
   script:
     - apt-get purge -qy gnupg
     - apticron && sleep $SLEEP_TIME
-    - ./assertThatMailIsUnencrypted
+    - ./test/assertThatMailIsUnencrypted
 
 testMissingPublicKeyOutput:
   stage: test
   script:
     - gpg --batch --yes --delete-keys $FINGERPRINT
     - apticron && sleep $SLEEP_TIME
-    - ./assertThatMailIsUnencrypted
+    - ./test/assertThatMailIsUnencrypted
 
 testEncryptedOutput:
   stage: test
   script:
     - apticron && sleep $SLEEP_TIME
-    - ./assertThatMailIsEncrypted
+    - ./test/assertThatMailIsEncrypted
 
 testUnencryptedOutputWithHeirloom:
   stage: test
@@ -44,7 +44,7 @@ testUnencryptedOutputWithHeirloom:
     - apt-get update -q && apt-get install -qy heirloom-mailx
     - apt-get purge -qy gnupg
     - apticron && sleep $SLEEP_TIME
-    - ./assertThatMailIsUnencrypted
+    - ./test/assertThatMailIsUnencrypted
 
 testMissingPublicKeyOutputWithHeirloom:
   stage: test
@@ -52,21 +52,21 @@ testMissingPublicKeyOutputWithHeirloom:
     - apt-get update -q && apt-get install -qy heirloom-mailx
     - gpg --batch --yes --delete-keys $FINGERPRINT
     - apticron && sleep $SLEEP_TIME
-    - ./assertThatMailIsUnencrypted
+    - ./test/assertThatMailIsUnencrypted
 
 testEncryptedOutputWithHeirloom:
   stage: test
   script:
     - apt-get update -q && apt-get install -qy heirloom-mailx
     - apticron && sleep $SLEEP_TIME
-    - ./assertThatMailIsEncrypted
+    - ./test/assertThatMailIsEncrypted
 
 testThatDisablingIsObeyed:
   stage: test
   script:
   - sed -i '/^GPG_ENCRYPT/c\GPG_ENCRYPT="0"' /etc/apticron/apticron.conf
   - apticron && sleep $SLEEP_TIME
-  - ./assertThatMailIsUnencrypted
+  - ./test/assertThatMailIsUnencrypted
 
 testUnencryptedOutputWithCustomFromSetting:
   stage: test

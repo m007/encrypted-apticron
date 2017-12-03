@@ -1,0 +1,12 @@
+#!/bin/bash -eu
+
+# (c) 2017, M.B.
+OUTPUT_FILE=$(tempfile)
+
+sed -n '/.*BEGIN PGP MESSAGE.*/,/.*END PGP MESSAGE.*/p' /var/mail/mail > "$OUTPUT_FILE" 2>&1
+
+if [[ $(file "$OUTPUT_FILE") =~ "PGP message Public-Key Encrypted Session Key" ]]; then
+    exit 0
+else
+    exit 1
+fi

@@ -1,0 +1,12 @@
+#!/bin/bash -eu
+
+# (c) 2017, M.B.
+OUTPUT_FILE=$(tempfile)
+
+sed -n '/^apticron report/,/^apticron$/p' /var/mail/mail > "$OUTPUT_FILE" 2>&1
+
+if grep -q "^apticron$" "$OUTPUT_FILE"; then
+    exit 0
+else
+    exit 1
+fi
