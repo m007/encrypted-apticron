@@ -4,11 +4,12 @@
 # implementations in Debian. Make sure we send proper headers, and a
 # text/plain content type.
 Mailx() {
-    # The statement msg="$(xargs --null echo)" will fail if the generated message
-    # is very long with xargs: argument line too long.
-    msg=$(xargs --null echo)
+    MAIL_BODY_FILE=$(tempfile)
+    cat > "$MAIL_BODY_FILE"
     if [ x$GPG_ENCRYPT = "x1" ] && gpg --list-public-keys "$EMAIL" > /dev/null 2>&1; then
-        msg=$(echo "$msg" | gpg --trust-model always --batch --armor --encrypt --recipient "$EMAIL")
+        MAIL_ENC_FILE=$(tempfile)
+        gpg --trust-model always --batch --armor --encrypt --recipient "$EMAIL" < "$MAIL_BODY_FILE" > "$MAIL_ENC_FILE"
+        mv "$MAIL_ENC_FILE" "$MAIL_BODY_FILE"
     fi
 
     local MAILER="`readlink -e /usr/bin/mailx`"
@@ -17,26 +18,27 @@ Mailx() {
 		# heirloom-mailx creates correct headers, but needs help
 		# if the terminal charset (LC_CTYPE) is no UTF-8 locale
 		if [ -n "$CUSTOM_FROM" ] ; then
-			echo "$msg" | /usr/bin/mailx -S ttycharset=utf-8 -r "$CUSTOM_FROM" "$@"
+			/usr/bin/mailx -S ttycharset=utf-8 -r "$CUSTOM_FROM" "$@" < "$MAIL_BODY_FILE"
 		else
-			echo "$msg" | /usr/bin/mailx -S ttycharset=utf-8 "$@"
+			/usr/bin/mailx -S ttycharset=utf-8 "$@" < "$MAIL_BODY_FILE"
 		fi
 	else
 		# bsd-mailx/mailutils' mailx don't do character set
 		# conversion, but do not support MIME either.
 		if [ -n "$CUSTOM_FROM" ] ; then
-			echo "$msg" | /usr/bin/mailx -a "MIME-Version: 1.0" \
+			/usr/bin/mailx -a "MIME-Version: 1.0" \
 				-a "Content-type: text/plain; charset=UTF-8" \
 				-a "Content-transfer-encoding: 8bit" \
 				-a "From: $CUSTOM_FROM" \
-				"$@"
+				"$@" < "$MAIL_BODY_FILE"
 		else
-			echo "$msg" | /usr/bin/mailx -a "MIME-Version: 1.0" \
+			/usr/bin/mailx -a "MIME-Version: 1.0" \
 				-a "Content-type: text/plain; charset=UTF-8" \
 				-a "Content-transfer-encoding: 8bit" \
-				"$@"
+				"$@" < "$MAIL_BODY_FILE"
 		fi
 	fi
+    rm "$MAIL_BODY_FILE"
 }
 
 if [ "x$1" = "x--cron" ] ; then
