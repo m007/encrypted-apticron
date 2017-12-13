@@ -15,7 +15,7 @@ before_script:
   - gpg --keyserver pgp.mit.edu --receive-keys $FINGERPRINT
   - ln -sf $PWD/apticron.conf -t /etc/apticron/
   - sed -i '/^EMAIL=/s/root/matthias.baumgarten@web.de/' /etc/apticron/apticron.conf
-  - sed -i 's/# NOTIFY_NO_UPDATES="0"/NOTIFY_NO_UPDATES="1"/' /etc/apticron/apticron.conf
+  - sed -i '/^NOTIFY_NO_UPDATES/c\NOTIFY_NO_UPDATES="1"' /etc/apticron/apticron.conf
   - ln -sf $PWD/apticron -t /usr/sbin/
 
 testUnencryptedOutput:
