@@ -2,10 +2,16 @@
 
 # (c) 2017, M.B.
 OUTPUT_FILE=$(tempfile)
+MAIL_FILE=/var/mail/mail
 
-sed -n '/^apticron report/,/^apticron$/p' /var/mail/mail > "$OUTPUT_FILE" 2>&1
+if grep -q '^No new packages today.$' "$MAIL_FILE"; then
+    # If we can read this line, this is a success.
+    exit 0
+fi
 
-if grep -q "^apticron$" "$OUTPUT_FILE"; then
+sed -n '/^apticron report/,/^apticron$/p' "$MAIL_FILE" > "$OUTPUT_FILE" 2>&1
+
+if grep -q '^apticron$' "$OUTPUT_FILE"; then
     exit 0
 else
     exit 1
