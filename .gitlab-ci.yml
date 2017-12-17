@@ -1,7 +1,7 @@
 image: debian:stretch
 
 variables:
-  FINGERPRINT: 30CD5E17BDA2FBC3
+  FINGERPRINT: C7D495254D9CC8ADDC5A60BFDEB64CDBAAC4FDA6
   SLEEP_TIME: 7
   PATCH_FILE: apticron.patch
 
@@ -12,11 +12,12 @@ stages:
 
 before_script:
   - apt-get update -q && apt-get install -qy curl apticron gnupg
-  - gpg --keyserver pgp.mit.edu --receive-keys $FINGERPRINT
-  - ln -sf $PWD/apticron.conf -t /etc/apticron/
-  - sed -i '/^EMAIL=/s/root/matthias.baumgarten@web.de/' /etc/apticron/apticron.conf
-  - sed -i '/^NOTIFY_NO_UPDATES/c\NOTIFY_NO_UPDATES="1"' /etc/apticron/apticron.conf
   - ln -sf $PWD/apticron -t /usr/sbin/
+  - ln -sf $PWD/apticron.conf -t /etc/apticron/
+  - sed -i '/^EMAIL=/s/root/alfred.j.kwak@ducks.nl/' /etc/apticron/apticron.conf
+  - sed -i '/^NOTIFY_NO_UPDATES/c\NOTIFY_NO_UPDATES="1"' /etc/apticron/apticron.conf
+  - gpg --batch --import alfreds-keys/alfreds-gpg-key.sec
+  - gpg --import alfreds-keys/alfreds-gpg-key.pub
 
 testUnencryptedOutput:
   stage: test
@@ -28,6 +29,7 @@ testUnencryptedOutput:
 testMissingPublicKeyOutput:
   stage: test
   script:
+    - gpg --batch --yes --delete-secret-keys $FINGERPRINT
     - gpg --batch --yes --delete-keys $FINGERPRINT
     - apticron && sleep $SLEEP_TIME
     - ./test/assertThatMailIsUnencrypted
@@ -50,6 +52,7 @@ testMissingPublicKeyOutputWithHeirloom:
   stage: test
   script:
     - apt-get update -q && apt-get install -qy heirloom-mailx
+    - gpg --batch --yes --delete-secret-keys $FINGERPRINT
     - gpg --batch --yes --delete-keys $FINGERPRINT
     - apticron && sleep $SLEEP_TIME
     - ./test/assertThatMailIsUnencrypted
