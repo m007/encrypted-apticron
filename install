@@ -7,7 +7,6 @@ chmod 755 $BIN_TARGET
 
 CONF_TARGET="/etc/apticron/apticron.conf"
 if ! grep -qe "^GPG_ENCRYPT=" $CONF_TARGET; then
-    echo >> $CONF_TARGET
-    echo "#" >> $CONF_TARGET
+    printf "\n#\n" >> $CONF_TARGET
     sed -n '/GPG_ENCRYPT/,/^GPG_ENCRYPT/p' apticron.conf >> $CONF_TARGET
 fi

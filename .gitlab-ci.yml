@@ -7,6 +7,7 @@ variables:
 
 stages:
   - test
+  - quality
   - artifacts
   - deploy
 
@@ -85,6 +86,13 @@ testEncryptedOutputWithCustomFromSetting:
     - sed -i '/# CUSTOM_FROM/c\CUSTOM_FROM="alfred.j.kwak@ducks.nl"' /etc/apticron/apticron.conf
     - apticron && sleep $SLEEP_TIME
     - if grep -q "alfred.j.kwak@ducks.nl" /var/log/exim4/mainlog; then exit 0; else exit 1; fi
+
+shellcheck:
+  stage: quality
+  before_script:
+    - apt-get update -q && apt-get install -qy shellcheck
+  script:
+    - shellcheck install test/*
 
 createPatchForDebianRepository:
   stage: artifacts
