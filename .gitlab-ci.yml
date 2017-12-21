@@ -68,9 +68,9 @@ testEncryptedOutputWithHeirloom:
 testThatDisablingIsObeyed:
   stage: test
   script:
-  - sed -i '/^GPG_ENCRYPT/c\GPG_ENCRYPT="0"' /etc/apticron/apticron.conf
-  - apticron && sleep $SLEEP_TIME
-  - ./test/assertThatMailIsUnencrypted
+    - sed -i '/^GPG_ENCRYPT/c\GPG_ENCRYPT="0"' /etc/apticron/apticron.conf
+    - apticron && sleep $SLEEP_TIME
+    - ./test/assertThatMailIsUnencrypted
 
 testUnencryptedOutputWithCustomFromSetting:
   stage: test
