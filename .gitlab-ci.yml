@@ -109,9 +109,11 @@ createPatchForDebianRepository:
 uploadPatchToNC:
   only:
     - /^master$/
+    - tags
   image:
     name: tutum/curl:latest
   stage: deploy
   before_script: []
   script:
-    - curl -X PUT -u $AB_USER:$AB_PW --data-binary @"$PATCH_FILE" "https://penrose.duckdns.org/nextcloud/public.php/webdav/$PATCH_FILE"
+    - if [[ "x$CI_COMMIT_TAG" =~ ^x$ ]]; then export TARGET="$PATCH_FILE"; else export TARGET="apticron%20($CI_COMMIT_TAG).patch"; fi
+    - curl -X PUT -u $AB_USER:$AB_PW --data-binary @"$PATCH_FILE" "https://penrose.duckdns.org/nextcloud/public.php/webdav/$TARGET"
