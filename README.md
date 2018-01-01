@@ -21,3 +21,9 @@ And official debian feature/bug request was initiated for this feature to be inc
 ## Issues and Contributing
 
 Feel free to open an issue if you have questions or want changes to this version.
+
+## Copyright
+
+`apticron` and `apticron.conf` are based on the [debian source](git://git.debian.org/git/collab-maint/apticron.git) of the respective files.
+Therefore the original debian `./COPYRIGHT` file is included in this project. All other files a written by the author and are licensed under the
+GPL License (see `./LICENSE`).
