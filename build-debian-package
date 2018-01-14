@@ -1,0 +1,43 @@
+#!/bin/bash -eux
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+mkdir "$BUILD_DIRECTORY_NAME"
+cd "$BUILD_DIRECTORY_NAME"
+git clone git://git.debian.org/git/collab-maint/apticron.git
+cd apticron
+
+# Configuration of git
+PACKAGE_EDITOR_NAME="$(git -C ../../ log -1 --format=format:%aN)"
+PACKAGE_EDITOR_EMAIL="$(git -C ../../ log -1 --format=format:%aE)"
+git config --global user.name "$PACKAGE_EDITOR_NAME"
+git config --global user.email "$PACKAGE_EDITOR_EMAIL"
+
+# Providing and committing the new sources
+cp ../../apticron .
+cp ../../apticron.conf .
+git add apticron apticron.conf debian/changelog
+git commit -m "Automated build based on commit $CI_COMMIT_SHA" -m "by the build pipeline of ${PACKAGE_EDITOR_NAME} introducing the features of" -m "${CI_PROJECT_URL}."
+
+# Generating an updated changelog file
+gbp dch --ignore-branch --since "$(git log -2 --format=format:%H | tail -1)" --release --nmu --git-author --spawn-editor=never --full
+
+# Build the debian package (-us -uc == do not sign the package)
+gbp buildpackage --git-ignore-new -us -uc
+
+# Clean Up
+cd ../
+rm -r apticron
+cd ../
+tar -czf "$BUILD_DIRECTORY_NAME".tar.gz "$BUILD_DIRECTORY_NAME/"
+rm -r "$BUILD_DIRECTORY_NAME"
