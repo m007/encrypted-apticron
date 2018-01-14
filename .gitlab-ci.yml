@@ -4,6 +4,7 @@ variables:
   FINGERPRINT: C7D495254D9CC8ADDC5A60BFDEB64CDBAAC4FDA6
   SLEEP_TIME: 7
   PATCH_FILE: apticron.patch
+  BUILD_DIRECTORY_NAME: apticron-build-artifacts
 
 stages:
   - test
@@ -106,6 +107,15 @@ createPatchForDebianRepository:
     paths:
       - $PATCH_FILE
 
+debianPackageArtifact:
+  stage: artifacts
+  before_script:
+    - apt-get update -q && apt-get install -qy git git-buildpackage
+  script:
+    - ./build-debian-package
+  artifacts:
+    untracked: true
+
 uploadPatchToNC:
   only:
     - /^master$/
@@ -117,3 +127,13 @@ uploadPatchToNC:
   script:
     - if [[ "x$CI_COMMIT_TAG" =~ ^x$ ]]; then export TARGET="$PATCH_FILE"; else export TARGET="apticron%20($CI_COMMIT_TAG).patch"; fi
     - curl -X PUT -u $AB_USER:$AB_PW --data-binary @"$PATCH_FILE" "https://penrose.duckdns.org/nextcloud/public.php/webdav/$TARGET"
+
+uploadArtifactsToNC:
+  only:
+    - master
+  image:
+    name: tutum/curl:latest
+  stage: deploy
+  before_script: []
+  script:
+    - curl -X PUT -u $AB_USER:$AB_PW --data-binary @"$BUILD_DIRECTORY_NAME".tar.gz "https://penrose.duckdns.org/nextcloud/public.php/webdav/"$BUILD_DIRECTORY_NAME".tar.gz"

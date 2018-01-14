@@ -14,7 +14,7 @@ FROM debian:stretch
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -q && apt-get install -qy \
-    less nano curl apticron gnupg \
+    less nano curl apticron gnupg git git-buildpackage \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
