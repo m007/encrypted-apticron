@@ -92,7 +92,7 @@ shellcheck:
   before_script:
     - apt-get update -q && apt-get install -qy shellcheck
   script:
-    - find -type f -executable -not -path "./.git*" -not -name apticron -exec shellcheck {} \;
+    - shellcheck $(find -type f -executable -not -path "./.git*" -not -name apticron -print)
 
 createPatchForDebianRepository:
   stage: artifacts
