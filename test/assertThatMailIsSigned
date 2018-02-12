@@ -12,18 +12,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
-BIN_TARGET="/usr/sbin/apticron"
-cp apticron $BIN_TARGET
-chown root:root $BIN_TARGET
-chmod 755 $BIN_TARGET
-
-CONF_TARGET="/etc/apticron/apticron.conf"
-if ! grep -qe "^GPG_ENCRYPT=" $CONF_TARGET; then
-    printf "\n#\n" >> $CONF_TARGET
-    sed -n '/GPG_ENCRYPT/,/^GPG_ENCRYPT/p' apticron.conf >> $CONF_TARGET
-fi
-
-if ! grep -qe "^GPG_SIGN=" $CONF_TARGET; then
-    printf "\n#\n" >> $CONF_TARGET
-    sed -n '/GPG_SIGN/,/^GPG_SIGN/p' apticron.conf >> $CONF_TARGET
-fi
+OUTPUT_FILE=$(tempfile)
+sed -n '/.*BEGIN PGP MESSAGE.*/,/.*END PGP MESSAGE.*/p' /var/mail/mail > "$OUTPUT_FILE" 2>&1
+# --decrypt will verify a signed and encrypted file
+# Will only do as long as recipient is sender...
+gpg --decrypt "$OUTPUT_FILE"

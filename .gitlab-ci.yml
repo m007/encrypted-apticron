@@ -18,6 +18,7 @@ before_script:
   - ln -sf $PWD/apticron.conf -t /etc/apticron/
   - sed -i '/^EMAIL=/s/root/alfred.j.kwak@ducks.nl/' /etc/apticron/apticron.conf
   - sed -i '/^NOTIFY_NO_UPDATES/c\NOTIFY_NO_UPDATES="1"' /etc/apticron/apticron.conf
+  - sed -i '/^GPG_SIGN=/s/1/0/' /etc/apticron/apticron.conf
   - gpg --batch --import alfreds-keys/alfreds-gpg-key.sec
   - gpg --import alfreds-keys/alfreds-gpg-key.pub
 
@@ -87,6 +88,19 @@ testEncryptedOutputWithCustomFromSetting:
     - sed -i '/# CUSTOM_FROM/c\CUSTOM_FROM="alfred.j.kwak@ducks.nl"' /etc/apticron/apticron.conf
     - apticron && sleep $SLEEP_TIME
     - if grep -q "alfred.j.kwak@ducks.nl" /var/log/exim4/mainlog; then exit 0; else exit 1; fi
+
+testMessageSigningOfEncryptedMessage:
+  stage: test
+  script:
+    - sed -i '/^GPG_SIGN=/c\GPG_SIGN="1"' /etc/apticron/apticron.conf
+    - apticron && sleep $SLEEP_TIME
+    - ./test/assertThatMailIsSigned
+
+testMessageSigningWithWrongPassPhrase:
+  stage: test
+  script:
+    - sed -i '/^GPG_SIGN=/c\GPG_SIGN="1"' /etc/apticron/apticron.conf
+    - if GPG_PASS_PHRASE='veryWrongPassPhraseString' apticron; then exit 1; else exit 0; fi
 
 shellcheck:
   stage: quality

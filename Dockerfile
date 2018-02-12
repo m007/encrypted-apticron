@@ -29,4 +29,5 @@ ADD apticron.conf /etc/apticron/
 RUN sed -i '/^NOTIFY_NO_UPDATES/c\NOTIFY_NO_UPDATES="1"' /etc/apticron/apticron.conf && \
     sed -i '/^EMAIL=/s/root/alfred.j.kwak@ducks.nl/' /etc/apticron/apticron.conf
 
+ENV GPG_TTY=/dev/pts/0
 WORKDIR /root
