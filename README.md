@@ -1,5 +1,5 @@
 # encrypted-apticron
-This version replaces the original [`apticron`](https://tracker.debian.org/pkg/apticron). It's purpose is to encrypt the outgoing emails using [`gpg`](https://www.gnupg.org/) before sending them. Forked from `git://git.debian.org/git/collab-maint/apticron.git`.
+This version replaces the original [`apticron`](https://tracker.debian.org/pkg/apticron). It's purpose is to encrypt the outgoing emails using [`gpg`](https://www.gnupg.org/) before sending them. Forked from `https://salsa.debian.org/debian/apticron.git`.
 
 **On the origin of the idea for this project:** Intercepting emails send by `apticron` would possibly provide very valuable information for an attacker of a system.
 Since she/he would then know which packages on that system do need a (security) update.
@@ -24,6 +24,6 @@ Feel free to open an issue if you have questions or want changes to this version
 
 ## Copyright
 
-`apticron` and `apticron.conf` are based on the [debian source](git://git.debian.org/git/collab-maint/apticron.git) of the respective files.
+`apticron` and `apticron.conf` are based on the [debian source](https://salsa.debian.org/debian/apticron.git) of the respective files.
 Therefore the original debian `./COPYRIGHT` file is included in this project. All other files a written by the author and are licensed under the
 GPL License (see `./LICENSE`).

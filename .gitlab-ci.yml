@@ -114,7 +114,7 @@ createPatchForDebianRepository:
   before_script:
     - apt-get update -q && apt-get install -qy git
   script:
-    - git remote add debian git://git.debian.org/git/collab-maint/apticron.git
+    - git remote add debian https://salsa.debian.org/debian/apticron.git
     - git fetch debian
     - git diff debian/master HEAD apticron apticron.conf > $PATCH_FILE
   artifacts:

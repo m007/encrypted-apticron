@@ -14,7 +14,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 mkdir "$BUILD_DIRECTORY_NAME"
 cd "$BUILD_DIRECTORY_NAME"
-git clone git://git.debian.org/git/collab-maint/apticron.git
+git clone https://salsa.debian.org/debian/apticron.git
 cd apticron
 
 # Configuration of git
