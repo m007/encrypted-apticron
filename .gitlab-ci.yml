@@ -140,7 +140,7 @@ uploadPatchToNC:
   before_script: []
   script:
     - if [[ "x$CI_COMMIT_TAG" =~ ^x$ ]]; then export TARGET="$PATCH_FILE"; else export TARGET="apticron%20($CI_COMMIT_TAG).patch"; fi
-    - curl -X PUT -u $AB_USER:$AB_PW --data-binary @"$PATCH_FILE" "https://penrose.duckdns.org/nextcloud/public.php/webdav/$TARGET"
+    - curl -s -D /dev/stderr -X PUT -u $AB_USER:$AB_PW --data-binary @"$PATCH_FILE" "https://penrose.duckdns.org/nextcloud/public.php/webdav/$TARGET"
 
 uploadArtifactsToNC:
   only:
@@ -150,4 +150,4 @@ uploadArtifactsToNC:
   stage: deploy
   before_script: []
   script:
-    - curl -X PUT -u $AB_USER:$AB_PW --data-binary @"$BUILD_DIRECTORY_NAME".tar.gz "https://penrose.duckdns.org/nextcloud/public.php/webdav/"$BUILD_DIRECTORY_NAME".tar.gz"
+    - curl -s -D /dev/stderr -X PUT -u $AB_USER:$AB_PW --data-binary @"$BUILD_DIRECTORY_NAME".tar.gz "https://penrose.duckdns.org/nextcloud/public.php/webdav/"$BUILD_DIRECTORY_NAME".tar.gz"
