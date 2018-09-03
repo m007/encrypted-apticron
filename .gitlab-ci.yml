@@ -124,7 +124,7 @@ createPatchForDebianRepository:
 debianPackageArtifact:
   stage: artifacts
   before_script:
-    - apt-get update -q && apt-get install -qy git git-buildpackage
+    - apt-get update -q && apt-get install -qy git git-buildpackage dh-exec
   script:
     - ./build-debian-package
   artifacts:
