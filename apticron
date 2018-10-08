@@ -6,7 +6,7 @@
 Mailx() {
     MAIL_BODY_FILE=$(tempfile)
     cat > "$MAIL_BODY_FILE"
-    if [ x$GPG_ENCRYPT = "x1" ] && gpg --list-public-keys "$EMAIL" > /dev/null 2>&1; then
+    if [ "x$GPG_ENCRYPT" = "x1" ] && gpg --list-public-keys "$EMAIL" > /dev/null 2>&1; then
         if [ "x$GPG_SIGN" = "x1" ]; then
             MAIL_SIGN_FILE=$(tempfile)
             gpg --trust-model always --batch --armor --encrypt --recipient "$EMAIL" --pinentry-mode=loopback --sign --passphrase "$GPG_PASS_PHRASE" < "$MAIL_BODY_FILE" > "$MAIL_SIGN_FILE"
